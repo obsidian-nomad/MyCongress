@@ -31,7 +31,9 @@ angular.module('myCongressApp', [
     Bills.getVotes().then(function(data){
       $scope.votes = data;
     });
-    // $scope.politicians = Politicians.getPoliticians();
+    Politicians.getReps().then(function(data){
+      $scope.reps = data;
+    });
   })
   .factory('authInterceptor', function ($rootScope, $q, $cookieStore, $location) {
     return {
