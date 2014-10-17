@@ -128,15 +128,6 @@ angular.module('myCongressApp')
       },
 
       /**
-       * Check if a user is an admin
-       *
-       * @return {Boolean}
-       */
-      isAdmin: function() {
-        return currentUser.role === 'admin';
-      },
-
-      /**
        * Get auth token
        */
       getToken: function() {
