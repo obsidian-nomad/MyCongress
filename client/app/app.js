@@ -24,8 +24,13 @@ angular.module('myCongressApp', [
     $httpProvider.interceptors.push('authInterceptor');
   })
   .controller('dataController', function($scope, Bills, Politicians) {
-    $scope.bills = Bills.getBills();
-    $scope.votes = Bills.getVotes();
+    Bills.getBills().then(function(data){
+      $scope.bills = data;
+    });
+
+    Bills.getVotes().then(function(data){
+      $scope.votes = data;
+    });
     // $scope.politicians = Politicians.getPoliticians();
   })
   .factory('authInterceptor', function ($rootScope, $q, $cookieStore, $location) {
