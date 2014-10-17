@@ -13,8 +13,13 @@ angular.module('myCongressApp', [
     $stateProvider
     // used to test what data we're pulling from the server
     .state('/test', {
-      url: "/test",
-      templateUrl: "/app/test.html"
+      url: '/test',
+      templateUrl: '/app/test.html'
+    })
+    // See angular parameter documentation here: https://github.com/angular-ui/ui-router/wiki/URL-Routing
+    .state('/profiles/{repId}', {
+      url: 'profiles/:repId',
+      templateUrl: '/app/main/repProfile.html'
     });
     
     $urlRouterProvider
@@ -31,7 +36,8 @@ angular.module('myCongressApp', [
     Bills.getVotes().then(function(data){
       $scope.votes = data;
     });
-    Politicians.getReps().then(function(data){
+    //example of parameters passed into the function call
+    Politicians.getReps({'first_name': 'Adam', 'last_name': 'Schiff'}).then(function(data){
       $scope.reps = data;
     });
   })
