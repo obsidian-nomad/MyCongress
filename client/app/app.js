@@ -1,6 +1,7 @@
 'use strict';
 
 angular.module('myCongressApp', [
+  'myCongress.services',
   'ngCookies',
   'ngResource',
   'ngSanitize',
