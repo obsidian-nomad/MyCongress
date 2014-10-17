@@ -10,13 +10,31 @@ angular.module('myCongressApp', [
   'ui.bootstrap'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+    $stateProvider
+    // used to test what data we're pulling from the server
+    .state('/test', {
+      url: "/test",
+      templateUrl: "/app/test.html"
+    });
+    
     $urlRouterProvider
       .otherwise('/');
 
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('authInterceptor');
   })
+  .controller('dataController', function($scope, Bills, Politicians) {
+    Bills.getBills().then(function(data){
+      $scope.bills = data;
+    });
 
+    Bills.getVotes().then(function(data){
+      $scope.votes = data;
+    });
+    Politicians.getReps().then(function(data){
+      $scope.reps = data;
+    });
+  })
   .factory('authInterceptor', function ($rootScope, $q, $cookieStore, $location) {
     return {
       // Add authorization token to headers
