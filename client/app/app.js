@@ -12,7 +12,7 @@ angular.module('myCongressApp', [
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $stateProvider
     // used to test what data we're pulling from the server
-    .state('/test', {
+    .state('test', {
       url: '/test',
       templateUrl: '/app/test.html'
     })
@@ -20,6 +20,10 @@ angular.module('myCongressApp', [
     .state('/profiles/{repId}', {
       url: 'profiles/:repId',
       templateUrl: '/app/main/repProfile.html'
+    })
+    .state('browse', {
+      url: 'browse',
+      templateUrl: '/app/main/browse.html'
     });
     
     $urlRouterProvider
