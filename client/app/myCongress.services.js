@@ -70,25 +70,28 @@ angular.module('myCongress.services', [])
 	};
 })
 // Here, we will include logic to access relevant information for each congressman's profile
-.factory( 'Profile', function( $http ){
+.factory( 'Profile', function( /*$http*/ ){
 	var _getProfilePictureSrc = function(congressmanId){
 		// TODO--> this function should query our API for the picture
-		return 'http://en.wikipedia.org/wiki/Nancy_Pelosi#mediaviewer/File:Nancy_Pelosi_2013.jpg'
+		congressmanId = '';
+		return 'http://en.wikipedia.org/wiki/Nancy_Pelosi#mediaviewer/File:Nancy_Pelosi_2013.jpg';
 	};
 
 	var _getVotingHistory = function(congressmanId){
+		 congressmanId = '';
 		 // TODO--> query our API endpoints for congressman voting history **RALPH, have this return dummy data for now**
 		return {};
-	}
+	};
 
 	var _getApprovalRating = function(congressmanId){
-		return {approve: .56, disapprove: .40, abstain: .04};
-	}
+		congressmanId = '';
+		return {approve: 0.56, disapprove: 0.40, abstain: 0.04};
+	};
 
 	return {
 		getProfilePictureSrc: _getProfilePictureSrc,
 		getVotingHistory: _getVotingHistory,
 		getApprovalRating: _getApprovalRating
-	}
+	};
 });
 
