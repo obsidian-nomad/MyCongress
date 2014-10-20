@@ -3,11 +3,12 @@
 angular.module('myCongressApp')
   .config(function ($stateProvider) {
     $stateProvider
-      .state('main', {
-        url: '/',
-        templateUrl: 'app/main/main.html',
-        controller: 'MainCtrl'
-      })
+      // temporarily removed while we keep browse as our landing page
+      // .state('main', {
+      //   url: '/',
+      //   templateUrl: 'app/main/main.html',
+      //   controller: 'MainCtrl'
+      // })
       .state('test', {
         url: '/test',
         templateUrl: '/app/test.html'
