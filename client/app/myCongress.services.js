@@ -47,6 +47,7 @@ angular.module('myCongress.services', [])
 })
 .factory( 'Politicians', function( $http ){
 
+	// Query the API to get information about all Congressional Members
 	var _getReps = function(params){
 	  params = params || {};
 	  return $http({
@@ -70,6 +71,24 @@ angular.module('myCongress.services', [])
 })
 // Here, we will include logic to access relevant information for each congressman's profile
 .factory( 'Profile', function( $http ){
+	var _getProfilePictureSrc = function(congressmanId){
+		// TODO--> this function should query our API for the picture
+		return 'http://en.wikipedia.org/wiki/Nancy_Pelosi#mediaviewer/File:Nancy_Pelosi_2013.jpg'
+	};
 
+	var _getVotingHistory = function(congressmanId){
+		 // TODO--> query our API endpoints for congressman voting history **RALPH, have this return dummy data for now**
+		return {};
+	}
+
+	var _getApprovalRating = function(congressmanId){
+		return {approve: .56, disapprove: .40, abstain: .04};
+	}
+
+	return {
+		getProfilePictureSrc: _getProfilePictureSrc,
+		getVotingHistory: _getVotingHistory,
+		getApprovalRating: _getApprovalRating
+	}
 });
 
