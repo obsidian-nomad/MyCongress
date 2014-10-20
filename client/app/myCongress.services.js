@@ -67,4 +67,9 @@ angular.module('myCongress.services', [])
 	return {
 		getReps: _getReps
 	};
+})
+// Here, we will include logic to access relevant information for each congressman's profile
+.factory( 'Profile', function( $http ){
+
 });
+

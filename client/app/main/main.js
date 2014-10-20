@@ -23,7 +23,9 @@ angular.module('myCongressApp')
         templateUrl: '/app/main/browse.html'
       });
   })
+  // this controller is used solely on the test page to test data we can pull
   .controller('dataController', function($scope, Bills, Politicians) {
+    // modify the parameters here to play with what data you can get from the sunlight API
     Bills.getBills().then(function(data){
       $scope.bills = data;
     });
@@ -35,4 +37,7 @@ angular.module('myCongressApp')
     Politicians.getReps({'first_name': 'Adam', 'last_name': 'Schiff'}).then(function(data){
       $scope.reps = data;
     });
+  })
+  .controller('profileController', function($scope, Profile){
+
   });
