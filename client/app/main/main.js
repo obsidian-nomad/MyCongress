@@ -14,8 +14,8 @@ angular.module('myCongressApp')
         templateUrl: '/app/test.html'
       })
       // See angular parameter documentation here: https://github.com/angular-ui/ui-router/wiki/URL-Routing
-      .state('/profiles/{repId}', {
-        url: 'profiles/:repId',
+      .state('profiles'/*{repId}*/, {
+        url: '/profiles',
         templateUrl: '/app/main/repProfile.html'
       })
       .state('browse', {
