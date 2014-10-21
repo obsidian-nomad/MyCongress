@@ -17,8 +17,10 @@ exports.register = function(socket) {
 
 function onSave(socket, doc, cb) {
   socket.emit('lawmaker:save', doc);
+  if(cb) {cb()}
 }
 
 function onRemove(socket, doc, cb) {
   socket.emit('lawmaker:remove', doc);
+  if(cb) {cb()}
 }

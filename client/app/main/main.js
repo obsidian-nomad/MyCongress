@@ -20,7 +20,7 @@ angular.module('myCongressApp')
       })
       .state('browse', {
         url: '/browse',
-        templateUrl: '/app/main/browse.html'
+        templateUrl: '/app/tiles/tiles.html'
       });
   })
 
