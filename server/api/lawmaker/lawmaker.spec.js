@@ -2,7 +2,7 @@
 
 var app = require('../../app');
 var request = require('supertest');
-// var should = require('should');
+var should = require('should');
 
 describe('GET /api/lawmakers', function() {
 

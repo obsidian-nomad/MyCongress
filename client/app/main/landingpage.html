@@ -1,4 +1,9 @@
-<div ng-app='myCongress.tiles'  ng-controller='TileController'>
+ <div ng-app='myCongress.tiles'  ng-controller='TileController'>
+ <!-- HEADER WITH SEARCH BAR -->
+  <div id='welcomeHeader'>
+    <h1>Real Congressional Information...in Real Time</h1>
+    <input type='text' placeholder='Enter your zipcode to begin'>
+  </div>
 
   <input class='input' placeholder='Search' ng-model='search'/>
   <div class='tile' ng-repeat='bio in bios | filter:search'>
