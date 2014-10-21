@@ -1,0 +1,48 @@
+.tile {
+  position: relative;
+  width: 450px;
+  height: 110px;
+  background-color: #DCDCDC;
+  border: 1px;
+  margin-top: 5px;
+}
+
+.input {
+  width: 450px;
+}
+.hover {
+  background-color: blue;
+}
+
+.picture {
+  position: absolute;
+  height: 90px;
+  width: 90px;
+  border-radius: 50%;
+  top: 10px;
+  left: 30px;
+}
+
+.name {
+  position: absolute;
+  top: 0px;
+  left: 150px;
+}
+
+.party {
+  position: absolute;
+  top: 20px;
+  left: 150px;
+}
+
+.location {
+  position: absolute;
+  top: 40px;
+  left: 150px;
+}
+
+.website {
+  position: absolute;
+  top: 75px;
+  left: 150px;
+}
