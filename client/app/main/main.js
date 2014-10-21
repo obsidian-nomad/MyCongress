@@ -55,7 +55,6 @@ angular.module('myCongressApp')
   	});
   	$scope.profPic = 'http://upload.wikimedia.org/wikipedia/en/e/ef/Nancy_Pelosi_2013.jpg'/*Profile.getProfilePictureSrc()*/;
   	$scope.party = 'Democrat';
-  	$scope.name = 'Nacny Pelosi';
 
 
   });
