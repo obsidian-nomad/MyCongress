@@ -17,7 +17,6 @@ Lawmaker.find({}).remove(function() {
     "crp_id": "N00007360",
     "district": 12,
     "facebook_id": "86574174383",
-    "fax": "202-225-8259",
     "fec_ids": [
         "H8CA05035"
     ],
@@ -54,7 +53,6 @@ Lawmaker.find({}).remove(function() {
     "crp_id": "N00006561",
     "district": null,
     "facebook_id": "106433512869",
-    "fax": null,
     "fec_ids": [
         "H8NM03097",
         "S8NM00184"
@@ -94,7 +92,6 @@ Lawmaker.find({}).remove(function() {
     "crp_id": "N00003389",
     "district": null,
     "facebook_id": "mitchmcconnell",
-    "fax": "202-224-2499",
     "fec_ids": [
         "S2KY00012"
     ],
@@ -134,7 +131,6 @@ Lawmaker.find({}).remove(function() {
     "crp_id": "N00006424",
     "district": null,
     "facebook_id": "6425923706",
-    "fax": "202-228-2862",
     "fec_ids": [
         "S6AZ00019",
         "P80002801"
@@ -174,7 +170,6 @@ Lawmaker.find({}).remove(function() {
     "crp_id": "N00028152",
     "district": 23,
     "facebook_id": "51052893175",
-    "fax": "202-225-2908",
     "fec_ids": [
         "H6CA22125",
         "H2CA23148"
@@ -212,7 +207,6 @@ Lawmaker.find({}).remove(function() {
     "crp_id": "N00009922",
     "district": null,
     "facebook_id": "360249323990357",
-    "fax": "202-224-7327",
     "fec_ids": [
         "S6NV00028"
     ],
