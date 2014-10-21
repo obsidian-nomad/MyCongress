@@ -35,12 +35,27 @@ angular.module('myCongressApp')
       $scope.votes = data;
     });
     //example of parameters passed into the function call
-    Politicians.getReps({'first_name': 'Adam', 'last_name': 'Schiff'}).then(function(data){
-      $scope.reps = data;
+    Politicians.getReps().then(function(data){
+      console.log('getReps DATA:', data.data[0]);
+      $scope.reps = data.data[0];
     });
   })
 
-  .controller('profileController', function($scope, Profile){
-  	$scope.profPic = Profile.getProfilePictureSrc();
+  .controller('profileController', function($scope, Profile, Politicians){
+  	// We can change this function later to reflect different reps
+  	Politicians.getReps().then(function(data){
+  		var current = data.data[0];
+  		$scope.title = current['title'];
+  		$scope.name = current['first_name'] + ' ' + current['last_name'];
+  		$scope.website = current['website'];
+  		$scope.contactForm = current['contact_form'];
+  		$scope.fbId = current['facebook_id'];
+  		$scope.twitterId = current['twitter_id'];
+  		$scope.youtubeId = current['youtube_id'];
+  	});
+  	$scope.profPic = 'http://upload.wikimedia.org/wikipedia/en/e/ef/Nancy_Pelosi_2013.jpg'/*Profile.getProfilePictureSrc()*/;
+  	$scope.party = 'Democrat';
+
+
   });
 
