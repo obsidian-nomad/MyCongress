@@ -52,11 +52,11 @@ angular.module('myCongress.services', [])
 	  params = params || {};
 	  return $http({
 	    method: 'GET',
-	    url: 'https://congress.api.sunlightfoundation.com/legislators?apikey=d5ac2a8391d94345b8e93d5c69dd8739',
+	    url: '/api/lawmakers',
 	    params: params
 	  })
 	  .success(function(data/*, status, headers, config*/) {
-	    console.log('success');
+	    console.log('POLITICIANS DATA: ', data);
 	    return data;
 	  })
 	  .error(function(/*data, status, headers, config*/) {
