@@ -6,3 +6,5 @@ before_script:
   - npm install -g bower grunt-cli
   - bower install
 services: mongodb
+after_success:
+  - bash ./travis/after_success.sh
