@@ -49,6 +49,9 @@ angular.module('myCongressApp')
   		$scope.name = current['first_name'] + ' ' + current['last_name'];
   		$scope.website = current['website'];
   		$scope.contactForm = current['contact_form'];
+  		$scope.fbId = current['facebook_id'];
+  		$scope.twitterId = current['twitter_id'];
+  		$scope.youtubeId = current['youtube_id'];
   	});
   	$scope.profPic = 'http://upload.wikimedia.org/wikipedia/en/e/ef/Nancy_Pelosi_2013.jpg'/*Profile.getProfilePictureSrc()*/;
   	$scope.party = 'Democrat';
