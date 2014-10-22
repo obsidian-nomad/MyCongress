@@ -13,7 +13,7 @@ angular.module('myCongressApp', [
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     
     $urlRouterProvider
-      .otherwise('/browse');
+      .otherwise('/');
 
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('authInterceptor');

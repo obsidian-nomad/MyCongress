@@ -70,7 +70,7 @@ angular.module('myCongress.services', [])
 	};
 })
 // Here, we will include logic to access relevant information for each congressman's profile
-.factory( 'Profile', function( /*$http*/ ){
+.factory( 'Profile', function( $http ){
 	var _getProfilePictureSrc = function(congressmanId){
 		// TODO--> this function should query our API for the picture
 		congressmanId = '';
@@ -88,10 +88,25 @@ angular.module('myCongress.services', [])
 		return {approve: 0.56, disapprove: 0.40, abstain: 0.04};
 	};
 
+	var _getTwitterFeed = function(congressmanTwitterId){
+		return $http({
+			method: 'GET',
+			url: 'https://api.twitter.com/1.1/statuses/user_timeline.json'
+		})
+		.success(function(data){
+			console.log('Twitter feed data', data);
+			return data;
+		})
+		.error(function(){
+			console.log('error fetching twitter feed for', congressmanTwitterId);
+		});
+	};
+
 	return {
 		getProfilePictureSrc: _getProfilePictureSrc,
 		getVotingHistory: _getVotingHistory,
-		getApprovalRating: _getApprovalRating
+		getApprovalRating: _getApprovalRating,
+		getTwitterFeed: _getTwitterFeed
 	};
 });
 
