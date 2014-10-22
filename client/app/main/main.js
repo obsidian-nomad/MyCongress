@@ -6,7 +6,7 @@ angular.module('myCongressApp')
       // changed to main
       .state('main', {
         url: '/',
-        templateUrl: 'app/main/browse.html',
+        templateUrl: 'app/tiles/tiles.html',
         // controller: 'profileController'
         // templateUrl: '/index.html',
       })
