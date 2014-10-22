@@ -55,11 +55,16 @@ angular.module('myCongressApp')
       $scope.fbId = current['facebook_id'];
       $scope.twitterId = current['twitter_id'];
       $scope.youtubeId = current['youtube_id'];
+      twitterFetch();
     });
 
-    Profile.getTwitterFeed($scope.twitterId).then(function(data){
-      console.log('controller twitter feed', data);
-    });
+    var twitterFetch = function(){
+      Profile.getTwitterFeed($scope.twitterId).then(function(data){
+
+        $scope.twitterBio = data.data[0].user.description;
+        $scope.twitterPhotoURL = data.data[0].user.profile_image_url.slice(0,-11) + "400x400.jpeg";
+      });
+    }
 
     $scope.profPic = 'http://upload.wikimedia.org/wikipedia/en/e/ef/Nancy_Pelosi_2013.jpg'/*Profile.getProfilePictureSrc()*/;
     $scope.party = 'Democrat';

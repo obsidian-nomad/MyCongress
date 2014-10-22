@@ -91,10 +91,10 @@ angular.module('myCongress.services', [])
 	var _getTwitterFeed = function(congressmanTwitterId){
 		return $http({
 			method: 'GET',
-			url: 'https://api.twitter.com/1.1/statuses/user_timeline.json'
+			url: '/api/twitter/' + congressmanTwitterId
 		})
 		.success(function(data){
-			console.log('Twitter feed data', data);
+			console.log('Twitter feed data', data[0].user);
 			return data;
 		})
 		.error(function(){
