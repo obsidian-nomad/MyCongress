@@ -10,6 +10,11 @@ var Lawmaker = require('../api/lawmaker/lawmaker.model');
 
 Lawmaker.find({}).remove(function() {
   Lawmaker.create({
+    //*****
+    //From sunlight congress API
+    //contains: Individual information
+    //******
+      //from /legistlators
     "bioguide_id": "P000197",
     "birthday": "1940-03-26",
     "chamber": "house",
@@ -44,7 +49,79 @@ Lawmaker.find({}).remove(function() {
     "twitter_id": "NancyPelosi",
     "votesmart_id": 26732,
     "website": "http://pelosi.house.gov",
-    "youtube_id": "nancypelosi"
+    "youtube_id": "nancypelosi",
+
+      //from /committees
+    "committee_membership": [{"committee_name": null}],
+
+    //********
+    //From sunlight influence api
+    //contains: funding information
+    //********
+    "transparency_data_Id": "85ab2e74589a414495d18cc7a9233981",
+    
+    "top_Contributing_Industries": [
+        {
+            "number_contributions": 92,
+            "total_amount": 253700.00,
+            "name": "HEALTH PROFESSIONALS"
+        },
+        {
+            "number_contributions": 117,
+            "total_amount": 203600.00,
+            "name": "LAWYERS/LAW FIRMS"
+        },
+        {
+            "number_contributions": 108,
+            "total_amount": 125350.00,
+            "name": "LOBBYISTS"
+        },
+        {
+            "number_contributions": 45,
+            "total_amount": 109200.00,
+            "name": "SECURITIES & INVESTMENT"
+        },
+        {
+            "number_contributions": 101,
+            "total_amount": 107150.00,
+            "name": "RETIRED"
+        },
+        {
+            "number_contributions": 58,
+            "total_amount": 105800.00,
+            "name": "REAL ESTATE"
+        },
+        {
+            "number_contributions": 72,
+            "total_amount": 89700.00,
+            "name": "PRO-ISRAEL"
+        },
+        {
+            "number_contributions": 39,
+            "total_amount": 86300.00,
+            "name": "PHARMACEUTICALS/HEALTH PRODUCTS"
+        },
+        {
+            "number_contributions": 29,
+            "total_amount": 79500.00,
+            "name": "PUBLIC SECTOR UNIONS"
+        },
+        {
+            "number_contributions": 32,
+            "total_amount": 76950.00,
+            "name": "TV/MOVIES/MUSIC"
+        }
+    ],
+    
+    "local_vs_outOfState_contributions": {"inState": {"number_contributions":4567, "total_amount": 5063828.00}, 
+                                        "outOfState": {"number_contributions":2206, "total_amount": 2326050.00}
+                                    },
+    
+    "contributor_type_comparison": {"individuals": {"number_contributions": 740, "total_amount": 1147843.00}, 
+                                  "PACs": {"number_contributions": 386, "total_amount": 1031500.00}
+                                    }
+
+
   },  {
     "bioguide_id": "U000039",
     "birthday": "1948-05-18",
