@@ -1,14 +1,37 @@
 <div ng-controller='profileController'>
 	<h1>{{title}} {{ name }}</h1>
 	<div id='photoContainer'>
-		<img style="max-width:100%;" class='profPic' src='{{ profPic }}'>
+    <!-- <img style="max-width:100%;" class='profPic' src='{{ profPic }}'> -->
+		<img style="max-width:100%;" class='profPic' src='{{ twitterPhotoURL }}'>
 	</div>
 	<div class='general-info'>
 		<h3>{{ party }}</h3>
 		<h3><a href='{{ website }}'>{{ website }}</a></h3>
 		<h3><a href="{{ contactForm }}">Contact {{ name }}</a></h3>
-		<div>
-			Include Twitter information here
+		<div class='twitter'>
+          {{ twitterBio }}
+
+      <a class="twitter-timeline"
+        width="600"
+        height="400"
+        href="https://twitter.com/twitterdev"
+        data-widget-id="524787957656346624"
+        data-screen-name="{{twitterId}}"
+        data-show-replies="false"
+        >
+        <!-- data-tweet-limit="3" -->
+      Tweets by @twitterapi
+      </a>
+      <script type="text/javascript">
+      window.twttr = (function (d, s, id) {
+        var t, js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id; js.src= "https://platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js, fjs);
+        return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
+      }(document, "script", "twitter-wjs"));
+      </script>
+
 			<!-- TODO: Insert fancy social media Icons Here -->
 			<a href="https://www.facebook.com/{{ fbId }}">fb</a>
 			<a href="https://www.twitter.com/{{ twitterId }}">twitter</a>
