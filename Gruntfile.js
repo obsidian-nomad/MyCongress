@@ -77,7 +77,8 @@ module.exports = function (grunt) {
         files: [
           '<%= yeoman.client %>/{app,components}/**/*.spec.js',
           '<%= yeoman.client %>/{app,components}/**/*.mock.js',
-          'testing/client/**/*.mock.js'
+          'testing/client/**/*.mock.js',
+          'testing/client/**/*.spec.js'
         ],
         tasks: ['newer:jshint:all', 'karma']
       },
@@ -433,7 +434,7 @@ module.exports = function (grunt) {
       options: {
         reporter: 'spec'
       },
-      src: ['server/**/*.spec.js']
+      src: ['testing/server/**/*.spec.js']
     },
 
     protractor: {

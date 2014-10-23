@@ -1,6 +1,7 @@
 var OAuth2 = require('OAuth').OAuth2;
 var https = require('https');
 
+// Set these as server environmental variables
 var key = 'jme4K9z84BSLZlt7flFDzpdFn';
 var secret = 'Wtee2DqGTzZIDadMPeN0Qh7Fy2cwhzlRBG7W65WYougB581BhA';
 
