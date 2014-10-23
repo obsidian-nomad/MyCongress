@@ -1,4 +1,4 @@
-var OAuth2 = require('OAuth').OAuth2;
+var OAuth2 = require('oauth').OAuth2;
 var https = require('https');
 
 // Set these as server environmental variables
