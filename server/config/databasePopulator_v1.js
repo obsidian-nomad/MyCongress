@@ -15,12 +15,17 @@ module.exports = {
 
   //For Use
   populateDb: function(){
- 
+    fetchLegislators(function(legislators){
+      addInfluenceData(legislators, function(legislators){
+        importLegislators(legislators);
+      });
+    })
+      
   }
 };
 
 //function downloads and parses all legislator data from sunlight /legislators
-//returns array of pre legislator objects
+//passes array of pre legislator objects to callback
 function fetchLegislators(cb){
 
   request.get('http://congress.api.sunlightfoundation.com/legislators?per_page=all&in_office=true&apikey=d5ac2a8391d94345b8e93d5c69dd8739', 
@@ -31,7 +36,6 @@ function fetchLegislators(cb){
       }
 
       var results = JSON.parse(body).results;
-      //console.log('request callback called. Response:', results[0]);
       return cb(results);
     }
   );
@@ -39,82 +43,86 @@ function fetchLegislators(cb){
 
 //function updates each legislator with relevent info from influence explorer
 function addInfluenceData(legislators, callback){
+  //kickoff addInfluenceData
+  addTransparencyDataIds(legislators, addContributionData);
 
-  var addTransparencyDataIds = function (legislators, cb){
-    async.each(legislators, function (legislator, asyncCb){
+  function addTransparencyDataIds (legislators, cb){
+    //Add transparency data id (former influence explorer API ID) to each legislator 
+    async.each(legislators, function (legislator, asyncCb){  
       var crpID = legislator.crp_id;
+
+      //Make ID lookup request for each legislator's transparency data ID. save as property on legislator.
       request.get('http://transparencydata.com/api/1.0/entities/id_lookup.json?namespace=urn%3Acrp%3Arecipient&id='+crpID+'&apikey=d5ac2a8391d94345b8e93d5c69dd8739', 
         function(err, res, body){
           if (err){
-            console.log("Error retrieving Legislator transparency ID from sunlight: " , err.message);
+            console.log("Error retrieving Legislator transparency ID from sunlight: " , err.message, 'legistlator: ', legislator);
             throw err;
           }
           var newID = JSON.parse(body)[0].id;
+          //set prop on legislator
           legislator.transparency_data_Id = newID;
-          asyncCb(null); //required to keep async going
+          //Done with this legislator
+          asyncCb(null); 
         }
       );
-    }, function(err){
-      if (err){
-        console.log("Error retrieving Legislator transparency ID from sunlight: " , err.message);
-        throw err;
-      }
+    //done with all legislators, call callback for next op
+    }, function(){ 
       cb(legislators);
     });
   };
 
-  var addContributionData = function(legislators){
+  function addContributionData (legislators){
 
-    //add top contributing industries to each legislator
-    async.each(legislators, function (legislator, asyncCb){
-
+    //Add top contributing industries to each legislator
+    async.each(legislators, function (legislator, outterAsyncCb){
       var transparencyID = legislator.transparency_data_Id;
 
+      //Make request for each legislator using transparency data ID
       request.get('http://transparencydata.com/api/1.0/aggregates/pol/'+transparencyID+'/contributors/industries.json?apikey=d5ac2a8391d94345b8e93d5c69dd8739', 
         function(err, res, body){
           if (err){
-            console.log("Error retrieving Legislator transparency ID from sunlight: " , err.message);
+            console.log("Error retrieving Legislator contributor industries from sunlight: " , err.message, 'legistlator: ', legislator);
             throw err;
           }
           var topIndustries = JSON.parse(body);
 
           //Process industries to fit schema
-          async.each(topIndustries, function (industry, asyncCb2){
-
+          async.each(topIndustries, function (industry, innerAsyncCb2){
+            //delete superfluous properties
             delete industry.id;
             delete industry.should_show_entity;
 
+            //rename desired properties
             industry.total_amount = industry.amount;
             delete industry.amount;
-
             industry.number_contributions = industry.count;
             delete industry.count;
-            asyncCb2(null);
+
+            //Done with this industry
+            innerAsyncCb2(null);
           }, 
-          //after industries processed
+
+          //Done with this legislator's industries
           function(err){
+            //set prop on legislator and move on
             legislator.top_Contributing_Industries = topIndustries;
-            asyncCb(null); //continue async.each
+            outterAsyncCb(null); 
           });
         }
       );
-      //after industries added
-    }, function(err){
-      if (err){
-        console.log("Error retrieving Legislator transparency ID from sunlight: " , err.message);
-        throw err;
-      }
+
+    //Done Adding top_Contributing_Industries to legislators
+    //Call outermost function callback (addInfluenceData())
+    }, function(){
       callback(legislators);
     });
   };
-
-  //kickoff addInfluenceData
-  addTransparencyDataIds(legislators, addContributionData);
 }
 
 
-// function addBillsSponsorship(array){
 
+// function addBillsSponsorship(array){
+//
 // }
 
 
