@@ -1,18 +1,27 @@
-var Legislator = require('/server/api/lawmaker/lawmaker.model.js');
-var https = require('http');
+var Legislator = require('../api/lawmaker/lawmaker.model.js');
+var request = require('request');
 var _ = require('lodash');
 
 
-
+module.exports = {fetch: function(cb){return fetchLegislators(cb);}};
 
 //function downloads and parses all legislator data from sunlight /legislators
 //returns array of pre legislator objects
-function fetchLegislators(){
+function fetchLegislators(cb){
   var results = [];
 
+  request.get('http://congress.api.sunlightfoundation.com/legislators?per_page=all&in_office=true&apikey=d5ac2a8391d94345b8e93d5c69dd8739', 
+    function(err, res, body){
+      if (err){
+        console.log("Error retrieving Legislators from sunlight: " + err.message);
+        throw err;
+      }
 
 
-  return results;
+      results = JSON.parse(body).results;
+      // console.log('request callback called. Response:', results[0]);
+      return cb(results);
+    });
 }
 
 //function updates each legislator with relevent info from influence explorer
