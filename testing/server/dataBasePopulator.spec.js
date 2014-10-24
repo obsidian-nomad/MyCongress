@@ -1,7 +1,6 @@
 'use strict';
 var request = require('supertest');
 var should = require('should');
-var mongoose = require('mongoose');
 
 var request = require('request');
 var Populator = require('../../server/config/databasePopulator_v1.js');
@@ -43,10 +42,12 @@ describe('Unit testing helper methods by Inserting dummy callbacks\n', function(
 
 describe('testing populateDb()...\n ', function(){
 
-  beforeEach(function(done){
-    mongoose.connection.collections['lawmakers'].drop(function(err) {/*noop*/});
-    done();
-  });
+  // beforeEach(function(done){
+  //TODO consider dripping test db's here. but HOW? where is the connection, etc?
+  //below doesn't work
+    //mongoose.connection.collections['collectionName'].drop( function(err) {});
+    //done();
+  // });
 
   it('should send legislator data to db by interacting with lawmaker model', function(done){
     this.timeout(10000);
