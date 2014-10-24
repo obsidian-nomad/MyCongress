@@ -76,7 +76,9 @@ module.exports = function (grunt) {
       jsTest: {
         files: [
           '<%= yeoman.client %>/{app,components}/**/*.spec.js',
-          '<%= yeoman.client %>/{app,components}/**/*.mock.js'
+          '<%= yeoman.client %>/{app,components}/**/*.mock.js',
+          'testing/client/**/*.mock.js',
+          'testing/client/**/*.spec.js'
         ],
         tasks: ['newer:jshint:all', 'karma']
       },
@@ -119,12 +121,12 @@ module.exports = function (grunt) {
     // Make sure code styles are up to par and there are no obvious mistakes
     jshint: {
       options: {
-        jshintrc: '<%= yeoman.client %>/.jshintrc',
+        jshintrc: '.jshintrc',
         reporter: require('jshint-stylish')
       },
       server: {
         options: {
-          jshintrc: 'server/.jshintrc'
+          jshintrc: '.jshintrc'
         },
         src: [
           'server/**/*.js',
@@ -133,7 +135,7 @@ module.exports = function (grunt) {
       },
       serverTest: {
         options: {
-          jshintrc: 'server/.jshintrc-spec'
+          jshintrc: '.jshintrc'
         },
         src: ['server/**/*.spec.js']
       },
@@ -432,7 +434,7 @@ module.exports = function (grunt) {
       options: {
         reporter: 'spec'
       },
-      src: ['server/**/*.spec.js']
+      src: ['testing/server/**/*.spec.js']
     },
 
     protractor: {
