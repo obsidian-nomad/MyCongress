@@ -13,14 +13,18 @@ module.exports = {
     return addInfluenceData(legislators, callback);
   },
 
+  testImport: function(legislatorsArray, cb){
+    importLegislators(legislatorsArray, cb);
+  },
+
   //For Use
-  populateDb: function(){
+  populateDb: function(cb){
     fetchLegislators(function(legislators){
       addInfluenceData(legislators, function(legislators){
-        importLegislators(legislators);
+        console.log('calling import legislators from anon func');
+        importLegislators(legislators, cb);
       });
-    })
-      
+    });  
   }
 };
 
@@ -113,7 +117,8 @@ function addInfluenceData(legislators, callback){
 
     //Done Adding top_Contributing_Industries to legislators
     //Call outermost function callback (addInfluenceData())
-    }, function(){
+    }, function(err){
+      if (err) throw err;
       callback(legislators);
     });
   };
@@ -127,11 +132,12 @@ function addInfluenceData(legislators, callback){
 
 
 //takes array of legislator objects and saves them as lawmaker models to db or updates them
-function importLegislators(array){
+function importLegislators (array, cb){
+    console.log('Saving legislators to db');
   for (var i = 0; i < array.length; i++) {
-    Legislator.update(array[i].bioguide_id, array[i], {upsert: true}, function(err, numberAffected, rawResponse){  
+    Legislator.findOneAndUpdate({bioguide_id: array[i].bioguide_id}, array[i], {upsert: true}, function(err, numberAffected, rawResponse){  
       if (err) {console.log('Error importing legislators:', err, 'on legislator: ', rawResponse);}
-      console.log('Legislator imported: ', rawResponse);
     });
   };
+  if(cb) { cb(); }
 }
