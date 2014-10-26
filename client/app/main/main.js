@@ -6,7 +6,9 @@ angular.module('myCongressApp')
       // changed to main
       .state('landingpage', {
         url: '/',
-        templateUrl: 'landingpage/landingpage.html',
+        templateUrl: 'app/tiles/tiles.html',
+        // controller: 'profileController'
+        // templateUrl: '/index.html',
       })
       .state('test', {
         url: '/test',
@@ -53,11 +55,25 @@ angular.module('myCongressApp')
       $scope.fbId = current['facebook_id'];
       $scope.twitterId = current['twitter_id'];
       $scope.youtubeId = current['youtube_id'];
+      // Once we have fetched the twitter Handle, we can fetch the politician's twitter info
+      twitterFetch();
     });
 
-    Profile.getTwitterFeed($scope.twitterId).then(function(data){
-      console.log('controller twitter feed', data);
-    });
+    // Fetches from twitter: 1) short bio and 2) photo URL
+    var twitterFetch = function(){
+      Profile.getTwitterFeed($scope.twitterId).then(function(data){
+
+        $scope.twitterBio = data.data[0].user.description;
+
+        // Handles differing file extensions for the images (i.e. JPG, and JPEG)
+        var imageURL = data.data[0].user.profile_image_url;
+        if ( imageURL[imageURL.length - 4] === "." ){
+          $scope.twitterPhotoURL = data.data[0].user.profile_image_url.slice(0,-10) + "400x400.jpg";
+        } else if ( imageURL[imageURL.length - 5] === "." ){
+          $scope.twitterPhotoURL = data.data[0].user.profile_image_url.slice(0,-11) + "400x400.jpeg";
+        }
+      });
+    }
 
     $scope.profPic = 'http://upload.wikimedia.org/wikipedia/en/e/ef/Nancy_Pelosi_2013.jpg'/*Profile.getProfilePictureSrc()*/;
     $scope.party = 'Democrat';
