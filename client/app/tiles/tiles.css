@@ -12,7 +12,7 @@
 .tile {
   position: relative;
   width: 100%;
-  height: 110px;
+  height: 100px;
   background-color: #bdc3c7;
   border: 1px;
   border-radius: 5px;
@@ -21,26 +21,20 @@
 
 .tile:hover {
   background-color: #7f8c8d;
+  cursor: pointer;
 }
 
 .hover {
   background-color: blue;
 }
 
-/*.repPicture {
-  position: absolute;
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
-}*/
-
 .repPicture {
   position: absolute;
   top: 5px;
   left: 20px;
   display: block;
-  width: 100px;
-  height: 100px;
+  width: 90px;
+  height: 90px;
   background: #E6E7ED;
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
@@ -52,24 +46,25 @@
 
 .name {
   position: absolute;
-  top: 0px;
+  font-size: 24px;
+  top: -10px;
   left: 150px;
 }
 
 .party {
   position: absolute;
-  top: 20px;
+  top: 35px;
   left: 150px;
 }
 
 .location {
   position: absolute;
-  top: 40px;
+  top: 50px;
   left: 150px;
 }
 
 .website {
   position: absolute;
-  top: 75px;
+  top: 70px;
   left: 150px;
 }
