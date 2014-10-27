@@ -7,7 +7,7 @@ var Populator = require('../../server/config/databasePopulator_v1.js');
 
 
 var fetchedLegislators;
-describe('Unit testing helper methods by Inserting dummy callbacks\n', function(){
+xdescribe('Unit testing helper methods by Inserting dummy callbacks\n', function(){
   describe('Testing fetchLegislators()...\n', function(){
 
     it('should get an array of legislator json objects from sunlight: ', function(done){
@@ -21,7 +21,7 @@ describe('Unit testing helper methods by Inserting dummy callbacks\n', function(
     });
   });
 
-  describe('Testing addInfluenceData()...\n', function(){
+  xdescribe('Testing addInfluenceData()...\n', function(){
     it('should leave legislators with new property transparency_id', function(done){
       this.timeout(5000);
       Populator.addInfluence(fetchedLegislators, function(results){
@@ -44,7 +44,7 @@ describe('Unit testing helper methods by Inserting dummy callbacks\n', function(
   }); 
 });
 
-describe('Testing importLegislators()...\n ', function(){
+xdescribe('Testing importLegislators()...\n ', function(){
   it('should send legislator data to db by interacting with lawmaker model', function(done){
     this.timeout(10000);
     Populator.testImport(fetchedLegislators, function(){
