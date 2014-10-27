@@ -2,7 +2,7 @@
 
   	<input class='input-lg form-control' placeholder='Search' ng-model='search'/>
 	  <div class='tile' ng-repeat='bio in bios | filter:search'>
-	    <img class='picture' ng-src='app/repImages/{{bio.bioguide_id}}.jpg'></img>
+	    <div class='repPicture' style="background-image: url(app/repImages/{{bio.bioguide_id}}.jpg);"></div>
 	    <p class='name'>{{bio.title}} {{bio.first_name}} {{bio.last_name}}</p>
 	    <p class='party'>{{bio.party}}</p>
 	    <p class='location'>{{bio.state_name}} {{bio.district}}</p>
