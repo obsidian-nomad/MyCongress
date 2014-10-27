@@ -22,7 +22,7 @@ exports.index = function(req, res) {
 
 // Get a single lawmaker
 exports.show = function(req, res) {
-  Lawmaker.findById(req.params.id, function (err, lawmaker) {
+  Lawmaker.findOne({bioguide_id: req.params.id}, function (err, lawmaker) {
     if(err) { return handleError(res, err); }
     if(!lawmaker) { return res.send(404); }
     return res.json(lawmaker);
