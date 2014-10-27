@@ -9,6 +9,7 @@
   text-align: center;
   margin-left: 15%;
   margin-right: 15%;
+  margin-top: 50px;
 }
 
 .tile {
@@ -73,4 +74,25 @@
 
 
 .search {
+  position: fixed;
+  z-index: 5;
+  background: #6C767F;
+  padding: 10px;
+  border-radius: 0 0 5px 5px;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.searchInput {
+  width: 95%;
+  margin: auto;
+}
+
+/*Overwrite body*/
+body {
+  margin-top: 65px;
+}
+
+navbar {
+  z-index: 10;
 }
