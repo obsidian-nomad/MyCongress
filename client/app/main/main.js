@@ -4,12 +4,6 @@ angular.module('myCongressApp')
   .config(function ($stateProvider) {
     $stateProvider
       // changed to main
-      .state('landingpage', {
-        url: '/',
-        templateUrl: 'app/tiles/tiles.html',
-        // controller: 'profileController'
-        // templateUrl: '/index.html',
-      })
       .state('test', {
         url: '/test',
         templateUrl: 'app/test.html',

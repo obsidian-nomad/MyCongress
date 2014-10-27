@@ -13,7 +13,9 @@ angular.module('myCongressApp', [
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     
     $urlRouterProvider
-      .otherwise('/welcome');
+      .otherwise(function($injector, $location){
+         window.location = $location.absUrl('/welcome');
+      });
 
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('authInterceptor');
