@@ -20,13 +20,26 @@
   background-color: blue;
 }
 
-.picture {
+/*.repPicture {
   position: absolute;
-  height: 90px;
-  width: 90px;
+  height: 50px;
+  width: 50px;
   border-radius: 50%;
-  top: 10px;
-  left: 30px;
+}*/
+
+.repPicture {
+  position: absolute;
+  top: 5px;
+  left: 20px;
+  display: block;
+  width: 100px;
+  height: 100px;
+  background: #E6E7ED;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  background-position:50% 50%;
+  background-repeat:no-repeat;
+  background-size: cover;    
 }
 
 .name {
