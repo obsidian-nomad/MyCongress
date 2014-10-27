@@ -10,5 +10,4 @@ angular.module('myCongress.tiles', ['myCongress.services'])
       $scope.bios[rep].party = parties[$scope.bios[rep].party];
     }
    });
-
 });

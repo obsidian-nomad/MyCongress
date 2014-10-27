@@ -63,12 +63,25 @@ angular.module('myCongress.services', [])
       console.log('Error occured while getting Vote Data.');
     });
   };
-
-  
-
+  var _getRep = function(id){
+    id = id || {};
+    console.log('_getRep ID',id);
+    return $http({
+      method: 'GET',
+      url: '/api/lawmakers/' + id,
+    })
+    .success(function(data/*, status, headers, config*/) {
+      console.log('POLITICIAN DATA: ', data);
+      return data;
+    })
+    .error(function(/*data, status, headers, config*/) {
+      console.log('Error occured while getting Vote Data.');
+    });
+  };
 
   return {
-    getReps: _getReps
+    getReps: _getReps,
+    getRep: _getRep
   };
 })
 // Here, we will include logic to access relevant information for each congressman's profile
