@@ -957,3 +957,12 @@
 		#main footer.major {
 			background: white;
 		}
+
+/*BOOTSTRAP/Skel OVERRIDES*/
+
+.navbar {
+    background-color: #2C3E50;
+}
+.navbar-default .navbar-nav > li > a {
+    color: #ECF0F1;
+}

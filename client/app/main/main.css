@@ -1,5 +1,13 @@
+/*COLOR SCHEME:
+    Base: #2C3E50;
+    Background/Nav-Text: #ECF0F1;
+    Grey Contrast: #6C767F;
+    Lighter Blue: 709ECC;
+*/
+
 body {
     margin-top: 70px;
+    background-color: #ecf0f1;
 }
 
 .thing-form {
@@ -43,4 +51,17 @@ body {
     background-color:black;
     color:white;
     border-radius: 0.5em;
+}
+
+/*BOOTSTRAP OVERRIDES*/
+
+.navbar {
+    background-color: #2C3E50;
+}
+.navbar-default .navbar-nav > li > a {
+    color: #ECF0F1;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+    color: #bdc3c7;
 }
