@@ -14,6 +14,11 @@ module.exports = function(app) {
       res.sendfile(app.get('appPath') + '/landingpage/index.html');
     });
 
+  app.route('/')
+    .get(function(req,res){
+      res.sendfile(app.get('appPath') + '/landingpage/index.html');
+    });
+
   app.use('/api/lawmakers', require('./api/lawmaker'));
   app.use('/api/twitter', require('./api/twitter'));
 

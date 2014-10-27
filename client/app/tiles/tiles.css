@@ -1,3 +1,7 @@
+.tileView {
+  display: block;
+}
+
 .tile {
   position: relative;
   width: 100%;
