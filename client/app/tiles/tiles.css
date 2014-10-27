@@ -3,6 +3,8 @@
     Background/Nav-Text: #ECF0F1;
     Dark Grey Contrast: #6C767F;
     Lighter Blue(use sparingly): 709ECC;
+    Softer Light Blue: #E4F2FF;
+    Acceptable Dark Blue: #709ECC;
 */
 
 .tileView {
@@ -86,13 +88,4 @@
 .searchInput {
   width: 95%;
   margin: auto;
-}
-
-/*Overwrite body*/
-body {
-  margin-top: 65px;
-}
-
-navbar {
-  z-index: 10;
 }
