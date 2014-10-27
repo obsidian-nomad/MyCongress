@@ -10,12 +10,12 @@ angular.module('myCongressApp')
         controller: 'dataController'
       })
       // See angular parameter documentation here: https://github.com/angular-ui/ui-router/wiki/URL-Routing
-      .state('profiles'/*{repId}*/, {
-        url: '/profiles',
+      .state('profiles', {
+        url: '/profiles/:id',
         templateUrl: 'app/main/repProfile.html',
         controller: 'profileController'
       })
-      .state('browse', {
+     .state('browse', {
         url: '/browse',
         templateUrl: 'app/tiles/tiles.html'
       });
@@ -38,10 +38,13 @@ angular.module('myCongressApp')
     });
   })
 
-  .controller('profileController', function($scope, Profile, Politicians){
-    // We can change this function later to reflect different reps
-    Politicians.getReps().then(function(data){
-      var current = data.data[0];
+  .controller('profileController', function($scope, Profile, Politicians, $stateParams){
+    // we can change this function later to reflect different reps
+    console.log('STATE PARAMS',$stateParams);
+    var id = $stateParams.id;
+    Politicians.getRep(id).then(function(data){
+      console.log('POLITICIAN ONE data:',data);
+      var current = data.data;
       $scope.title = current['title'];
       $scope.name = current['first_name'] + ' ' + current['last_name'];
       $scope.website = current['website'];
