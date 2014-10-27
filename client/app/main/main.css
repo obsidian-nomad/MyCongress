@@ -1,18 +1,48 @@
 /*COLOR SCHEME:
     Base: #2C3E50;
     Background/Nav-Text: #ECF0F1;
-    Grey Contrast: #6C767F;
-    Lighter Blue: #709ECC;
+    Dark Grey Contrast: #6C767F;
+    Lighter Blue(use sparingly): 709ECC;
+    Softer Light Blue: #E4F2FF;
+    Acceptable Dark Blue: #709ECC;
 */
 
 body {
-    margin-top: 70px;
+    margin-top: 65px;
     background-color: #ecf0f1;
+}
+
+.democrat {
+
+}
+
+.republican {
+
 }
 
 .thing-form {
     margin: 20px 0;
 }
+
+#profHeader {
+    width: 90%;
+    padding: 5px;
+    padding-top: 45px;
+    margin-left: 160px;
+}
+    #profHeader h1 {
+        padding: 0px;
+        margin: 0;
+        padding-left: 20px;
+    }
+
+    #profHeader.democrat {
+        border-bottom: 2px solid #1A0072;
+    }
+
+    #profHeader.republican {
+        border-bottom: 2px solid #D70000;
+    }
 
 #banner {
     border-bottom: none;
@@ -41,17 +71,34 @@ body {
     border-top: 1px solid #E5E5E5;
 }
 
-#photoContainer {
+/*#photoContainer {
     display:block;
     float:left;
     width: 200px; 
-    margin-left:5px;
-    margin-top:0px;
-    padding: 10px 10px 10px 10px;
-    background-color:black;
-    color:white;
-    border-radius: 0.5em;
+    margin-left: 5px;
+    margin-top: 10px;
+    padding: 5px;
+    color: white;
+    border-radius: 50%;
+    background-color: #2C3E50
+}*/
+
+#photoContainer {
+    position: absolute;
+    top: 70px;
+    left: 20px;
+    display: block;
+    width: 160px;
+    height: 160px;
+    background: #E6E7ED;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    background-position:50% 50%;
+    background-repeat:no-repeat;
+    background-size: cover;
+    border: 2px #2c3e50 solid;
 }
+
 
 /*BOOTSTRAP OVERRIDES*/
 

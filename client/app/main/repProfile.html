@@ -1,15 +1,14 @@
 <div ng-controller='profileController'>
-	<h1>{{title}} {{ name }}</h1>
-	<div id='photoContainer'>
-    <!-- <img style="max-width:100%;" class='profPic' src='{{ profPic }}'> -->
-		<img style="max-width:100%;" class='profPic' src='{{ twitterPhotoURL }}'>
+  <div id='photoContainer' style="background-image: url(app/repImages/{{bioguide_id}}.jpg) ">
+  </div>
+	<div id='profHeader' ng-class="{ democrat: party  === 'Democrat', republican: party  === 'Republican' }">
+    <h1>{{title}} {{ name }} ({{ party }}, {{ state }} )</h1>
 	</div>
 	<div class='general-info'>
 		<h3>{{ party }}</h3>
 		<h3><a href='{{ website }}'>{{ website }}</a></h3>
 		<h3><a href="{{ contactForm }}">Contact {{ name }}</a></h3>
-		<div class='twitter'>
-          {{ twitterBio }}
+		<div class='twitter'>{{ twitterBio }}
 
       <a class="twitter-timeline"
         width="600"
