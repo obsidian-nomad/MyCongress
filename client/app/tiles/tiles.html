@@ -1,12 +1,12 @@
-<div ng-app='myCongress.tiles'  ng-controller='TileController'>
+<div ng-app='myCongress.tiles'  class='tileView col-md-8' ng-controller='TileController'>
 
-  <input class='input' placeholder='Search' ng-model='search'/>
-  <div class='tile' ng-repeat='bio in bios | filter:search'>
-    <img class='picture' ng-src='{{bio.image}}'></img>
-    <p class='name'>{{bio.position}} {{bio.name}}</p>
-    <p class='party'>{{bio.party}}</p>
-    <p class='location'>{{bio.state}} {{bio.district}}</p>
-    <a ng-href='{{bio.website}}' class='website'>{{bio.website}}</a>
-  </div>
+  	<input class='input-lg form-control' placeholder='Search' ng-model='search'/>
+	  <div class='tile' ng-repeat='bio in bios | filter:search'>
+	    <img class='picture' ng-src='{{bio.twitterPhotoURL}}'></img>
+	    <p class='name'>{{bio.title}} {{bio.first_name}} {{bio.last_name}}</p>
+	    <p class='party'>{{bio.party}}</p>
+	    <p class='location'>{{bio.state_name}} {{bio.district}}</p>
+	    <a ng-href='{{bio.website}}' class='website'>{{bio.website}}</a>
+	  </div>
 
 </div>

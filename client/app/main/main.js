@@ -4,12 +4,6 @@ angular.module('myCongressApp')
   .config(function ($stateProvider) {
     $stateProvider
       // changed to main
-      .state('main', {
-        url: '/',
-        templateUrl: 'app/tiles/tiles.html',
-        // controller: 'profileController'
-        // templateUrl: '/index.html',
-      })
       .state('test', {
         url: '/test',
         templateUrl: 'app/test.html',
@@ -76,7 +70,6 @@ angular.module('myCongressApp')
     }
 
     $scope.profPic = 'http://upload.wikimedia.org/wikipedia/en/e/ef/Nancy_Pelosi_2013.jpg'/*Profile.getProfilePictureSrc()*/;
-    $scope.party = 'Democrat';
 
 
   });

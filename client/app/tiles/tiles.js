@@ -1,27 +1,29 @@
-angular.module('myCongress.tiles', [])
+angular.module('myCongress.tiles', ['myCongress.services'])
 
-.controller('TileController', function($scope) {
-  $scope.bios = [{position: 'Senator',
-  								name: 'Dianne Feinstein', 
-  								party: 'Democrat',
-  								state: 'California',
-  								district: '',
-  								website: 'http://www.feinstein.senate.gov/public/',
-  								image: 'http://upload.wikimedia.org/wikipedia/commons/7/7d/Dianne_Feinstein,_official_Senate_photo_2.jpg'},
+.controller('TileController', function($scope, Politicians, Profile) {
+   Politicians.getReps().then(function(data){
+    $scope.bios = data.data;
+    for( var key in $scope.bios ){
+      twitterFetch($scope.bios[key]);
+    }
+   });
 
-  								{position: 'Congresswoman',
-  								name: 'Nancy Polosi', 
-  								party: 'Democrat',
-  								state: 'California',
-  								district: '12th District',
-  								website: 'http://pelosi.house.gov/',
-  								image: 'http://upload.wikimedia.org/wikipedia/en/thumb/e/ef/Nancy_Pelosi_2013.jpg/440px-Nancy_Pelosi_2013.jpg'},
+  // Fetches from twitter: 1) short bio and 2) photo URL
+  var twitterFetch = function(rep){
+    Profile.getTwitterFeed(rep.twitter_id).then(function(data){
+      console.log("DATA", data);
+      rep.twitterBio = data.data[0].user.description;
 
-  								{position: 'Congressman',
-  								name: 'Eric Swalwell', 
-  								party: 'Democrat',
-  								state: 'California',
-  								district: '15th District',
-  								website: 'http://swalwell.house.gov/',
-  								image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Eric_Swalwell%2C_official_portrait%2C_113th_Congress.jpg/440px-Eric_Swalwell%2C_official_portrait%2C_113th_Congress.jpg'}]
+      // Handles differing file extensions for the images (i.e. JPG, and JPEG)
+      var imageURL = data.data[0].user.profile_image_url;
+      if ( imageURL[imageURL.length - 4] === "." ){
+        rep.twitterPhotoURL = data.data[0].user.profile_image_url.slice(0,-10) + "400x400.jpg";
+        console.log("PHOTO URL", rep.twitterPhotoURL);
+      } else if ( imageURL[imageURL.length - 5] === "." ){
+        rep.twitterPhotoURL = data.data[0].user.profile_image_url.slice(0,-11) + "400x400.jpeg";
+        console.log("PHOTO URL", rep.twitterPhotoURL);
+      }
+      console.log("REP IS", rep);
+    });
+  } 
 });

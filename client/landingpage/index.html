@@ -1,0 +1,238 @@
+<html>
+<head>
+	<link rel="stylesheet" href="landingpage/css/skel.css" />
+	<link rel="stylesheet" href="landingpage/css/style.css" />
+	<link rel="stylesheet" href="landingpage/css/style-wide.css" />
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+
+	<script src="landingpage/js/skel.min.js"></script>
+	<script src="landingpage/js/init.js"></script>
+	<script src="socket.io-client/socket.io.js"></script>
+</head>
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container">
+			<a href="welcome" class='navbar-brand'>My Congress</a>
+			<ul class='nav navbar-nav'>
+				<li><a href="/browse" class='navbar-btn'>Browse Representatives</a></li>
+				<li><a href="/profiles" class='navbar-btn'>Sample Profile</a></li>
+			</ul>
+		</div>
+	</nav>
+	<div ui-view=""></div>
+	<!-- Header -->
+	<div id="header">
+		<span class="logo icon fa-university"></span>
+		<h1>Welcome to My Congress</h1>
+		<p>A new paradigm for congressional transparency<br>
+			Enter your address or scroll down to get started.</p>
+			<br>
+			<input type='text' placeholder='Enter your address...'>
+		</div>
+
+		<!-- Main -->
+		<div id="main">
+
+			<header class="major container small">
+				<h2>We believe that
+					<br />
+					<em>transparency</em> is the foundation
+					<br />
+					of <em>democracy</em>.</h2>
+			<!--
+			<p>Tellus erat mauris ipsum fermentum<br />
+			etiam vivamus nunc nibh morbi.</p>
+		-->
+	</header>
+
+	<div class="box alt container">
+		<section class="feature left">
+			<a href="#" class="image icon fa-map-marker"><img src="landingpage/images/pic01.jpg" alt="" /></a>
+			<div class="content">
+				<h3>Find your Local Representatives</h3>
+				<p>Enter your address, and we'll let you know who represents you. We store absolutely no information related to this data.</p>
+			</div>
+		</section>
+		<section class="feature right">
+			<a href="/browse" class="image icon fa-search"><img src="landingpage/images/pic02.jpg" alt="" /></a>
+			<div class="content">
+				<h3>Browse Representatives</h3>
+				<p>Want information on a specific representative?  Browse our database and Pick one!</p>
+			</div>
+		</section>
+		<section class="feature left">
+		<a href="/profiles" class="image icon fa-pie-chart"><img src="landingpage/images/pic03.jpg" alt="" /></a>
+			<div class="content">
+				<h3>View Profiles</h3>
+				<p>See the profiles of representatives you're interested in.  Upvote or downvote them to share your opinions!</p>
+			</div>
+		</section>
+	</div>
+
+		<!--
+		<div class="box container">
+			<header>
+				<h2>A lot of generic stuff</h2>
+			</header>
+			<section>
+				<header>
+					<h3>Paragraph</h3>
+					<p>This is the subtitle for this particular heading</p>
+				</header>
+				<p>Phasellus nisl nisl, varius id <sup>porttitor sed pellentesque</sup> ac orci. Pellentesque 
+				habitant <strong>strong</strong> tristique <b>bold</b> et netus <i>italic</i> malesuada <em>emphasized</em> ac turpis egestas. Morbi 
+				leo suscipit ut. Praesent <sub>id turpis vitae</sub> turpis pretium ultricies. Vestibulum sit 
+				amet risus elit.</p>
+			</section>
+			<section>
+				<header>
+					<h3>Blockquote</h3>
+				</header>
+				<blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget.
+				tempus euismod. Vestibulum ante ipsum primis in faucibus.</blockquote>
+			</section>
+			<section>
+				<header>
+					<h3>Divider</h3>
+				</header>
+				<p>Donec consectetur vestibulum dolor et pulvinar. Etiam vel felis enim, at viverra 
+				ligula. Ut porttitor sagittis lorem, quis eleifend nisi ornare vel. Praesent nec orci 
+				facilisis leo magna. Cras sit amet urna eros, id egestas urna. Quisque aliquam 
+				tempus euismod. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices 
+				posuere cubilia.</p>
+				<hr />
+				<p>Donec consectetur vestibulum dolor et pulvinar. Etiam vel felis enim, at viverra 
+				ligula. Ut porttitor sagittis lorem, quis eleifend nisi ornare vel. Praesent nec orci 
+				facilisis leo magna. Cras sit amet urna eros, id egestas urna. Quisque aliquam 
+				tempus euismod. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices 
+				posuere cubilia.</p>
+			</section>
+			<section>
+				<header>
+					<h3>Unordered List</h3>
+				</header>
+				<ul class="default">
+					<li>Donec consectetur vestibulum dolor et pulvinar. Etiam vel felis enim, at viverra ligula. Ut porttitor sagittis lorem, quis eleifend nisi ornare vel.</li>
+					<li>Donec consectetur vestibulum dolor et pulvinar. Etiam vel felis enim, at viverra ligula. Ut porttitor sagittis lorem, quis eleifend nisi ornare vel.</li>
+					<li>Donec consectetur vestibulum dolor et pulvinar. Etiam vel felis enim, at viverra ligula. Ut porttitor sagittis lorem, quis eleifend nisi ornare vel.</li>
+					<li>Donec consectetur vestibulum dolor et pulvinar. Etiam vel felis enim, at viverra ligula. Ut porttitor sagittis lorem, quis eleifend nisi ornare vel.</li>
+				</ul>
+			</section>
+			<section>
+				<header>
+					<h3>Ordered List</h3>
+				</header>
+				<ol class="default">
+					<li>Donec consectetur vestibulum dolor et pulvinar. Etiam vel felis enim, at viverra ligula. Ut porttitor sagittis lorem, quis eleifend nisi ornare vel.</li>
+					<li>Donec consectetur vestibulum dolor et pulvinar. Etiam vel felis enim, at viverra ligula. Ut porttitor sagittis lorem, quis eleifend nisi ornare vel.</li>
+					<li>Donec consectetur vestibulum dolor et pulvinar. Etiam vel felis enim, at viverra ligula. Ut porttitor sagittis lorem, quis eleifend nisi ornare vel.</li>
+					<li>Donec consectetur vestibulum dolor et pulvinar. Etiam vel felis enim, at viverra ligula. Ut porttitor sagittis lorem, quis eleifend nisi ornare vel.</li>
+				</ol>
+			</section>
+			<section>
+				<header>
+					<h3>Table</h3>
+				</header>
+				<div class="table-wrapper">
+					<table class="default">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Name</th>
+								<th>Description</th>
+								<th>Price</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>45815</td>
+								<td>Something</td>
+								<td>Ut porttitor sagittis lorem, quis eleifend nisi ornare vel.</td>
+								<td>29.99</td>
+							</tr>
+							<tr>
+								<td>24524</td>
+								<td>Nothing</td>
+								<td>Ut porttitor sagittis lorem, quis eleifend nisi ornare vel.</td>
+								<td>19.99</td>
+							</tr>
+							<tr>
+								<td>45815</td>
+								<td>Something</td>
+								<td>Ut porttitor sagittis lorem, quis eleifend nisi ornare vel.</td>
+								<td>29.99</td>
+							</tr>
+							<tr>
+								<td>24524</td>
+								<td>Nothing</td>
+								<td>Ut porttitor sagittis lorem, quis eleifend nisi ornare vel.</td>
+								<td>19.99</td>
+							</tr>
+						</tbody>
+						<tfoot>
+							<tr>
+								<td colspan="3"></td>
+								<td>100.00</td>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+			</section>
+			<section>
+				<header>
+					<h3>Form</h3>
+				</header>
+				<form method="post" action="#">
+					<div class="row">
+						<div class="6u">
+							<label for="name">Name</label>
+							<input class="text" type="text" name="name" id="name" value="" placeholder="John Doe" />
+						</div>
+						<div class="6u">
+							<label for="email">Email</label>
+							<input class="text" type="text" name="email" id="email" value="" placeholder="johndoe@domain.tld" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="12u">
+							<label for="subject">Subject</label>
+							<input class="text" type="text" name="subject" id="subject" value="" placeholder="Enter your subject" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="12u">
+							<label for="subject">Message</label>
+							<textarea name="message" id="message" placeholder="Enter your message" rows="6"></textarea>
+						</div>
+					</div>
+					<div class="row">
+						<div class="12u">
+							<ul class="actions">
+								<li><input type="submit" value="Send" /></li>
+								<li><input type="reset" value="Reset" class="alt" /></li>
+							</ul>
+						</div>
+					</div>
+				</form>
+			</section>
+		</div>
+	-->
+
+
+	</div>
+
+	<!-- Footer -->
+	<div id="footer">
+		<div class="container small">
+
+			<header class="major last">
+				<h2>So let's get Started</h2>
+			</header>
+			<ul class="copyright">
+				<li>&copy; Obsidian-Nomad 2014. All rights reserved.</li>
+			</ul>
+
+		</div>
+	</div>
+</body>
+</html>
