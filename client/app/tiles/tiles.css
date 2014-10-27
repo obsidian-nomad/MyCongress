@@ -1,11 +1,23 @@
+/*COLOR SCHEME:
+    Base: #2C3E50;
+    Background/Nav-Text: #ECF0F1;
+    Dark Grey Contrast: #6C767F;
+    Lighter Blue(use sparingly): 709ECC;
+    Softer Light Blue: #E4F2FF;
+    Acceptable Dark Blue: #709ECC;
+*/
+
 .tileView {
-  display: block;
+  text-align: center;
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-top: 50px;
 }
 
 .tile {
   position: relative;
   width: 100%;
-  height: 110px;
+  height: 90px;
   background-color: #bdc3c7;
   border: 1px;
   border-radius: 5px;
@@ -13,42 +25,67 @@
 }
 
 .tile:hover {
-  background-color: #7f8c8d;
+  background-color: #93999D;
+  cursor: pointer;
 }
 
 .hover {
   background-color: blue;
 }
 
-.picture {
+.repPicture {
   position: absolute;
-  height: 90px;
-  width: 90px;
-  border-radius: 50%;
-  top: 10px;
-  left: 30px;
+  top: 5px;
+  left: 20px;
+  display: block;
+  width: 80px;
+  height: 80px;
+  background: #E6E7ED;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  background-position:50% 50%;
+  background-repeat:no-repeat;
+  background-size: cover;
+  border: 1px #2c3e50 solid;
 }
 
 .name {
   position: absolute;
-  top: 0px;
+  font-size: 24px;
+  top: -15px;
   left: 150px;
 }
 
 .party {
   position: absolute;
-  top: 20px;
+  top: 30px;
   left: 150px;
 }
 
 .location {
   position: absolute;
-  top: 40px;
+  top: 45px;
   left: 150px;
 }
 
 .website {
   position: absolute;
-  top: 75px;
+  top: 65px;
   left: 150px;
+}
+
+
+.search {
+  position: fixed;
+  z-index: 5;
+  background: #6C767F;
+  padding: 10px;
+  border-radius: 0 0 5px 5px;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.searchInput {
+  width: 95%;
+  margin: auto;
 }
