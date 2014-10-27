@@ -4,7 +4,7 @@
   			<input class='input-md form-control' placeholder='Search' ng-model='search'/>
   		</div>
   	</div>
-		<div class="tileView col-md-8">
+		<div  class="tileView col-md-8">
 		  <div class='tile' ng-repeat='bio in bios | filter:search'>
 		    <div class='repPicture' style="background-image: url(app/repImages/{{bio.bioguide_id}}.jpg);"></div>
 		    <h3 class='name'>{{bio.title}} {{bio.first_name}} {{bio.last_name}}</h3>
@@ -14,3 +14,13 @@
 		  </div>
 		 </div>
 	</div>
+	<style>
+		/*Overwrite body*/
+		body {
+		  margin-top: 65px;
+		}
+
+		navbar {
+		  z-index: 10;
+		}
+	</style>
