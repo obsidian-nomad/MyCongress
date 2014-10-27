@@ -14,7 +14,8 @@ angular.module('myCongressApp', [
     
     $urlRouterProvider
       .otherwise(function($injector, $location){
-         window.location = $location.absUrl('/welcome');
+         window.location.href = '/welcome';
+
       });
 
     $locationProvider.html5Mode(true);
