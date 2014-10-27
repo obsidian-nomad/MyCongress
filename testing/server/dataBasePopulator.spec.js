@@ -23,7 +23,7 @@ describe('Unit testing helper methods by Inserting dummy callbacks\n', function(
 
   describe('Testing addInfluenceData()...\n', function(){
     it('should leave legislators with new property transparency_id', function(done){
-      this.timeout(5000);
+      this.timeout(10000);
       Populator.addInfluence(fetchedLegislators, function(results){
         results[0].should.have.property('transparency_data_Id');      
         results[1].should.have.property('transparency_data_Id');      
@@ -35,9 +35,10 @@ describe('Unit testing helper methods by Inserting dummy callbacks\n', function(
     });
 
     it('should leave legislators with new property top_Contributing_Industries', function(done){
-      this.timeout(5000);
+      this.timeout(7000);
       Populator.addInfluence(fetchedLegislators, function(results){
         results[0].should.have.property('top_Contributing_Industries');
+        results[3].should.have.property('top_Contributing_Industries');
         done();
       });
     });
