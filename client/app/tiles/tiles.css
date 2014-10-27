@@ -6,13 +6,15 @@
 */
 
 .tileView {
-  display: block;
+  text-align: center;
+  margin-left: 15%;
+  margin-right: 15%;
 }
 
 .tile {
   position: relative;
   width: 100%;
-  height: 100px;
+  height: 90px;
   background-color: #bdc3c7;
   border: 1px;
   border-radius: 5px;
@@ -20,7 +22,7 @@
 }
 
 .tile:hover {
-  background-color: #7f8c8d;
+  background-color: #93999D;
   cursor: pointer;
 }
 
@@ -33,8 +35,8 @@
   top: 5px;
   left: 20px;
   display: block;
-  width: 90px;
-  height: 90px;
+  width: 80px;
+  height: 80px;
   background: #E6E7ED;
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
@@ -47,24 +49,28 @@
 .name {
   position: absolute;
   font-size: 24px;
-  top: -10px;
+  top: -15px;
   left: 150px;
 }
 
 .party {
   position: absolute;
-  top: 35px;
+  top: 30px;
   left: 150px;
 }
 
 .location {
   position: absolute;
-  top: 50px;
+  top: 45px;
   left: 150px;
 }
 
 .website {
   position: absolute;
-  top: 70px;
+  top: 65px;
   left: 150px;
+}
+
+
+.search {
 }
