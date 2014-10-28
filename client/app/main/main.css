@@ -24,26 +24,6 @@ body {
     margin: 20px 0;
 }
 
-#profHeader {
-    width: 90%;
-    padding: 5px;
-    padding-top: 45px;
-    margin-left: 160px;
-}
-    #profHeader h1 {
-        padding: 0px;
-        margin: 0;
-        padding-left: 20px;
-    }
-
-    #profHeader.democrat {
-        border-bottom: 2px solid #1A0072;
-    }
-
-    #profHeader.republican {
-        border-bottom: 2px solid #D70000;
-    }
-
 #banner {
     border-bottom: none;
     margin-top: -20px;
@@ -71,17 +51,28 @@ body {
     border-top: 1px solid #E5E5E5;
 }
 
-/*#photoContainer {
-    display:block;
-    float:left;
-    width: 200px; 
-    margin-left: 5px;
-    margin-top: 10px;
+/*PROFILE SPECIFIC FILES*/
+#profHeader {
+    width: 90%;
     padding: 5px;
-    color: white;
-    border-radius: 50%;
-    background-color: #2C3E50
-}*/
+    padding-top: 40px;
+    margin-left: 160px;
+    border-bottom: 2px solid #2C3E50;
+}
+    #profHeader h1 {
+        padding: 0px;
+        margin: 0;
+        padding-left: 20px;
+        padding-bottom: 5px;
+    }
+
+    #profHeader.democrat {
+        /*border-bottom: 2px solid #1A0072;*/
+    }
+
+    #profHeader.republican {
+        /*border-bottom: 2px solid #D70000;*/
+    }
 
 #photoContainer {
     position: absolute;
@@ -98,6 +89,68 @@ body {
     background-size: cover;
     border: 2px #2c3e50 solid;
 }
+
+#generalinfo {
+ margin-left: 200px;
+}
+
+/*ICON CONSTRUCTION*/
+.social__item {
+    display: inline-block;
+    margin-right: 0.1em;
+    border-radius: 50%;
+}
+
+.social__icon {
+  font-size: 1.4em;
+  color: white;
+  float: left;
+  text-decoration: none;
+  border-radius:100%;
+  width: 2.2em;
+  height: 2.2em;
+  text-align: center;
+}
+
+.social__icon:hover {
+    color: white;
+}
+
+.profIcon {
+    position: relative;
+    top: 7px;
+}
+
+.profIcon:hover {
+    color: white;
+}
+
+.social__container {
+  padding: 1em;
+}
+
+.facebook {
+    background-color: #4b70ab;
+}
+    .facebook:hover {
+        background-color: #304983;
+        color: white;
+    }
+
+.twitter {
+    background-color: #32b9e7;
+}
+    .twitter:hover {
+        background-color: #2097CE;
+        color: white;
+    }
+.youtube {
+    background-color: #D30915;
+}
+    .youtube:hover {
+        background-color: #B10913;
+        color: white;
+    }
 
 
 /*BOOTSTRAP OVERRIDES*/
@@ -119,3 +172,5 @@ body {
     padding-left: 68px;
     float: left;
 }
+
+
