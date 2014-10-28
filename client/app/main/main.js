@@ -45,6 +45,7 @@ angular.module('myCongressApp')
     Politicians.getRep(id).then(function(data){
       console.log('POLITICIAN ONE data:',data);
       var current = data.data;
+      $scope.bioguide_id = current['bioguide_id'];
       $scope.title = current['title'];
       $scope.name = current['first_name'] + ' ' + current['last_name'];
       $scope.website = current['website'];
@@ -52,6 +53,8 @@ angular.module('myCongressApp')
       $scope.fbId = current['facebook_id'];
       $scope.twitterId = current['twitter_id'];
       $scope.youtubeId = current['youtube_id'];
+      var parties = {'D': 'Democrat', 'R': 'Republican', 'I': 'Independent'};
+      $scope.party = parties[current['party']];
       // Once we have fetched the twitter Handle, we can fetch the politician's twitter info
       twitterFetch();
     });
@@ -60,14 +63,14 @@ angular.module('myCongressApp')
     var twitterFetch = function(){
       Profile.getTwitterFeed($scope.twitterId).then(function(data){
 
-        $scope.twitterBio = data.data[0].user.description;
+        $scope.twitterBio = data.data.user.description;
 
         // Handles differing file extensions for the images (i.e. JPG, and JPEG)
-        var imageURL = data.data[0].user.profile_image_url;
+        var imageURL = data.data.user.profile_image_url;
         if ( imageURL[imageURL.length - 4] === "." ){
-          $scope.twitterPhotoURL = data.data[0].user.profile_image_url.slice(0,-10) + "400x400.jpg";
+          $scope.twitterPhotoURL = data.data.user.profile_image_url.slice(0,-10) + "400x400.jpg";
         } else if ( imageURL[imageURL.length - 5] === "." ){
-          $scope.twitterPhotoURL = data.data[0].user.profile_image_url.slice(0,-11) + "400x400.jpeg";
+          $scope.twitterPhotoURL = data.data.user.profile_image_url.slice(0,-11) + "400x400.jpeg";
         }
       });
     }
