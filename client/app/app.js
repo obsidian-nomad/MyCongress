@@ -8,7 +8,8 @@ angular.module('myCongressApp', [
   'btford.socket-io',
   'ui.router',
   'ui.bootstrap',
-  'myCongress.tiles'
+  'myCongress.tiles',
+  'd3BubbleGraph'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
