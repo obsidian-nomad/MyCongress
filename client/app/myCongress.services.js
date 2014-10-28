@@ -1,16 +1,17 @@
 'use strict';
 
+var apikey = '?apikey=d5ac2a8391d94345b8e93d5c69dd8739';
+var apibase = 'https://congress.api.sunlightfoundation.com/';
+
 angular.module('myCongress.services', [])
-
 .factory( 'Bills', function( $http ) {
-
 
   //Get Bills will return all bill objects from the bill API 
   var _getBills = function(params){
     params = params || {};
     return $http({
       method: 'GET',
-      url: 'https://congress.api.sunlightfoundation.com/bills?apikey=d5ac2a8391d94345b8e93d5c69dd8739',
+      url: apibase + 'bills' + apikey,
       params: params
     })
     .success(function(data/*, status, headers, config*/) {
@@ -27,7 +28,7 @@ angular.module('myCongress.services', [])
     params = params || {};
     return $http({
       method: 'GET',
-      url: 'https://congress.api.sunlightfoundation.com/votes?apikey=d5ac2a8391d94345b8e93d5c69dd8739',
+      url: apibase + 'votes' + apikey,
       params: params
     })
     .success(function(data/*, status, headers, config*/) {
@@ -45,6 +46,8 @@ angular.module('myCongress.services', [])
     getVotes: _getVotes
   };
 })
+
+/* REFACTOR THE FOLLOWING TO USE API INSTEAD OF DATABASE */
 .factory( 'Politicians', function( $http ){
 
   // Query the API to get information about all Congressional Members
@@ -52,11 +55,12 @@ angular.module('myCongress.services', [])
     params = params || {};
     return $http({
       method: 'GET',
-      url: '/api/lawmakers',
+      url: apibase + 'legislators' + apikey + '&per_page=all',
+      // url: '/api/lawmakers',
       params: params
     })
     .success(function(data/*, status, headers, config*/) {
-      console.log('POLITICIANS DATA: ', data);
+      console.log('POLITICIANS DATA: ', data.results);
       return data;
     })
     .error(function(/*data, status, headers, config*/) {
@@ -68,11 +72,12 @@ angular.module('myCongress.services', [])
     console.log('_getRep ID',id);
     return $http({
       method: 'GET',
-      url: '/api/lawmakers/' + id,
+      url: apibase + 'legislators' + apikey + '&all_legislators=true&bioguide_id=' + id,
+      // url: '/api/lawmakers/' + id,
     })
     .success(function(data/*, status, headers, config*/) {
-      console.log('POLITICIAN DATA: ', data);
-      return data;
+      console.log('POLITICIAN DATA: ', data.results[0]);
+      // return data.results[0];
     })
     .error(function(/*data, status, headers, config*/) {
       console.log('Error occured while getting Vote Data.');
