@@ -6,6 +6,9 @@ module.exports = {
   // MongoDB connection options
   mongo: {
     uri: 'mongodb://localhost/mycongress-dev'
-  }// ,
-  //seedDB: true
+  },
+
+  //**********Check whether seeding db!!***********
+
+  seedDB: true
 };

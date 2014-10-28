@@ -24,9 +24,12 @@ module.exports = {
   //This public method takes a callback and fetches currently serving legislator data from the APIs
   //it passes no arguments to it's callback
   //**
-  //Note, it does not delete any former legislators, 
+  //Nb, it does not delete any former legislators, 
   //so the database must be cleaned after elections
   //or the app rearchitectured to handle former legislator data on the fornt end
+  //
+  //Nb, when testing and for production, 
+  //do not forget to change the seedDb option to false in appropriate config/environment/ files
   //************
 
   populateDb: function(cb){
