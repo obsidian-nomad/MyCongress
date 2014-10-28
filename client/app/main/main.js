@@ -44,7 +44,7 @@ angular.module('myCongressApp')
     var id = $stateParams.id;
     Politicians.getRep(id).then(function(data){
       console.log('POLITICIAN ONE data:',data);
-      var current = data.data;
+      var current = data.data.results[0];
       $scope.rep = data.data;
       $scope.website = current['website'];
       $scope.contactForm = current['contact_form'];
