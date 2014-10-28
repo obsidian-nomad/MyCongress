@@ -1,7 +1,7 @@
 'use strict';
 
 var express = require('express');
-var controller = require('./lawmaker.controller');
+var controller = require('./legislator.controller');
 
 var router = express.Router();
 

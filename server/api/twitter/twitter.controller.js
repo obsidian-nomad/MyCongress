@@ -7,7 +7,7 @@
 
 var twitter = require('./twitter').twitter;
 
-// Get a single lawmaker
+// Get a single legislator
 exports.show = function(req, res) {
   var congresspersonID = req.params.id;
   twitter( congresspersonID, function(tweets){

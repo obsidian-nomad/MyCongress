@@ -1,4 +1,4 @@
-var Legislator = require('../api/lawmaker/lawmaker.model.js');
+var Legislator = require('../api/legislator/legislator.model.js');
 var request = require('request');
 var async = require('async');
 var _ = require('lodash');
@@ -131,7 +131,7 @@ function addInfluenceData(legislators, callback){
 // }
 
 
-//takes array of legislator objects and saves them as lawmaker models to db or updates them
+//takes array of legislator objects and saves them as legislator models to db or updates them
 function importLegislators (array, cb){
     console.log('Saving legislators to db');
   for (var i = 0; i < array.length; i++) {

@@ -13,7 +13,7 @@
 //   // Initialize the controller and a mock scope
 //   beforeEach(inject(function (_$httpBackend_, $controller, $rootScope) {
 //     $httpBackend = _$httpBackend_;
-//     $httpBackend.expectGET('/api/lawmakers')
+//     $httpBackend.expectGET('/api/legislators')
 //       .respond(['hello']);
 
 //     scope = $rootScope.$new();

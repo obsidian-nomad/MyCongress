@@ -15,7 +15,7 @@ module.exports = function(app) {
     });
 
 
-  app.use('/api/lawmakers', require('./api/lawmaker'));
+  app.use('/api/legislators', require('./api/legislator'));
   app.use('/api/twitter', require('./api/twitter'));
 
   //Example THING route
