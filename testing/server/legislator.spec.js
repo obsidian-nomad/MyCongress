@@ -1,14 +1,14 @@
 'use strict';
 
-var app = require('../../app');
+var app = require('../../server/app');
 var request = require('supertest');
 var should = require('should');
 
-describe('GET /api/lawmakers', function() {
+xdescribe('GET /api/legislators', function() {
 
-  it('should respond with JSON array containing lawmaker objects', function(done) {
+  it('should respond with JSON array containing legislator objects', function(done) {
     request(app)
-      .get('/api/lawmakers')
+      .get('/api/legislators')
       .expect(200)
       .expect('Content-Type', /json/)
       .end(function(err, res) {
@@ -29,6 +29,6 @@ describe('GET /api/lawmakers', function() {
   });
 });
 
-describe('GET /api/lawmakers/:id', function(){
+describe('GET /api/legislators/:id', function(){
   
 });

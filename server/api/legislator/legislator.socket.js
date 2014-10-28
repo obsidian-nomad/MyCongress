@@ -4,21 +4,21 @@
 
 'use strict';
 
-var lawmaker = require('./lawmaker.model');
+var legislator = require('./legislator.model');
 
 exports.register = function(socket) {
-  lawmaker.schema.post('save', function (doc) {
+  legislator.schema.post('save', function (doc) {
     onSave(socket, doc);
   });
-  lawmaker.schema.post('remove', function (doc) {
+  legislator.schema.post('remove', function (doc) {
     onRemove(socket, doc);
   });
 }
 
 function onSave(socket, doc, cb) {
-  socket.emit('lawmaker:save', doc);
+  socket.emit('legislator:save', doc);
 }
 
 function onRemove(socket, doc, cb) {
-  socket.emit('lawmaker:remove', doc);
+  socket.emit('legislator:remove', doc);
 }

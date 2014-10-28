@@ -52,7 +52,7 @@ angular.module('myCongress.services', [])
     params = params || {};
     return $http({
       method: 'GET',
-      url: '/api/lawmakers',
+      url: '/api/legislators',
       params: params
     })
     .success(function(data/*, status, headers, config*/) {
@@ -68,7 +68,7 @@ angular.module('myCongress.services', [])
     console.log('_getRep ID',id);
     return $http({
       method: 'GET',
-      url: '/api/lawmakers/' + id,
+      url: '/api/legislators/' + id,
     })
     .success(function(data/*, status, headers, config*/) {
       console.log('POLITICIAN DATA: ', data);

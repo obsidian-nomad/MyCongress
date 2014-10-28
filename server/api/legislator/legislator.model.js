@@ -3,7 +3,7 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-var LawmakerSchema = new Schema({
+var LegislatorSchema = new Schema({
   //*****
   //From sunlight congress API
   //contains: Individual information
@@ -68,4 +68,4 @@ var LawmakerSchema = new Schema({
   //******
 });
 
-module.exports = mongoose.model('Lawmaker', LawmakerSchema);
+module.exports = mongoose.model('Legislator', LegislatorSchema);

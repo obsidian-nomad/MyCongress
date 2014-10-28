@@ -5,11 +5,11 @@
 
 'use strict';
 
-var Lawmaker = require('../api/lawmaker/lawmaker.model');
+var Legislator = require('../api/legislator/legislator.model');
 //var User = require('../api/user/user.model');
 
-Lawmaker.find({}).remove(function() {
-  Lawmaker.create({
+Legislator.find({}).remove(function() {
+  Legislator.create({
     //*****
     //From sunlight congress API
     //contains: Individual information

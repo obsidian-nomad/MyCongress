@@ -45,7 +45,7 @@ xdescribe('Unit testing helper methods by Inserting dummy callbacks\n', function
 });
 
 xdescribe('Testing importLegislators()...\n ', function(){
-  it('should send legislator data to db by interacting with lawmaker model', function(done){
+  it('should send legislator data to db by interacting with legislator model', function(done){
     this.timeout(10000);
     Populator.testImport(fetchedLegislators, function(){
       console.log('Check DB manually!!!!!!!!!!!!!!!!!!!!');
