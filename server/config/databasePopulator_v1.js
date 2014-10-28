@@ -18,15 +18,65 @@ module.exports = {
   },
 
   //For Use
+
+  //***Public method to kickoff db legislator population
+  //Run manually via node repl or via cron
+  //This public method takes a callback and fetches currently serving legislator data from the APIs
+  //it passes no arguments to it's callback
+  //**
+  //Note, it does not delete any former legislators, 
+  //so the database must be cleaned after elections
+  //or the app rearchitectured to handle former legislator data on the fornt end
+  //************
+
   populateDb: function(cb){
     fetchLegislators(function(legislators){
       addInfluenceData(legislators, function(legislators){
-        console.log('calling import legislators from anon func');
         importLegislators(legislators, cb);
       });
     });  
   }
 };
+
+//takes array of legislator objects and saves them as legislator models to db or updates them
+function importLegislators (legislators, cb){
+    console.log('Saving legislators to db');
+
+    //prepare bulk upsert operation
+    var bulkOperation = Legislator.collection.initializeUnorderedBulkOp();
+    var dbOpsCounter = 0;
+
+  //add each legislator upsert to bulk op
+  for (var i = 0; i < legislators.length; i++) {
+    bulkOperation.find({bioguide_id: legislators[i].bioguide_id}).Upsert().updateOne(legislators[i]);
+
+    dbOpsCounter++;    //must execute bulk every 1000 ops
+
+    //IF any upserts past limit**SHOULD BE NONE (~530 legislators)
+    //at limit? Send bulk operation, and begin new one
+    if ( dbOpsCounter % 1000 === 0 ){
+      bulkOperation.execute(function(err, result) {
+        if (err) {
+        console.log('Error importing legislators.  Error during db bulk Upsert Operation');
+        }
+        //Initialize new bulk op
+        bulkOperation = Legislator.collection.initializeUnorderedBulkOp();
+        dbOpsCounter=0;
+        });//END bulk operation callback
+
+     }//END if
+  }; //END for
+
+  //Send bulk operation to db
+  if ( dbOpsCounter !== 0 ){
+    bulkOperation.execute(function(err, result) {
+     if (err) {console.log('Error importing legislators.  Error during db bulk Upsert Operation');}
+     console.log('Successful bulk upsert');
+    });
+  }
+  if(cb) { cb(); } //for testing files
+}
+
 
 //function downloads and parses all legislator data from sunlight /legislators
 //passes array of pre legislator objects to callback
@@ -124,20 +174,24 @@ function addInfluenceData(legislators, callback){
   };
 }
 
+//API Tester: http://tryit.sunlightfoundation.com/congress
 
+//future methods. modularize.
 
-// function addBillsSponsorship(array){
+// function addBillsSponsorship(legislators, cb){
+//
+// }
+
+// function addCommitteeMembership(legislators, cb){
+//
+// }
+
+// function addLocal_vs_outOfState_contributions(legislators, cb){
+//
+// }
+
+// function addContributor_type_comparison(legislators, cb){
 //
 // }
 
 
-//takes array of legislator objects and saves them as legislator models to db or updates them
-function importLegislators (array, cb){
-    console.log('Saving legislators to db');
-  for (var i = 0; i < array.length; i++) {
-    Legislator.findOneAndUpdate({bioguide_id: array[i].bioguide_id}, array[i], {upsert: true}, function(err, numberAffected, rawResponse){  
-      if (err) {console.log('Error importing legislators:', err, 'on legislator: ', rawResponse);}
-    });
-  };
-  if(cb) { cb(); }
-}
