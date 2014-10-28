@@ -12,7 +12,8 @@
   	</div>
 		<div  class="tileView col-md-8">
 		  <div class='tile' ng-repeat='bio in bios | filter:search'>
-		    <div class='repPicture' style="background-image: url(assets/images/{{bio.bioguide_id}}.jpg);"></div>
+		    <!-- <div class='repPicture' style="background-image: url(assets/images/{{bio.bioguide_id}}.jpg);"></div> -->
+		    <div class='repPicture' style="background-image: url(http://theunitedstates.io/images/congress/225x275/{{bio.bioguide_id}}.jpg)"></div>
                       <h3 class='name'><a ng-href='/profiles/{{bio.bioguide_id}}'>{{bio.title}} {{bio.first_name}} {{bio.last_name}}</a></h3>
                     <!-- <h3 class='name'>{{bio.title}} {{bio.first_name}} {{bio.last_name}}</h3> -->
 		    <p class='party'>{{bio.party}}</p>

@@ -55,7 +55,7 @@ angular.module('myCongress.services', [])
     params = params || {};
     return $http({
       method: 'GET',
-      url: apibase + 'legislators' + apikey,
+      url: apibase + 'legislators' + apikey + '&per_page=all',
       // url: '/api/lawmakers',
       params: params
     })

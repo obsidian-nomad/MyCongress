@@ -4,7 +4,9 @@
 <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
 <meta http-equiv="pragma" content="no-cache" />
 <div ng-controller='profileController'>
-  <div id='photoContainer' style="background-image: url(assets/images/{{rep.bioguide_id}}.jpg) ">
+  <!-- <div id='photoContainer' style="background-image: url(assets/images/{{rep.bioguide_id}}.jpg) ">
+  </div> -->
+  <div id='photoContainer' style="background-image: url(http://theunitedstates.io/images/congress/225x275/{{rep.bioguide_id}}.jpg) ">
   </div>
 	<div id='profHeader' ng-class="{ democrat: rep.party  === 'Democrat', republican: rep.party  === 'Republican' }">
     <h1>{{ rep.title }} {{ rep.first_name }} {{ rep.last_name }} ({{ rep.party }}, {{ rep.state }})</h1>
