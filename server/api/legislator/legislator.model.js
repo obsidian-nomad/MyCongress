@@ -66,6 +66,6 @@ var LegislatorSchema = new Schema({
   //From GovTrak Api
   //contains: vote information
   //******
-});
+}, { collection: 'legislators',  "strict": false });
 
 module.exports = mongoose.model('Legislator', LegislatorSchema);
