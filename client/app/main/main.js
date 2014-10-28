@@ -63,14 +63,14 @@ angular.module('myCongressApp')
     var twitterFetch = function(){
       Profile.getTwitterFeed($scope.twitterId).then(function(data){
 
-        $scope.twitterBio = data.data[0].user.description;
+        $scope.twitterBio = data.data.user.description;
 
         // Handles differing file extensions for the images (i.e. JPG, and JPEG)
-        var imageURL = data.data[0].user.profile_image_url;
+        var imageURL = data.data.user.profile_image_url;
         if ( imageURL[imageURL.length - 4] === "." ){
-          $scope.twitterPhotoURL = data.data[0].user.profile_image_url.slice(0,-10) + "400x400.jpg";
+          $scope.twitterPhotoURL = data.data.user.profile_image_url.slice(0,-10) + "400x400.jpg";
         } else if ( imageURL[imageURL.length - 5] === "." ){
-          $scope.twitterPhotoURL = data.data[0].user.profile_image_url.slice(0,-11) + "400x400.jpeg";
+          $scope.twitterPhotoURL = data.data.user.profile_image_url.slice(0,-11) + "400x400.jpeg";
         }
       });
     }
