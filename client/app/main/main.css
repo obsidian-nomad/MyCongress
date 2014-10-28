@@ -91,7 +91,9 @@ body {
 }
 
 #generalinfo {
- margin-left: 200px;
+ margin-left: 190px;
+ margin-top: 10px;
+ border-bottom: 1px #2c3e50 solid;
 }
 
 /*ICON CONSTRUCTION*/
