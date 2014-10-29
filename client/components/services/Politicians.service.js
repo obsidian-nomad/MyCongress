@@ -44,8 +44,42 @@ angular.module('myCongress.services')
     });
   };
 
+  var _getRepsByZip = function(zip){
+    console.log(api.sunlight + 'legislators/locate' + api.key + '&zip=' + zip);
+    return $http({
+      method: 'GET',
+      url: api.sunlight + 'legislators/locate' + api.key + '&zip=' + zip,
+      // url: '/api/lawmakers/' + id,
+    })
+    .success(function(data/*, status, headers, config*/) {
+      console.log('POLITICIAN DATA BY ZIP: ', data);
+      // return data.results[0];
+    })
+    .error(function(/*data, status, headers, config*/) {
+      console.log('Error occured while getting POLITICIAN DATA BY ZIP.');
+    });
+  };
+
+  var _getRepsByGeo = function(latitude, longitude){
+    return $http({
+      method: 'GET',
+      url: api.sunlight + 'legislators/locate' + 
+        api.key + '&latitude=' + latitude +'&longitude='+longitude,
+      // url: '/api/lawmakers/' + id,
+    })
+    .success(function(data/*, status, headers, config*/) {
+      console.log('POLITICIAN DATA BY GEO: ', data.results[0]);
+      // return data.results[0];
+    })
+    .error(function(/*data, status, headers, config*/) {
+      console.log('Error occured while getting POLITICIAN DATA BY GEO.');
+    });
+  };
+
   return {
     getReps: _getReps,
-    getRep: _getRep
+    getRep: _getRep,
+    getRepsByZip: _getRepsByZip,
+    getRepsByGeo: _getRepsByGeo
   };
 })

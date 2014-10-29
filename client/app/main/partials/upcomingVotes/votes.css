@@ -1,0 +1,178 @@
+/*COLOR SCHEME:
+    Base: #2C3E50;
+    Background/Nav-Text: #ECF0F1;
+    Dark Grey Contrast: #6C767F;
+    Lighter Blue(use sparingly): 709ECC;
+    Softer Light Blue: #E4F2FF;
+    Acceptable Dark Blue: #709ECC;
+*/
+
+body {
+    margin-top: 65px;
+    background-color: #ecf0f1;
+}
+
+.democrat {
+
+}
+
+.republican {
+
+}
+
+.thing-form {
+    margin: 20px 0;
+}
+
+#banner {
+    border-bottom: none;
+    margin-top: -20px;
+}
+
+#banner h1 {
+    font-size: 60px;
+    line-height: 1;
+    letter-spacing: -1px;
+}
+
+.hero-unit {
+    position: relative;
+    padding: 30px 15px;
+    color: #F5F5F5;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+    background: #4393B9;
+}
+
+.footer {
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 70px;
+    border-top: 1px solid #E5E5E5;
+}
+
+/*PROFILE SPECIFIC FILES*/
+#profHeader {
+    width: 90%;
+    padding: 5px;
+    padding-top: 40px;
+    margin-left: 160px;
+    border-bottom: 2px solid #2C3E50;
+}
+    #profHeader h1 {
+        padding: 0px;
+        margin: 0;
+        padding-left: 20px;
+        padding-bottom: 5px;
+    }
+
+    #profHeader.democrat {
+        /*border-bottom: 2px solid #1A0072;*/
+    }
+
+    #profHeader.republican {
+        /*border-bottom: 2px solid #D70000;*/
+    }
+
+#photoContainer {
+    position: absolute;
+    top: 70px;
+    left: 20px;
+    display: block;
+    width: 160px;
+    height: 160px;
+    background: #E6E7ED;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    background-position:50% 50%;
+    background-repeat:no-repeat;
+    background-size: cover;
+    border: 2px #2c3e50 solid;
+}
+
+#generalinfo {
+ margin-left: 190px;
+ margin-top: 10px;
+ border-bottom: 1px #2c3e50 solid;
+}
+
+/*ICON CONSTRUCTION*/
+.social__item {
+    display: inline-block;
+    margin-right: 0.1em;
+    border-radius: 50%;
+}
+
+.social__icon {
+  font-size: 1.4em;
+  color: white;
+  float: left;
+  text-decoration: none;
+  border-radius:100%;
+  width: 2.2em;
+  height: 2.2em;
+  text-align: center;
+}
+
+.social__icon:hover {
+    color: white;
+}
+
+.profIcon {
+    position: relative;
+    top: 7px;
+}
+
+.profIcon:hover {
+    color: white;
+}
+
+.social__container {
+  padding: 1em;
+}
+
+.facebook {
+    background-color: #4b70ab;
+}
+    .facebook:hover {
+        background-color: #304983;
+        color: white;
+    }
+
+.twitter {
+    background-color: #32b9e7;
+}
+    .twitter:hover {
+        background-color: #2097CE;
+        color: white;
+    }
+.youtube {
+    background-color: #D30915;
+}
+    .youtube:hover {
+        background-color: #B10913;
+        color: white;
+    }
+
+
+/*BOOTSTRAP OVERRIDES*/
+
+.navbar {
+    background-color: #2C3E50;
+    border: none;
+}
+.navbar-default .navbar-nav > li > a {
+    color: #ECF0F1;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+    color: #bdc3c7;
+}
+
+.container {
+    margin: 0;
+    padding-left: 68px;
+    float: left;
+}
+
+
