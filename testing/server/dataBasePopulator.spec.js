@@ -7,7 +7,7 @@ var Populator = require('../../server/config/databasePopulator_v1.js');
 
 
 var fetchedLegislators;
-xdescribe('Unit testing helper methods by Inserting dummy callbacks\n', function(){
+describe('Unit testing helper methods by Inserting dummy callbacks\n', function(){
   describe('Testing fetchLegislators()...\n', function(){
 
     it('should get an array of legislator json objects from sunlight: ', function(done){
