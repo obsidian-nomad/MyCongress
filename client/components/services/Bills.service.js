@@ -1,6 +1,7 @@
 'use strict';
-
+// Line 3 instantiates the myCongress.services module!
 angular.module('myCongress.services', [])
+
 .constant('api', {
   key: '?apikey=d5ac2a8391d94345b8e93d5c69dd8739',
   sunlight: 'https://congress.api.sunlightfoundation.com/',
