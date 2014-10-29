@@ -25,6 +25,21 @@ angular.module('myCongress.services', [])
     });
   };
 
+  var _getUpcomingBills = function(){
+    return $http({
+      method: 'GET',
+      url: api.sunlight + 'upcoming_bills' + api.key + '&order=scheduled_at',
+      // url: '/api/lawmakers/' + id,
+    })
+    .success(function(data/*, status, headers, config*/) {
+      console.log('UPCOMING BILLS DATA: ', data);
+      // return data.results[0]; PROMISES DO NOT NEED TO BE RETURNED
+    })
+    .error(function(/*data, status, headers, config*/) {
+      console.log('Error occured while getting Upcoming Bills Data.');
+    });
+  };
+
   var _getVotes = function(params){
     params = params || {};
     return $http({
