@@ -3,9 +3,7 @@
 	html5up.net | @n33co
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
-
 (function() {
-
 	skel.init({
 		reset: 'full',
 		breakpoints: {
@@ -20,7 +18,6 @@
 	});
 
 	$(function() {
-
 		var	$window = $(window),
 			$body = $('body');
 
@@ -47,6 +44,31 @@
 				}
 
 			}
+
+			console.log('loaded');
+			$('#getLocation').on('click', getUserLocation);
+
+			var getUserLocation = function(obj){
+				console.log('get user location')
+			  var success = function(position) {
+			    var coords = {
+			      start_latitude: position.coords.latitude,
+			      start_longitude: position.coords.longitude
+			    };
+			    console.log(coords);
+			    // _.extend(coords, obj);
+			    // grabCarInfo(coords);
+			  };
+			  var error = function() {
+			    alert('Error getting location');
+			  };
+
+				if (!navigator.geolocation){
+				  alert('Geolocation is not supported by your browser');
+				} else {
+			  	navigator.geolocation.getCurrentPosition(success, error);
+			  }
+			};
 
 	});
 

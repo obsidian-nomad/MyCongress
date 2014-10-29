@@ -6,8 +6,7 @@
 <div ng-controller='profileController'>
   <!-- <div id='photoContainer' style="background-image: url(assets/images/{{rep.bioguide_id}}.jpg) ">
   </div> -->
-  <div id='photoContainer' style="background-image: url(http://theunitedstates.io/images/congress/225x275/{{rep.bioguide_id}}.jpg) ">
-  </div>
+  <img id='photoContainer' ng-src="assets/images/{{rep.bioguide_id}}.jpg" fallback-src="assets/images/noImage.jpg"/>
 	<div id='profHeader' ng-class="{ democrat: rep.party  === 'Democrat', republican: rep.party  === 'Republican' }">
     <h1>{{ rep.title }} {{ rep.first_name }} {{ rep.last_name }} ({{ rep.party }}, {{ rep.state }})</h1>
 	</div>
