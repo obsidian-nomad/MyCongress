@@ -29,7 +29,7 @@ describe('myCongress.services, ', function() {
 		});
 
 		it('expect getBills() to send an HTTP GET Request', function() {
-			$httpBackend.expectGET(apibase + 'bills' + apikey)
+			$httpBackend.expectGET(apibase + 'bills' + apikey + '&order=scheduled_at')
 			.respond(200,'Fake Data Response to GetBills()');
 			Bills.getBills();
 			$httpBackend.flush();

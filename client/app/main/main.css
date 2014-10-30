@@ -90,6 +90,38 @@ body {
     border: 2px #2c3e50 solid;
 }
 
+.photoContainer{
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    width: 160px;
+    height: 160px;
+
+}
+.padHorizontal{
+    padding-left:20px;
+    padding-right: 20px;
+}
+.padVertical{
+    padding-top:20px;
+    padding-bottom: 20px;
+}
+.marginHorizontal{
+    margin-left:20px;
+    margin-right: 20px;
+}
+.marginVertical{
+    margin-top:20px;
+    margin-bottom: 20px;
+}
+
+.inlineBlock{
+    display:inline-block;
+}
+
+.top{
+    vertical-align: top;
+}
+
 #generalinfo {
  margin-left: 190px;
  margin-top: 10px;

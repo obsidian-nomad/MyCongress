@@ -7,7 +7,7 @@ angular.module('myCongress.services')
   transparency: 'http://transparencydata.com/'
 })
 // Here, we will include logic to access relevant information for each congressman's profile
-.factory( 'Profile', function( $http ){
+.factory( 'Profile', function( $http, api ){
   var _getProfilePictureSrc = function(congressmanId){
     // TODO--> this function should query our API for the picture
     congressmanId = '';
