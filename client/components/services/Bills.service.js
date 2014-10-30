@@ -7,7 +7,7 @@ angular.module('myCongress.services', [])
   sunlight: 'https://congress.api.sunlightfoundation.com/',
   transparency: 'http://transparencydata.com/'
 })
-.factory( 'Bills', function( $http ) {
+.factory( 'Bills', function( $http, api ) {
   //Get Bills will return all bill objects from the bill API 
   var _getBills = function(params){
     params = params || {};
@@ -26,14 +26,15 @@ angular.module('myCongress.services', [])
     });
   };
 
-  var _getUpcomingBills = function(){
+  var _getUpcomingBills = function(params){
+    params = params || {};
     return $http({
       method: 'GET',
       url: api.sunlight + 'upcoming_bills' + api.key + '&order=scheduled_at',
       // url: '/api/lawmakers/' + id,
+      params:params
     })
     .success(function(data/*, status, headers, config*/) {
-      console.log('UPCOMING BILLS DATA: ', data);
       // return data.results[0]; PROMISES DO NOT NEED TO BE RETURNED
     })
     .error(function(/*data, status, headers, config*/) {
@@ -60,6 +61,7 @@ angular.module('myCongress.services', [])
 
   return {
     getBills: _getBills,
-    getVotes: _getVotes
+    getVotes: _getVotes,
+    getUpcomingBills: _getUpcomingBills
   };
 })
