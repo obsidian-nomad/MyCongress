@@ -29,5 +29,11 @@
         <a href="http://www.youtube.com/{{ rep.youtube_id }}" class="social__icon"><i class="fa fa-youtube profIcon"></i></a>
       </div>
     </div>
+    <div>
+      <h2>Top Donors</h2>
+      <div ng-repeat="donor in topDonorsByRep[rep.bioguide_id]">
+        {{donor.name}} - {{donor.total_amount | currency : symbol : fractionSize}}
+      </div>
+    </div>
   </div>
 </div>

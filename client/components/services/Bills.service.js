@@ -13,7 +13,7 @@ angular.module('myCongress.services', [])
     params = params || {};
     return $http({
       method: 'GET',
-      url: api.sunlight + 'bills' + api.key,
+      url: api.sunlight + 'bills' + api.key + '&order=scheduled_at',
       params: params
     })
     .success(function(data/*, status, headers, config*/) {
@@ -43,7 +43,7 @@ angular.module('myCongress.services', [])
   };
 
   var _getVotes = function(params){
-    params = params || {};
+    // params = params || {};
     return $http({
       method: 'GET',
       url: api.sunlight + 'votes' + api.key,
