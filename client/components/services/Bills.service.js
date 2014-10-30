@@ -5,7 +5,7 @@ angular.module('myCongress.services', [])
 .constant('api', {
   key: '?apikey=d5ac2a8391d94345b8e93d5c69dd8739',
   sunlight: 'https://congress.api.sunlightfoundation.com/',
-  transparency: 'http://transparencydata.com/'
+  transparency: 'http://transparencydata.org/'
 })
 .factory( 'Bills', function( $http, api ) {
   //Get Bills will return all bill objects from the bill API 
