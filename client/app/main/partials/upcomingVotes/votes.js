@@ -10,12 +10,21 @@ angular.module('myCongressApp')
       });
   })
 
+  .filter('sectorNameConversion', function(sectorCodes) {
+    console.log('filter!')
+    return function(input) {
+      return sectorCodes[input];
+    };
+  })
+
   //uistateref to add multiple or duplicate partials to a page
   .controller('upcomingVotesController', function($scope, Bills, Politicians, Profile, Donors) {
     $scope.repVotes = {};
     $scope.sunriseIdToTransparencyId = {};
     $scope.transparencyIdToSunriseId = {};
     $scope.topDonorsByRep = {};
+    $scope.topIndustriesByRep = {};
+    $scope.topSectorsByRep = {};
 
     Bills.getUpcomingBills().then(function(data){
       var bills = data.data.results;
@@ -41,11 +50,24 @@ angular.module('myCongressApp')
           $scope.sunriseIdToTransparencyId[rep.bioguide_id] = transparencyId;
           $scope.transparencyIdToSunriseId[transparencyId] = rep.bioguide_id;
 
-          Donors.getTopIndustriesofPolitician(transparencyId).then(function(data){
-            console.log(data.data);
+          Donors.getTopContributorsofPolitician(transparencyId).then(function(data){
+            console.log('top contrib', data.data);
             $scope.topDonorsByRep[this.bioguide_id] = data.data;
             console.log($scope.topDonorsByRep);
           }.bind(this));
+
+          Donors.getTopSectorsofPolitician(transparencyId).then(function(data){
+            console.log('top sector ', data.data);
+            $scope.topSectorsByRep[this.bioguide_id] = data.data;
+            console.log($scope.topDonorsByRep);
+          }.bind(this));
+
+          Donors.getTopIndustriesofPolitician(transparencyId).then(function(data){
+            console.log('top industry ', data.data);
+            $scope.topIndustriesByRep[this.bioguide_id] = data.data;
+            console.log($scope.topDonorsByRep);
+          }.bind(this));
+
         }.bind(rep));
       }
       $scope.reps = senators.concat(congressmen);
