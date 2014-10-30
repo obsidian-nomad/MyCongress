@@ -1,14 +1,4 @@
 
-
-//Dependencies
-// require('angular-mocks');
-// var chai = require('chai');
-// var assert = chai.assert;
-// var expect = chai.expect;
-// var should = chai.should;
-
-
-
 describe('myCongress.services, ', function() {
 
 	beforeEach(module('myCongress.services'));
@@ -24,6 +14,8 @@ describe('myCongress.services, ', function() {
 
 	beforeEach(inject(function($injector) {
 		Bills = $injector.get('Bills');
+		Politicians = $injector.get('Politicians');
+		Profile = $injector.get('Profile');
 		$httpBackend = $injector.get('$httpBackend');
 	}))
 

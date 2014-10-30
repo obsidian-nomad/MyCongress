@@ -32,6 +32,8 @@ module.exports = function(config) {
       'client/components/**/*.jade',
       'client/app/**/*.html',
       'client/components/**/*.html',
+
+      //TESTING FILES
       'testing/client/**/*.js'
     ],
 

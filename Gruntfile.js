@@ -429,7 +429,13 @@ module.exports = function (grunt) {
       options: {
         reporter: 'spec'
       },
-      src: ['testing/**/*.spec.js']
+      src: ['testing/server/**/*.spec.js']
+    },
+
+    karma: {
+      unit: {
+        configFile: 'karma.conf.js',
+      }
     },
 
     protractor: {
@@ -568,6 +574,7 @@ module.exports = function (grunt) {
         'concurrent:test',
         'injector',
         'autoprefixer',
+        'karma'
       ]);
     }
 
