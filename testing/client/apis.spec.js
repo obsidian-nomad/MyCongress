@@ -37,5 +37,23 @@ describe('myCongress.services, ', function() {
 			$httpBackend.verifyNoOutstandingExpectation();
 		});
 
+	describe('Politicians Factory, ', function() {
+
+		it('expect getReps() to be a function and to be called', function() {
+			expect(Politicians.getReps).toEqual(jasmine.any(Function));
+			spyOn(Politicians, "getReps");
+			Politicians.getReps();
+			expect(Politicians.getReps).toHaveBeenCalled();
+		});
+
+		it('expect getReps() to send an HTTP GET Request', function() {
+			$httpBackend.expectGET(apibase + 'bills' + apikey)
+			.respond(200,'Fake Data Response to GetBills()');
+			Politicians.getReps();
+			$httpBackend.flush();
+			$httpBackend.verifyNoOutstandingRequest();
+			$httpBackend.verifyNoOutstandingExpectation();
+		});
+
 	});   
 });
