@@ -13,7 +13,9 @@
 	</ul>
   <h2 class="padHorizontal">Your (Political) Servants</h2>
     <div class="padVertical padHorizontal" ng-repeat="rep in reps">
-      <img class='photoContainer inlineBlock marginHorizontal' ng-src="assets/images/{{rep.bioguide_id}}.jpg" fallback-src="assets/images/noImage.jpg"/>
+      <div class='photoContainer inlineBlock marginHorizontal'>
+        <img  ng-src="assets/images/{{rep.bioguide_id}}.jpg" fallback-src="assets/images/noImage.jpg"/>
+      </div>
   <!-- <div id='profHeader' class="inlineBlock" ng-class="{ democrat: rep.party  === 'Democrat', republican: rep.party  === 'Republican' }"> -->
     <div class="inlineBlock top">
       <h1>{{ rep.title }} {{ rep.first_name }} {{ rep.last_name }} ({{ rep.party }}, {{ rep.state }})</h1>
