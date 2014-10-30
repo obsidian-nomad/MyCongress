@@ -32,13 +32,15 @@ module.exports = function(config) {
       'client/components/**/*.jade',
       'client/app/**/*.html',
       'client/components/**/*.html',
+
+      //TESTING FILES
       'testing/client/**/*.js'
     ],
 
     preprocessors: {
-      '**/*.jade': 'ng-jade2js',
-      '**/*.html': 'html2js',
-      '**/*.coffee': 'coffee',
+      // '**/*.jade': 'ng-jade2js',
+      // '**/*.html': 'html2js',
+      // '**/*.coffee': 'coffee',
     },
 
     ngHtml2JsPreprocessor: {
@@ -61,7 +63,7 @@ module.exports = function(config) {
 
 
     // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: false,
+    autoWatch: true,
 
 
     // Start these browsers, currently available:
@@ -77,6 +79,6 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
-    singleRun: false
+    singleRun: true
   });
 };
