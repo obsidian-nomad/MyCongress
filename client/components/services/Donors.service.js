@@ -1,12 +1,7 @@
 'use strict';
 
 angular.module('myCongress.services')
-.constant('api', {
-  key: '?apikey=d5ac2a8391d94345b8e93d5c69dd8739',
-  sunlight: 'https://congress.api.sunlightfoundation.com/',
-  transparency: 'http://transparencydata.org/',
-  //aggregates/pol/
-})
+
 .constant('sectorCodes', {
   A:'Agribusiness',
   B:'Communications/Electronics',
@@ -27,7 +22,7 @@ angular.module('myCongress.services')
 .factory('Donors', function( $http, api ) {
   var _getPolitician = function(name){
     //replace spaces with + so it won't break api call
-    name.replace(/ /g, "+");
+    name = name.replace(/ /g, "+");
     return $http({
       method:'GET',
       url: api.transparency + 'api/1.0/entities.json' + api.key + '&type=politician&search=' + name
