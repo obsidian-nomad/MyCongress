@@ -1,18 +1,15 @@
-'use strict';
 
-//Load in the App
-var app = require('../../client/app/myCongress.services.js');
 
 //Dependencies
-require('angular-mocks');
-var chai = require('chai');
-var assert = chai.assert;
-var expect = chai.expect;
-var should = chai.should;
+// require('angular-mocks');
+// var chai = require('chai');
+// var assert = chai.assert;
+// var expect = chai.expect;
+// var should = chai.should;
 
 
 
-describe('Testing myCongress.services API Calls', function() {
+describe('myCongress.services, ', function() {
 
 	beforeEach(module('myCongress.services'));
 
@@ -24,24 +21,29 @@ describe('Testing myCongress.services API Calls', function() {
 	var apikey = '?apikey=d5ac2a8391d94345b8e93d5c69dd8739';
 	var apibase = 'https://congress.api.sunlightfoundation.com/';
 
-	beforeEach(inject(function(_Bills_, _Politicians_, _Profile_, _$httpBackend_) {
-		Bills = _Bills_;
-		Politicians = _Politicians_;
-		Profile = _Profile_;
-		$httpBackend = _$httpBackend_;
+
+	beforeEach(inject(function($injector) {
+		Bills = $injector.get('Bills');
+		$httpBackend = $injector.get('$httpBackend');
 	}))
 
-	afterEach(function() {
-		$httpBackend.verifyNoOutstandingExpectation();
-		$httpBackend.verifyNoOutstandingRequest();
-	})
+	describe('Bills Factory, ', function() {
 
-	describe('Bills', function() {
+		it('expect getBills() to be a function and to be called', function() {
+			expect(Bills.getBills).toEqual(jasmine.any(Function));
+			spyOn(Bills, "getBills");
+			Bills.getBills();
+			expect(Bills.getBills).toHaveBeenCalled();
+		});
 
-		it('should send a HTTP GET Request', function() {
-			$httpBackend.expectGET(apibase + 'bills' + apikey);
+		it('expect getBills() to send an HTTP GET Request', function() {
+			$httpBackend.expectGET(apibase + 'bills' + apikey)
+			.respond(200,'Fake Data Response to GetBills()');
 			Bills.getBills();
 			$httpBackend.flush();
+			$httpBackend.verifyNoOutstandingRequest();
+			$httpBackend.verifyNoOutstandingExpectation();
 		});
-	})   
+
+	});   
 });

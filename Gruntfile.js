@@ -70,7 +70,7 @@ module.exports = function (grunt) {
         tasks: ['injector:css']
       },
       mochaTest: {
-        files: ['testing/server/**/*.spec.js'],
+        files: ['testing/**/*.spec.js'],
         tasks: ['env:test', 'mochaTest']
       },
       jsTest: {
@@ -429,7 +429,7 @@ module.exports = function (grunt) {
       options: {
         reporter: 'spec'
       },
-      src: ['testing/server/**/*.spec.js']
+      src: ['testing/**/*.spec.js']
     },
 
     protractor: {
