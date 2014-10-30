@@ -18,8 +18,19 @@ angular.module('myCongressApp')
     });
 
     Politicians.getRepsByZip('01085').then(function(data){
-      $scope.reps = data.data.results;
-      console.log(data.data.results);
+      var representatives = data.data.results;
+      var senators = [];
+      var congressmen = [];
+
+      //Order by Senators first
+      for(var i=0; i<representatives.length; i++){
+        if(representatives[i].title === 'Sen'){
+          senators.push(representatives[i]);
+        } else {
+          congressmen.push(representatives[i]);
+        }
+      }
+      $scope.reps = senators.concat(congressmen);
     });
   });
 
