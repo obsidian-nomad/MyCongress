@@ -149,10 +149,10 @@
     color: white;
 }
 .contact {
-    background-color: pink;
+    background-color: #9b59b6;
 }
 .contact:hover {
-    background-color: #B10913;
+    background-color: #8e44ad;
     color: white;
 }
 
@@ -200,13 +200,21 @@ width: 100px;
 height: auto;
 }
 
+.repInfo{
+  width:50%;
+  margin-left:auto;
+  margin-right:auto;
+  text-align: left;
+}
+
 #your-reps .top {
     margin-top: 10px;
 }
 #your-reps {
     position:fixed;
-    left: 25%;
-    margin: 0 auto;
+    /*left: 25%;*/
+    /*margin: 0 auto;*/
+    width:100%;
     background-color: rgba(0, 0, 0, 0.5);
     height:1200px;
     overflow: hidden;

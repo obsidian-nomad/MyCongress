@@ -10,7 +10,7 @@
     </li>
 	</ul>
   <h2 class="padHorizontal">Your (Political) Servants</h2>
-    <div class="padVertical padHorizontal" ng-repeat="rep in reps">
+    <div class="padVertical padHorizontal repInfo" ng-repeat="rep in reps">
       <div class='photoContainer inlineBlock marginHorizontal'>
         <img  ng-src="assets/images/{{rep.bioguide_id}}.jpg" fallback-src="assets/images/noImage.jpg"/>
       </div>
@@ -20,7 +20,7 @@
       
       <div>  
         <div class="social__item contact">
-          <a target="_blank" href="{{ rep.website }}" class="social__icon"><i class="fa fa-envelope-o profIcon"></i></a>
+          <a target="_blank" href="{{ rep.contact_form }}" class="social__icon"><i class="fa fa-envelope-o profIcon"></i></a>
         </div>      
         <div class="social__item facebook">
           <a target="_blank" href="http://facebook.com/{{ rep.facebook_id }}" class="social__icon"><i class="fa fa-facebook profIcon"></i></a>
