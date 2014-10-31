@@ -7,16 +7,6 @@
     Acceptable Dark Blue: #709ECC;
 */
 
-.tileView {
-  margin-left: 25%;
-  position: fixed;
-  top: 120px;
-  height: 800px;
-  overflow: scroll;
-}
-.tileView::-webkit-scrollbar { 
-    display: none; 
-}
 
 .tile {
   position: relative;
@@ -64,22 +54,24 @@
 }
 
 #backing {
-  background: rgba(0,0,0,0.3);
   padding: 0px;
   height: 1200px;
 }
 #rep-search {
-  border: none;
-  height: 120px;
-  width: 92%;
-  color: #f9f9f9;
-  background: rgba(0,0,0,0);
-  font-size: 48px;
-  font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-  text-align: center;
-  text-transform:  uppercase;
-  position: fixed;
-  top: 0px;
+border: none;
+height: 120px;
+width: 711px;
+color: #f9f9f9;
+background: rgba(0,0,0,0.7);
+font-size: 48px;
+font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+text-align: center;
+text-transform: uppercase;
+position: fixed;
+top: 0px;
+margin-left: 307px;
+padding: 20px;
+border-radius: 0;
 }
 
 #rep-search :focus { 
@@ -113,4 +105,28 @@
 
 #rep-list a {
   margin-left: 20px;
+}
+
+#profile-view {
+  padding-top:20px;
+  background: rgba(0,0,0,0.5);
+}
+#profile-view h1 {
+  margin: 20px 0 10px 0;
+}
+
+#backing .tileView {
+  margin-left: 24%;
+  position: fixed;
+  top: 120px;
+  height: 800px;
+  overflow: scroll;
+  background: rgba(0,0,0,0.5);
+  padding: 20px;
+  text-align: center;
+  width: auto;
+
+}
+.tileView::-webkit-scrollbar { 
+    display: none; 
 }

@@ -5,56 +5,56 @@
     Lighter Blue(use sparingly): 709ECC;
     Softer Light Blue: #E4F2FF;
     Acceptable Dark Blue: #709ECC;
-*/
+    */
 
 
-.democrat {
+    .democrat {
 
-}
+    }
 
-.republican {
+    .republican {
 
-}
+    }
 
-.thing-form {
-    margin: 20px 0;
-}
+    .thing-form {
+        margin: 20px 0;
+    }
 
-#banner {
-    border-bottom: none;
-    margin-top: -20px;
-}
+    #banner {
+        border-bottom: none;
+        margin-top: -20px;
+    }
 
-#banner h1 {
-    font-size: 60px;
-    line-height: 1;
-    letter-spacing: -1px;
-}
+    #banner h1 {
+        font-size: 60px;
+        line-height: 1;
+        letter-spacing: -1px;
+    }
 
-.hero-unit {
-    position: relative;
-    padding: 30px 15px;
-    color: #F5F5F5;
-    text-align: center;
-    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
-    background: #4393B9;
-}
+    .hero-unit {
+        position: relative;
+        padding: 30px 15px;
+        color: #F5F5F5;
+        text-align: center;
+        text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+        background: #4393B9;
+    }
 
-.footer {
-    text-align: center;
-    padding: 30px 0;
-    margin-top: 70px;
-    border-top: 1px solid #E5E5E5;
-}
+    .footer {
+        text-align: center;
+        padding: 30px 0;
+        margin-top: 70px;
+        border-top: 1px solid #E5E5E5;
+    }
 
-/*PROFILE SPECIFIC FILES*/
-#profHeader {
-    width: 90%;
-    padding: 5px;
-    padding-top: 40px;
-    margin-left: 160px;
-    border-bottom: 2px solid #2C3E50;
-}
+    /*PROFILE SPECIFIC FILES*/
+    #profHeader {
+        width: 90%;
+        padding: 5px;
+        padding-top: 40px;
+        margin-left: 160px;
+        border-bottom: 2px solid #2C3E50;
+    }
     #profHeader h1 {
         padding: 0px;
         margin: 0;
@@ -70,29 +70,29 @@
         /*border-bottom: 2px solid #D70000;*/
     }
 
-#photoContainer {
-    top: 70px;
-    left: 20px;
-    display: block;
-    width: 160px;
-    height: 160px;
-    background: #E6E7ED;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    background-position:50% 50%;
-    background-repeat:no-repeat;
-    background-size: cover;
-    border: 2px #2c3e50 solid;
-}
+    #photoContainer {
+        top: 70px;
+        left: 20px;
+        display: block;
+        width: 160px;
+        height: 160px;
+        background: #E6E7ED;
+        -moz-border-radius: 50%;
+        -webkit-border-radius: 50%;
+        background-position:50% 50%;
+        background-repeat:no-repeat;
+        background-size: cover;
+        border: 2px #2c3e50 solid;
+    }
 
-#generalinfo {
- margin-left: 190px;
- margin-top: 10px;
- border-bottom: 1px #2c3e50 solid;
-}
+    #generalinfo {
+       margin-left: 190px;
+       margin-top: 10px;
+       border-bottom: 1px #2c3e50 solid;
+   }
 
-/*ICON CONSTRUCTION*/
-.social__item {
+   /*ICON CONSTRUCTION*/
+   .social__item {
     display: inline-block;
     margin-right: 0.1em;
     border-radius: 50%;
@@ -129,37 +129,86 @@
 .facebook {
     background-color: #4b70ab;
 }
-    .facebook:hover {
-        background-color: #304983;
-        color: white;
-    }
+.facebook:hover {
+    background-color: #304983;
+    color: white;
+}
 
 .twitter {
     background-color: #32b9e7;
 }
-    .twitter:hover {
-        background-color: #2097CE;
-        color: white;
-    }
+.twitter:hover {
+    background-color: #2097CE;
+    color: white;
+}
 .youtube {
     background-color: #D30915;
 }
-    .youtube:hover {
-        background-color: #B10913;
-        color: white;
-    }
+.youtube:hover {
+    background-color: #B10913;
+    color: white;
+}
+.contact {
+    background-color: pink;
+}
+.contact:hover {
+    background-color: #B10913;
+    color: white;
+}
 
 
 /*BOOTSTRAP OVERRIDES*/
 
-.navbar {
-    background-color: #2C3E50;
-    border: none;
+#your-reps h3{
+  float: left;
+  line-height: 40px;
+  margin: 0;
 }
-.navbar-default .navbar-nav > li > a {
-    color: #ECF0F1;
+#your-reps .repPicture {
+  float: left;
+  width: 80px;
+  height: 80px;
+  background: #E6E7ED;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  background-position:50% 50%;
+  background-repeat:no-repeat;
+  background-size: cover;
+  border: 1px #2c3e50 solid;
 }
 
-.navbar-default .navbar-nav > li > a:hover {
-    color: #bdc3c7;
+#rep-list a {
+  margin-left: 20px;
+}
+
+#profile-view {
+  padding-top:20px;
+  background: rgba(0,0,0,0.5);
+}
+#profile-view h1 {
+  margin: 20px 0 10px 0;
+}
+
+#your-reps .photoContainer {
+width: 100px;
+height: 100px;
+overflow: hidden;
+}
+
+#your-reps .photoContainer img {
+width: 100px;
+height: auto;
+}
+
+#your-reps .top {
+    margin-top: 10px;
+}
+#your-reps {
+    position:fixed;
+    left: 25%;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    height:1200px;
+    overflow: hidden;
+
 }
