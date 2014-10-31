@@ -1,5 +1,6 @@
 angular.module('myCongress.home', ['myCongress.services'])
 
-.controller('ZipController', function($scope, Politicians) {
+.controller('HomeController', function($scope, Politicians) {
   $scope.zipSearch = Politicians.getRepsByZip;
+  $scope.yo = 5;
 });
