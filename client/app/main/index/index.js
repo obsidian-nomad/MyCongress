@@ -1,4 +1,4 @@
-angular.module('myCongress.tiles', ['myCongress.services'])
+angular.module('myCongress.home', ['myCongress.services'])
 
 .controller('ZipController', function($scope, Politicians) {
   $scope.zipSearch = Politicians.getRepsByZip;

@@ -22,6 +22,7 @@
 
   <!-- Custom Fonts -->
   <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -87,8 +88,8 @@
             <div class="container">
               <div class="row">
                 <div id="banner-text" class="col-md-8 col-md-offset-2">
-                  <form action="">
-                    <input id='zip-input' type="text" placeholder="Enter ZIP to find your representative" maxlength="5" ng-model="zipCode" ng-click="zipSearch(zipCode)" autofocus />
+                  <form>
+                    <input id='zip-input' type="text" placeholder="Enter ZIP to find your representative" maxlength="5" ng-model="zipCode" ng-click="zipSearch(zipCode)" autocomplete="off" autofocus />
                   </form>
                   <h1 class="brand-heading">MyCongress</h1>
                   <p>Shed some light...</p>

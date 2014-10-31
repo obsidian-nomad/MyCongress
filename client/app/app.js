@@ -1,18 +1,18 @@
 'use strict';
 angular.module('myCongressApp', [
   'myCongress.services',
+  'myCongress.tiles',
+  'myCongress.home',
   'ngCookies',
   'ngResource',
   'ngSanitize',
   'ui.router',
   'ui.bootstrap',
-  'myCongress.tiles'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
-      .otherwise(function($injector, $location){
-         $location.path('/welcome');
-      });
+      .otherwise('/welcome');
+
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('authInterceptor');
   })

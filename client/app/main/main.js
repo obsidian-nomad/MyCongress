@@ -14,6 +14,11 @@ angular.module('myCongressApp')
      .state('browse', {
         url: '/browse',
         templateUrl: 'app/tiles/tiles.html'
+      })
+     .state('welcome', {
+        url: '/welcome',
+        templateUrl: 'app/main/index/index.html',
+        controller: 'ZipController'
       });
   })
 
