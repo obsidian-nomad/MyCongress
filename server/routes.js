@@ -11,15 +11,11 @@ module.exports = function(app) {
 
   app.route('/welcome')
     .get(function(req,res){
-      res.sendfile(app.get('appPath') + '/landingpage/index.html');
+      res.sendfile(app.get('appPath') + '/app/main/index/index.html');
     });
-
 
   app.use('/api/lawmakers', require('./api/lawmaker'));
   app.use('/api/twitter', require('./api/twitter'));
-
-  //Example THING route
-  //app.use('/api/things', require('./api/thing'));
   
   //Not using user routes yet
   //app.use('/api/users', require('./api/user'));
@@ -33,6 +29,6 @@ module.exports = function(app) {
   // All other routes should redirect to the index.html
   app.route('/*')
     .get(function(req, res) {
-      res.sendfile(app.get('appPath') + '/index.html');
+      res.sendfile(app.get('appPath') + '/app/main/index/index.html');
     });
 };

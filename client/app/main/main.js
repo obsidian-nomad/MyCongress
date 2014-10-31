@@ -4,15 +4,11 @@ angular.module('myCongressApp')
   .config(function ($stateProvider) {
     $stateProvider
       // changed to main
-      .state('test', {
-        url: '/test',
-        templateUrl: 'app/test.html',
-        controller: 'dataController'
-      })
+      
       // See angular parameter documentation here: https://github.com/angular-ui/ui-router/wiki/URL-Routing
       .state('profiles', {
         url: '/profiles/:id',
-        templateUrl: 'app/main/repProfile.html',
+        templateUrl: 'app/main/profile/profile.html',
         controller: 'profileController'
       })
      .state('browse', {
@@ -22,21 +18,6 @@ angular.module('myCongressApp')
   })
 
   // this controller is used solely on the test page to test data we can pull
-  .controller('dataController', function($scope, Bills, Politicians) {
-    // modify the parameters here to play with what data you can get from the sunlight API
-    Bills.getBills().then(function(data){
-      $scope.bills = data;
-    });
-
-    Bills.getVotes().then(function(data){
-      $scope.votes = data;
-    });
-    //example of parameters passed into the function call
-    Politicians.getReps().then(function(data){
-      console.log('getReps DATA:', data.data[0]);
-      $scope.reps = data.data[0];
-    });
-  })
 
   .controller('profileController', function($scope, Profile, Politicians, $stateParams){
     // we can change this function later to reflect different reps

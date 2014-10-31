@@ -64,7 +64,6 @@ function addInfluenceData(legislators, callback){
           }
           var newID = JSON.parse(body)[0].id;
           //set prop on legislator
-          console.log(newID)
           legislator.transparency_data_Id = newID;
           //Done with this legislator
           asyncCb(null); 

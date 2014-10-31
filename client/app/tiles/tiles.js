@@ -8,12 +8,11 @@ angular.module('myCongress.tiles', ['myCongress.services'])
     // Set Parties to full name
     var parties = {"D": "Democrat", "R": "Republican", "I": "Independent"}
     for( var rep in $scope.bios ){
-    	console.log(rep);
       $scope.bios[rep].party = parties[$scope.bios[rep].party];
     }
    });
-    // Donors.industries('N00035854').then(function (res) {
-    //   console.log(res);
-    //   $scope.gg = res;
-    // });
+    Donors.industries('N00035854').then(function (res) {
+      console.log(res);
+      $scope.gg = res;
+    });
 });

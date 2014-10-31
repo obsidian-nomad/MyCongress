@@ -96,12 +96,16 @@ angular.module('myCongress.services')
     industries: function (id) { // id is the legislators crp_id from sunlight
       $http({
        method: 'GET',
-       url: api.transparency + 'api/1.0/entities/id_lookup.json?namespace=urn%3Acrp%3Arecipient&id=' + id + api.key,
-     })
+       url: api.transparency + 'api/1.0/entities/id_lookup.json?',
+       params: {
+        namespace: '=urn%3Acrp%3Arecipient',
+        id: id,
+        apikey: 'd5ac2a8391d94345b8e93d5c69dd8739'
+      }
+    })
       .success(getDonorKey)
       .error(function (data, status) {
-        console.log('in here!')
-        console.error(status, ':', data);
+        console.log('epic fail!')
       })
       .then(function (key) {
        $http({
@@ -116,6 +120,7 @@ angular.module('myCongress.services')
     },
     
     individuals: function (id) {
+      
     }
   }
 });
