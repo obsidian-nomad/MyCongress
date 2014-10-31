@@ -26,7 +26,7 @@ angular.module('myCongressApp')
     var twitterFetch = function(){
       Profile.getTwitterFeed($scope.twitterId).then(function(data){
 
-        $scope.twitterBio = $scope.rep.user.description;
+        // $scope.twitterBio = $scope.rep.user.description;
 
         // Handles differing file extensions for the images (i.e. JPG, and JPEG)
         var imageURL = $scope.rep.user.profile_image_url;

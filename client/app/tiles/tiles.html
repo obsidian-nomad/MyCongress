@@ -1,22 +1,15 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
-
-<div>
- <div class='search col-md-9'>
-  <div class='searchInput'>
-   <input class='input-md form-control' placeholder='Search' ng-model='search'/>
- </div>
+<div class='container' id="backing">
+ <div class="form-group" id="rep-search-container">
+  <input type="text" class="form-control" id="rep-search" placeholder="FIND A REPRESENTATIVE" ng-model="search">
 </div>
 <div  class="tileView col-md-8">
-  <div class='tile' ng-repeat='bio in bios | filter:search'>
+  <div id='rep-list' class='tile' ng-repeat='bio in bios | filter:search'>
     <img class='repPicture' ng-src="assets/images/{{bio.bioguide_id}}.jpg" fallback-src="assets/images/noImage.jpg"/>
-    <h3 class='name'>
+     <h3>  
      <a ng-href='/profiles/{{bio.bioguide_id}}'>
-      {{bio.title}} {{bio.first_name}} {{bio.last_name}}
+      {{bio.title}} {{bio.first_name}} {{bio.last_name}} ({{bio.party[0]}} - {{bio.state}})
     </a>
-  </h3>
-  <p class='party'>{{bio.party}}</p>
-  <p class='location'>{{bio.state_name}} {{bio.district}}</p>
-  <p><a ng-href='{{bio.website}}' class='website'>{{bio.website}}</a></p>
+     </h3>
 </div>
 </div>
 </div>

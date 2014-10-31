@@ -7,10 +7,6 @@
     Acceptable Dark Blue: #709ECC;
 */
 
-body {
-    margin-top: 65px;
-    background-color: #ecf0f1;
-}
 
 .democrat {
 
@@ -206,11 +202,3 @@ body {
 .navbar-default .navbar-nav > li > a:hover {
     color: #bdc3c7;
 }
-
-.container {
-    margin: 0;
-    padding-left: 68px;
-    float: left;
-}
-
-
