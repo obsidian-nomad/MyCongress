@@ -11,7 +11,7 @@ module.exports = function(app) {
 
   app.route('/welcome')
     .get(function(req,res){
-      res.sendfile(app.get('appPath') + '/app/main/index/index.html');
+      res.sendfile(app.get('appPath') + '/index.html');
     });
 
   app.use('/api/lawmakers', require('./api/lawmaker'));
@@ -29,6 +29,6 @@ module.exports = function(app) {
   // All other routes should redirect to the index.html
   app.route('/*')
     .get(function(req, res) {
-      res.sendfile(app.get('appPath') + '/app/main/index/index.html');
+      res.sendfile(app.get('appPath') + '/index.html');
     });
 };

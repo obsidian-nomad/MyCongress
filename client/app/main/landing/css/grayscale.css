@@ -139,7 +139,7 @@ a:focus {
     padding: 100px 0;
     text-align: center;
     color: #fff;
-    background: url(../img/intro-bg.jpg) no-repeat bottom center scroll;
+    background: url('../img/intro-bg.jpg') no-repeat bottom center scroll;
     background-color: #000;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -394,6 +394,7 @@ font-size: 48px;
 font-family: georgia;
 position: relative;
 top: 40px;
+text-align: center;
 }
 
 #banner-text {
@@ -403,7 +404,6 @@ top: 40px;
 
 #banner-text .brand-heading {
     margin: 0;
-
 }
 
 #banner-text p {
@@ -412,5 +412,5 @@ top: 40px;
 }
 
 #banner-text.col-md-offset-2 {
-margin-left: 12.666667%;
+    margin-left: 12.666667%;
 }

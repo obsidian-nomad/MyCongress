@@ -9,12 +9,29 @@ angular.module('myCongressApp', [
   'ui.router',
   'ui.bootstrap',
 ])
+
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
       .otherwise('/welcome');
-
+    // $httpProvider.interceptors.push('authInterceptor');
+      // See angular parameter documentation here: https://github.com/angular-ui/ui-router/wiki/URL-Routing
     $locationProvider.html5Mode(true);
-    $httpProvider.interceptors.push('authInterceptor');
+    $stateProvider
+      .state('profiles', {
+        url: '/profiles/:id',
+        templateUrl: 'app/main/profile/profile.html',
+        controller: 'profileController'
+      })
+     .state('browse', {
+        url: '/browse',
+        templateUrl: 'app/tiles/tiles.html',
+        controller: 'TileController'
+      })
+     .state('welcome', {
+        url: '/welcome',
+        templateUrl: 'app/main/landing/landing.html',
+        controller: 'HomeController'
+      });
   })
   .factory('authInterceptor', function ($rootScope, $q, $cookieStore, $location) {
     return {

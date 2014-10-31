@@ -1,26 +1,4 @@
-'use strict';
-
 angular.module('myCongressApp')
-  .config(function ($stateProvider) {
-    $stateProvider
-      // changed to main
-      
-      // See angular parameter documentation here: https://github.com/angular-ui/ui-router/wiki/URL-Routing
-      .state('profiles', {
-        url: '/profiles/:id',
-        templateUrl: 'app/main/profile/profile.html',
-        controller: 'profileController'
-      })
-     .state('browse', {
-        url: '/browse',
-        templateUrl: 'app/tiles/tiles.html'
-      })
-     .state('welcome', {
-        url: '/welcome',
-        templateUrl: 'app/main/index/index.html',
-        controller: 'ZipController'
-      });
-  })
 
   // this controller is used solely on the test page to test data we can pull
 
@@ -61,4 +39,3 @@ angular.module('myCongressApp')
     }
 
   });
-
