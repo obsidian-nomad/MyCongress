@@ -7,6 +7,20 @@
     Acceptable Dark Blue: #709ECC;
 */
 
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #FFF;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #FFF;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+color:    #FFF;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+color:    #FFF;
+}
 
 .democrat {
 
