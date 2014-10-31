@@ -88,8 +88,9 @@
             <div class="container">
               <div class="row">
                 <div id="banner-text" class="col-md-8 col-md-offset-2">
-                  <form>
-                    <input id='zip-input' type="text" placeholder="Enter ZIP to find your representative" maxlength="5" ng-model="zipCode" ng-click="zipSearch(zipCode)" autocomplete="off" autofocus />
+                  {{zip}}
+                  <form ng-submit="zipSearch(zip)">
+                    <input id='zip-input' type="text" placeholder="Enter ZIP to find your representative" ng-model="zip" maxlength="5"  autocomplete="off" autofocus />
                   </form>
                   <h1 class="brand-heading">MyCongress</h1>
                   <p>Shed some light...</p>
