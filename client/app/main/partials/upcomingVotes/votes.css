@@ -158,7 +158,6 @@
 
 
 /*BOOTSTRAP OVERRIDES*/
-
 #your-reps h3{
   float: left;
   line-height: 40px;
@@ -189,34 +188,40 @@
   margin: 20px 0 10px 0;
 }
 
+#votesContainer{
+  margin-top:70px;
+  overflow-y: scroll !important;
+  /*height:100%;*/
+}
+
 #your-reps .photoContainer {
-width: 100px;
-height: 100px;
-overflow: hidden;
+  width: 100px;
+  height: 100px;
+  /*overflow: hidden;*/
 }
 
 #your-reps .photoContainer img {
-width: 100px;
-height: auto;
+  width: 100px;
+  height: auto;
 }
 
 .repInfo{
-  width:50%;
+  width:60%;
   margin-left:auto;
   margin-right:auto;
   text-align: left;
 }
 
 #your-reps .top {
-    margin-top: 10px;
+    margin:0;
 }
 #your-reps {
-    position:fixed;
+  /*position: relative !important;*/
+    /*position:fixed;*/
     /*left: 25%;*/
     /*margin: 0 auto;*/
     width:100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    height:1200px;
-    overflow: hidden;
-
+    /*background-color: rgba(0, 0, 0, 0.0);*/
+    /*height:1200px;*/
+    /*overflow-y: scroll;*/
 }

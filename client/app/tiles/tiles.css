@@ -48,23 +48,22 @@
 
 
 .search {
-  position: fixed;
+  /*position: fixed;*/
   z-index: 5;
   background: #6C767F;
 }
 
 body{
-  overflow: hidden;
+  /*overflow: hidden;*/
 }
-
-
 
 #backing {
   padding: 0px;
-  height: 1200px;
+  /*height: 1200px;*/
+  height:100%;
   background: rgba(0,0,0,0.5);
 
-  overflow: scroll;
+  overflow-y: scroll;
 }
 #rep-search {
   border: none;
@@ -82,6 +81,10 @@ body{
   margin-right: auto;
   border-radius: 0;
   outline: none;
+}
+
+#rep-search-container{
+  margin-top:70px;
 }
 
 #rep-search :focus { 
