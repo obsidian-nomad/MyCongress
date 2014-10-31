@@ -1,21 +1,4 @@
-'use strict';
-
 angular.module('myCongressApp')
-  .config(function ($stateProvider) {
-    $stateProvider
-      // changed to main
-      
-      // See angular parameter documentation here: https://github.com/angular-ui/ui-router/wiki/URL-Routing
-      .state('profiles', {
-        url: '/profiles/:id',
-        templateUrl: 'app/main/profile/profile.html',
-        controller: 'profileController'
-      })
-     .state('browse', {
-        url: '/browse',
-        templateUrl: 'app/tiles/tiles.html'
-      });
-  })
 
   // this controller is used solely on the test page to test data we can pull
 
@@ -43,7 +26,7 @@ angular.module('myCongressApp')
     var twitterFetch = function(){
       Profile.getTwitterFeed($scope.twitterId).then(function(data){
 
-        $scope.twitterBio = $scope.rep.user.description;
+        // $scope.twitterBio = $scope.rep.user.description;
 
         // Handles differing file extensions for the images (i.e. JPG, and JPEG)
         var imageURL = $scope.rep.user.profile_image_url;
@@ -56,4 +39,3 @@ angular.module('myCongressApp')
     }
 
   });
-

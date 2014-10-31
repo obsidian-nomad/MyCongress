@@ -1,21 +1,37 @@
 'use strict';
 angular.module('myCongressApp', [
   'myCongress.services',
+  'myCongress.tiles',
+  'myCongress.home',
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'btford.socket-io',
   'ui.router',
   'ui.bootstrap',
-  'myCongress.tiles'
 ])
+
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
-      .otherwise(function($injector, $location){
-         $location.path('/welcome');
-      });
+      .otherwise('/welcome');
+    // $httpProvider.interceptors.push('authInterceptor');
+      // See angular parameter documentation here: https://github.com/angular-ui/ui-router/wiki/URL-Routing
     $locationProvider.html5Mode(true);
-    $httpProvider.interceptors.push('authInterceptor');
+    $stateProvider
+      .state('profiles', {
+        url: '/profiles/:id',
+        templateUrl: 'app/main/profile/profile.html',
+        controller: 'profileController'
+      })
+     .state('browse', {
+        url: '/browse',
+        templateUrl: 'app/tiles/tiles.html',
+        controller: 'TileController'
+      })
+     .state('welcome', {
+        url: '/welcome',
+        templateUrl: 'app/main/landing/landing.html',
+        controller: 'HomeController'
+      });
   })
   .factory('authInterceptor', function ($rootScope, $q, $cookieStore, $location) {
     return {

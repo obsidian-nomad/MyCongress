@@ -16,6 +16,7 @@ angular.module('myCongress.services')
     return $http({
       method: 'GET',
       url: api.sunlight + 'legislators' + api.key + '&per_page=all',
+      // url: '/api/lawmakers',
       params: params
     })
     .success(function(data/*, status, headers, config*/) {
@@ -35,6 +36,7 @@ angular.module('myCongress.services')
       // url: '/api/lawmakers/' + id,
     })
     .success(function(data/*, status, headers, config*/) {
+      console.log('POLITICIAN DATA: ', data.results[0]);
       // return data.results[0];
     })
     .error(function(/*data, status, headers, config*/) {
@@ -43,6 +45,7 @@ angular.module('myCongress.services')
   };
 
   var _getRepsByZip = function(zip){
+    console.log(zip);
     console.log(api.sunlight + 'legislators/locate' + api.key + '&zip=' + zip);
     return $http({
       method: 'GET',
@@ -50,6 +53,7 @@ angular.module('myCongress.services')
       // url: '/api/lawmakers/' + id,
     })
     .success(function(data/*, status, headers, config*/) {
+      console.log('POLITICIAN DATA BY ZIP: ', data);
       // return data.results[0];
     })
     .error(function(/*data, status, headers, config*/) {
