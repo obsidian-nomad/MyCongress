@@ -39,17 +39,12 @@ angular.module('myCongress.services')
       console.log('Error occured while getting POLITICIAN Data.');
     });
   };
-  var getDonorKey = function (request) {
-    //might have to JSON parse based on old non-ng code
-    console.log('GETTING DONOR KEY');
-    var key = request[0].id;
-    return key;
-  };
+
   var _getTopContributorsofPolitician = function (polId) {
     //might have to JSON parse based on old non-ng code
     return $http({
       method:'GET',
-      url: api.transparency + 'api/1.0/aggregates/pol/'+polId+'/contributors.json' + api.key + '&type=politician&search=' + name
+      url: api.transparency + 'api/1.0/aggregates/pol/'+polId+'/contributors.json' + api.key
     })
     .success(function(data/*, status, headers, config*/) {
       console.log('success');
@@ -63,7 +58,7 @@ angular.module('myCongress.services')
   var _getTopSectorsofPolitician = function (polId){
     return $http({
       method:'GET',
-      url: api.transparency + 'api/1.0/aggregates/pol/'+polId+'/contributors/sectors.json' + api.key + '&type=politician&search=' + name
+      url: api.transparency + 'api/1.0/aggregates/pol/'+polId+'/contributors/sectors.json' + api.key
     })
     .success(function(data/*, status, headers, config*/) {
       console.log('success');
@@ -77,7 +72,7 @@ angular.module('myCongress.services')
   var _getTopIndustriesofPolitician = function(polId){
     return $http({
       method:'GET',
-      url: api.transparency + 'api/1.0/aggregates/pol/'+polId+'/contributors/industries.json' + api.key + '&type=politician&search=' + name
+      url: api.transparency + 'api/1.0/aggregates/pol/'+polId+'/contributors/industries.json' + api.key 
     })
     .success(function(data/*, status, headers, config*/) {
       console.log('success');
@@ -88,9 +83,10 @@ angular.module('myCongress.services')
     });
   };
   return {
-    getTopIndustriesofPolitician:_getTopIndustriesofPolitician,
     getPolitician:_getPolitician,
+    getTopIndustriesofPolitician:_getTopIndustriesofPolitician,
     getTopSectorsofPolitician:_getTopSectorsofPolitician,
-    getTopContributorsofPolitician:_getTopContributorsofPolitician,
+    getTopContributorsofPolitician:_getTopContributorsofPolitician
+
   }
 });
