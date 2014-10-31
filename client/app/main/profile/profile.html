@@ -5,7 +5,6 @@
 
   <h1>{{ rep.title }} {{ rep.first_name }} {{ rep.last_name }} ({{ rep.party[0] }} - {{ rep.state }})</h1>
 
-  <p><a href="{{ rep.contact_form }}">Contact {{ rep.first_name }} {{ rep.last_name }}</a></p>
   <div class="social__item facebook">
     <a target="_blank" href="http://facebook.com/{{ rep.facebook_id }}" class="social__icon"><i class="fa fa-facebook profIcon"></i></a>
   </div>
@@ -16,6 +15,8 @@
     <a href="http://www.youtube.com/{{ rep.youtube_id }}" class="social__icon"><i class="fa fa-youtube profIcon"></i></a>
   </div>
 
+<!-- 2 ugly 2 show -->
+<!-- 
 <div class='twitterTimeline'>
   <a class="twitter-timeline"
   width="600"
@@ -25,8 +26,7 @@
   data-screen-name={{twitterId}}
   data-show-replies="false"
   >
-  <!-- data-tweet-limit="3" -->
-  Tweets by @twitterapi
+  <!-- data-tweet-limit="3" 
 </a>
 <script type="text/javascript">
   window.twttr = (function (d, s, id) {
@@ -39,7 +39,7 @@
 </script>
 
 </div>
-
+-->
 
 
 </div>
