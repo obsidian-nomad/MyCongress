@@ -1,47 +1,45 @@
-<div id="profile-view">
+<div class="container" id="profile-view">
   <!-- <div id='photoContainer' style="background-image: url(assets/images/{{rep.bioguide_id}}.jpg) ">
-  </div> -->
-  <img id='photoContainer' ng-src="assets/images/{{rep.bioguide_id}}.jpg" fallback-src="assets/images/noImage.jpg"/>
-	<div id='profHeader' ng-class="{ democrat: rep.party  === 'Democrat', republican: rep.party  === 'Republican' }">
-    <h1>{{ rep.title }} {{ rep.first_name }} {{ rep.last_name }} ({{ rep.party }}, {{ rep.state }})</h1>
-	</div>
-	<div id='generalinfo'>
-		<p>Website: <a href='{{ rep.website }}'>{{ website }}</a></p>
-		<p><a href="{{ rep.contact_form }}">Contact {{ rep.first_name }} {{ rep.last_name }}</a></p>
-    <div class="social__item facebook">
-      <a target="_blank" href="http://facebook.com/{{ rep.facebook_id }}" class="social__icon"><i class="fa fa-facebook profIcon"></i></a>
-    </div>
-    <div class="social__item twitter">
-      <a target="_blank" href="http://www.twitter.com/{{ rep.twitter_id }}" class="social__icon"><i class="fa fa-twitter profIcon"></i></a>
-    </div>
-    <div class="social__item youtube">
-      <a href="http://www.youtube.com/{{ rep.youtube_id }}" class="social__icon"><i class="fa fa-youtube profIcon"></i></a>
-    </div>
-	</div>
-  <div class='twitterTimeline'>
-    <a class="twitter-timeline"
-      width="600"
-      height="400"
-      href="https://twitter.com/twitterdev"
-      data-widget-id="524787957656346624"
-      data-screen-name={{twitterId}}
-      data-show-replies="false"
-      >
-      <!-- data-tweet-limit="3" -->
-    Tweets by @twitterapi
-    </a>
-    <script type="text/javascript">
-    window.twttr = (function (d, s, id) {
-      var t, js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id; js.src= "https://platform.twitter.com/widgets.js";
-      fjs.parentNode.insertBefore(js, fjs);
-      return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
-    }(document, "script", "twitter-wjs"));
-    </script>
+</div> -->
+<img id='photoContainer' ng-src="assets/images/{{rep.bioguide_id}}.jpg" fallback-src="assets/images/noImage.jpg"/>
 
-	</div>
-	
+  <h1>{{ rep.title }} {{ rep.first_name }} {{ rep.last_name }} ({{ rep.party[0] }} - {{ rep.state }})</h1>
 
-	
+  <p><a href="{{ rep.contact_form }}">Contact {{ rep.first_name }} {{ rep.last_name }}</a></p>
+  <div class="social__item facebook">
+    <a target="_blank" href="http://facebook.com/{{ rep.facebook_id }}" class="social__icon"><i class="fa fa-facebook profIcon"></i></a>
+  </div>
+  <div class="social__item twitter">
+    <a target="_blank" href="http://www.twitter.com/{{ rep.twitter_id }}" class="social__icon"><i class="fa fa-twitter profIcon"></i></a>
+  </div>
+  <div class="social__item youtube">
+    <a href="http://www.youtube.com/{{ rep.youtube_id }}" class="social__icon"><i class="fa fa-youtube profIcon"></i></a>
+  </div>
+
+<div class='twitterTimeline'>
+  <a class="twitter-timeline"
+  width="600"
+  height="400"
+  href="https://twitter.com/twitterdev"
+  data-widget-id="524787957656346624"
+  data-screen-name={{twitterId}}
+  data-show-replies="false"
+  >
+  <!-- data-tweet-limit="3" -->
+  Tweets by @twitterapi
+</a>
+<script type="text/javascript">
+  window.twttr = (function (d, s, id) {
+    var t, js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id; js.src= "https://platform.twitter.com/widgets.js";
+    fjs.parentNode.insertBefore(js, fjs);
+    return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
+  }(document, "script", "twitter-wjs"));
+</script>
+
+</div>
+
+
+
 </div>

@@ -71,13 +71,13 @@
     }
 
 #photoContainer {
-    position: absolute;
+    margin: 0 auto;
     top: 70px;
     left: 20px;
     display: block;
     width: 160px;
     height: 160px;
-    background: #E6E7ED;
+    background: rgba(0,0,0,0.8);
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
     background-position:50% 50%;
