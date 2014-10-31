@@ -4,7 +4,6 @@ angular.module('myCongressApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'btford.socket-io',
   'ui.router',
   'ui.bootstrap',
   'myCongress.tiles'
