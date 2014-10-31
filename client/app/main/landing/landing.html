@@ -29,15 +29,17 @@
   </nav>
   <!-- Intro Header -->
   <header>
-    <div class="intro-body">
-      <div class="container">
-        <div class="row">
-          <div id="banner-text" class="col-md-8 col-md-offset-2">
-            <form ng-submit="zipSearch(zip)">
-              <input id='zip-input' type="text" placeholder="Enter ZIP to find your representatives" ng-model="zip" maxlength="5"  autocomplete="off"/>
-            </form>
+    <div class="intro-body" style="width:100%">
+      <div style="text-align:center; width:100%">
+        <!-- <div id="shedLight">
+        </div> -->
+        <div id="banner-text" style="width:100%; padding-bottom:30px">
+          <form ng-submit="zipSearch()">
+            <input id='zip-input' type="text" placeholder="Enter ZIP to find your representatives" ng-model="zip" maxlength="5" autocomplete="off" autofocus/>
+          </form>
+          <div style="width:50%; margin-left:auto; margin-right:auto">
             <h1 class="brand-heading">M'Congress</h1>
-            <p>Shed some light...</p>
+            <p style="text-align:right">Shed some light...</p>
           </div>
         </div>
       </div>

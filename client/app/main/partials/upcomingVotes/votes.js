@@ -4,7 +4,7 @@ angular.module('myCongressApp')
   .config(function ($stateProvider) {
     $stateProvider
       .state('upcomingVotes', {
-        url: '/upcomingVotes',
+        url: '/upcomingVotes/:zip',
         templateUrl: 'app/main/partials/upcomingVotes/votes.html',
         controller: 'upcomingVotesController'
       });
@@ -18,20 +18,21 @@ angular.module('myCongressApp')
   })
 
   //uistateref to add multiple or duplicate partials to a page
-  .controller('upcomingVotesController', function($scope, Bills, Politicians, Profile, Donors) {
+  .controller('upcomingVotesController', function($scope, $stateParams, Bills, Politicians, Profile, Donors) {
     $scope.repVotes = {};
     $scope.sunriseIdToTransparencyId = {};
     $scope.transparencyIdToSunriseId = {};
     $scope.topDonorsByRep = {};
     $scope.topIndustriesByRep = {};
     $scope.topSectorsByRep = {};
+    $scope.zip = $stateParams.zip;
 
     Bills.getUpcomingBills().then(function(data){
       var bills = data.data.results;
       $scope.upcomingBills = bills;
     });
 
-    Politicians.getRepsByZip('01085').then(function(data){
+    Politicians.getRepsByZip($scope.zip).then(function(data){
       var representatives = data.data.results;
       var senators = [];
       var congressmen = [];
@@ -71,7 +72,6 @@ angular.module('myCongressApp')
         }.bind(rep));
       }
       $scope.reps = senators.concat(congressmen);
-    });
-
+      });
   });
 

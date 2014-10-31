@@ -148,7 +148,7 @@ a:focus {
 }
 
 .intro .intro-body {
-    display: table-cell;
+    /*display: table-cell;*/
     vertical-align: middle;
 }
 
@@ -387,8 +387,15 @@ top: 40px;
 text-align: center;
 }
 
+#shedLight{
+    margin-top:50px;
+}
+#shedLight p{
+    width:100%;
+}
+
 #banner-text {
-    position:fixed;
+    position:absolute;
     bottom: 0;
 }
 
@@ -396,14 +403,8 @@ text-align: center;
     margin: 0;
 }
 
-#banner-text p {
-    margin: 0;
-    text-align: right;
-}
 
-#banner-text.col-md-offset-2 {
-    margin-left: 12.666667%;
-}
+
 
 #rep-search-container {
     height: ;
