@@ -27,6 +27,7 @@ angular.module('myCongressApp')
     $scope.topSectorsByRep = {};
     $scope.zip = $stateParams.zip;
 
+
     Bills.getUpcomingBills().then(function(data){
       var bills = data.data.results;
       $scope.upcomingBills = bills;

@@ -1,28 +1,46 @@
 
 describe('myCongress.services, ', function() {
 
-	beforeEach(module('myCongress.services'));
+	beforeEach(module('myCongressApp'));
 
 	var Bills;
 	var Politicians;
 	var Profile;
 	var Donors;
 	var $httpBackend;
+	var $controller;
+	var $rootScope;
 	
 	//Hardcoded the API info, change if you change these in the Factory
 	var api =  {
 		key : '?apikey=d5ac2a8391d94345b8e93d5c69dd8739',
-		base : 'https://congress.api.sunlightfoundation.com/',
+		sunlight : 'https://congress.api.sunlightfoundation.com/',
 		transparency : 'http://transparencydata.org/'
 	};
 
 	beforeEach(inject(function($injector) {
+		
+		//Injector grabs the Factories Directly
 		Bills = $injector.get('Bills');
 		Politicians = $injector.get('Politicians');
 		Profile = $injector.get('Profile');
 		Donors = $injector.get('Donors');
+		
+		//Set up a mock server to respond to API requests
 		$httpBackend = $injector.get('$httpBackend');
-	}))
+		
+		//Use injector to grab the $rootScope
+		$rootScope = $injector.get('$rootScope');
+
+		//Use injector to grab the controller constructor, called $controller
+		$controller = $injector.get('$controller');
+
+		//Use the controller constructor to make a copy based on your Controller
+		//Set its scope to RootScope
+		createController = function() {
+			return $controller('upcomingVotesController', {'$scope': $rootScope});
+		};
+	}));
 
 	describe('Bills Factory, ', function() {
 
@@ -34,12 +52,28 @@ describe('myCongress.services, ', function() {
 		});
 
 		it('expect getBills() to send an HTTP GET Request', function() {
-			$httpBackend.expectGET(api.base + 'bills' + api.key + '&order=scheduled_at')
+			$httpBackend.expectGET(api.sunlight + 'bills' + api.key + '&order=scheduled_at')
 			.respond(200,'Fake Data Response to GetBills()');
 			Bills.getBills();
 			$httpBackend.flush();
 			$httpBackend.verifyNoOutstandingRequest();
 			$httpBackend.verifyNoOutstandingExpectation();
+		});
+
+		it('expect getUpcomingBills() to assign bills to $scope.upcomingBills', function() {
+			var responseObj = {results: ['fake', 'results', 'array']};
+			$httpBackend.expectGET(api.sunlight + 'upcoming_bills' + api.key + '&order=scheduled_at')
+			.respond(200, 'responseObj');
+			$httpBackend.expectGET(api.sunlight + 'legislators/locate' + api.key + '&zip=01085' )
+			.respond(200, 'responseObj');
+			
+			var controller = createController();	
+
+			// Bills.getUpcomingBills();
+			expect($rootScope.upcomingBills).toBe('HI MIKE');
+			$httpBackend.flush();
+			expect($rootScope.upcomingBills).toBe(responseObj.results);
+			
 		});
 	});
 
@@ -53,7 +87,7 @@ describe('myCongress.services, ', function() {
 		});
 
 		it('expect getReps() to send an HTTP GET Request', function() {
-			$httpBackend.expectGET(api.base + 'legislators' + api.key + '&per_page=all')
+			$httpBackend.expectGET(api.sunlight + 'legislators' + api.key + '&per_page=all')
 			.respond(200,'Fake Data Response to getReps()');
 			Politicians.getReps();
 			$httpBackend.flush();
