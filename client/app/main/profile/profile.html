@@ -2,9 +2,11 @@
   <!-- <div id='photoContainer' style="background-image: url(assets/images/{{rep.bioguide_id}}.jpg) ">
 </div> -->
 <img id='photoContainer' ng-src="assets/images/{{rep.bioguide_id}}.jpg" fallback-src="assets/images/noImage.jpg"/>
-
+{{ggg}}
   <h1>{{ rep.title }} {{ rep.first_name }} {{ rep.last_name }} ({{ rep.party[0] }} - {{ rep.state }})</h1>
-
+  <div class="social__item contact">
+    <a target="_blank" href="{{rep.website}}" class="social__icon"><i class="fa fa-envelope profIcon"></i></a>
+  </div>
   <div class="social__item facebook">
     <a target="_blank" href="http://facebook.com/{{ rep.facebook_id }}" class="social__icon"><i class="fa fa-facebook profIcon"></i></a>
   </div>
@@ -13,6 +15,22 @@
   </div>
   <div class="social__item youtube">
     <a href="http://www.youtube.com/{{ rep.youtube_id }}" class="social__icon"><i class="fa fa-youtube profIcon"></i></a>
+  </div>
+  <div class='row' id='finance-data'>
+
+  <p ng-show="errormessage">{{errormessage}}</p>
+  <div ng-hide="errormessage">
+  <p>
+    Total financing - {{totalFinancing | currency: "$"}}
+  </p>
+  <div class='col-md-6'>
+  <highchart id="chart1" config="pieChartConfig" class="span10" ng-if="industryToggle"></highchart>
+  </div>
+  <div class='col-md-6'>
+    <highchart id="chart2" config="pieChartConfig" class="span10" ng-if="industryToggle"></highchart>
+  </div>
+</div>
+    {{industriesData}};
   </div>
 
 <!-- 2 ugly 2 show -->

@@ -22,7 +22,10 @@ angular.module('myCongress.services')
 .factory('Donors', function( $http, api ) {
   var _getPolitician = function(name){
     //replace spaces with + so it won't break api call
+    name = name.toString();
     name = name.replace(/ /g, "+");
+    name = name.toString();
+    console.log(name);
     return $http({
       method:'GET',
       url: api.transparency + 'api/1.0/entities.json' + api.key + '&type=politician&search=' + name
@@ -50,7 +53,6 @@ angular.module('myCongress.services')
     })
     .success(function(data/*, status, headers, config*/) {
       console.log('success');
-      console.log('GET TOP CONTRIBUTOR DATA:', data);
       return data;
     })
     .error(function(/*data, status, headers, config*/) {
@@ -65,7 +67,6 @@ angular.module('myCongress.services')
     })
     .success(function(data/*, status, headers, config*/) {
       console.log('success');
-      console.log('GET TOP SECTOR DATA:', data);
       return data;
     })
     .error(function(/*data, status, headers, config*/) {
@@ -80,7 +81,6 @@ angular.module('myCongress.services')
     })
     .success(function(data/*, status, headers, config*/) {
       console.log('success');
-      console.log('GET TOP INDUSTRY DATA:', data);
       return data;
     })
     .error(function(/*data, status, headers, config*/) {
@@ -92,35 +92,5 @@ angular.module('myCongress.services')
     getPolitician:_getPolitician,
     getTopSectorsofPolitician:_getTopSectorsofPolitician,
     getTopContributorsofPolitician:_getTopContributorsofPolitician,
-    
-    industries: function (id) { // id is the legislators crp_id from sunlight
-      $http({
-       method: 'GET',
-       url: api.transparency + 'api/1.0/entities/id_lookup.json?',
-       params: {
-        namespace: '=urn%3Acrp%3Arecipient',
-        id: id,
-        apikey: 'd5ac2a8391d94345b8e93d5c69dd8739'
-      }
-    })
-      .success(getDonorKey)
-      .error(function (data, status) {
-        console.log('epic fail!')
-      })
-      .then(function (key) {
-       $http({
-         method: 'GET',
-         url: api.transparency + 'api/1.0/aggregates/pol' + key + '/contributors/industries.json' + api.key,
-       })
-       .success(getTopIndustries)
-       .error(function (data, status) {
-        console.error(status, ':', data);
-      })
-     });
-    },
-    
-    individuals: function (id) {
-      
-    }
   }
 });
