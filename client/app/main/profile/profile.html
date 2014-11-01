@@ -16,22 +16,41 @@
   <div class="social__item youtube">
     <a href="http://www.youtube.com/{{ rep.youtube_id }}" class="social__icon"><i class="fa fa-youtube profIcon"></i></a>
   </div>
-  <div class='row' id='finance-data'>
+  <div style="text-align:center">
+      <div class="inlineBlock justify padHorizontal">
+        <h2 class="subtitle">Top Donors</h2>
+        <div ng-repeat="donor in topDonors">
+          {{donor.name}} - {{donor.total_amount | currency : symbol : fractionSize}}
+        </div>
+      </div>
+      <div class="inlineBlock justify padHorizontal">
+        <h2 class="subtitle">Top Donors by Industry</h2>
+        <div ng-repeat="donor in topIndustries">
+          {{donor.name}} - {{donor.amount | currency : symbol : fractionSize}}
+        </div>
+      </div>
+      <div class="inlineBlock justify padHorizontal">
+        <h2 class="subtitle">Top Donors by Sector</h2>
+        <div ng-repeat="donor in topSectors">
+          {{donor.sector | sectorNameConversion}} - {{donor.amount | currency : symbol : fractionSize}}
+        </div>
+      </div>
+  <!-- <div class='row' id='finance-data'> -->
 
-  <p ng-show="errormessage">{{errormessage}}</p>
-  <div ng-hide="errormessage">
-  <p>
+  <!-- <p ng-show="errormessage">{{errormessage}}</p>
+  <div ng-hide="errormessage"> -->
+  <!-- <p>
     Total financing - {{totalFinancing | currency: "$"}}
   </p>
-  <div class='col-md-6'>
-  <highchart id="chart1" config="pieChartConfig" class="span10" ng-if="industryToggle"></highchart>
-  </div>
-  <div class='col-md-6'>
+  <!-- <div class='col-md-6'>
+  <div class="hc-pie" items="industries" ng-if="industryToggle"></highchart>
+  </div> -->
+  <!-- <div class='col-md-6'>
     <highchart id="chart2" config="pieChartConfig" class="span10" ng-if="industryToggle"></highchart>
-  </div>
-</div>
+  </div> -->
+<!--</div>
     {{industriesData}};
-  </div>
+  </div> -->
 
 <!-- 2 ugly 2 show -->
 <!-- 
