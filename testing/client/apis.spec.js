@@ -9,7 +9,7 @@ describe('myCongress.services, ', function() {
 	var Donors;
 	var $httpBackend;
 	var $controller;
-	var $rootScope;
+	var $scope;
 	
 	//Hardcoded the API info, change if you change these in the Factory
 	var api =  {
@@ -30,7 +30,7 @@ describe('myCongress.services, ', function() {
 		$httpBackend = $injector.get('$httpBackend');
 		
 		//Use injector to grab the $rootScope
-		$rootScope = $injector.get('$rootScope');
+		$scope = $injector.get('$rootScope');
 
 		//Use injector to grab the controller constructor, called $controller
 		$controller = $injector.get('$controller');
@@ -38,7 +38,7 @@ describe('myCongress.services, ', function() {
 		//Use the controller constructor to make a copy based on your Controller
 		//Set its scope to RootScope
 		createController = function() {
-			return $controller('upcomingVotesController', {'$scope': $rootScope});
+			return $controller('upcomingVotesController', {'$scope': $scope});
 		};
 	}));
 
@@ -60,19 +60,23 @@ describe('myCongress.services, ', function() {
 			$httpBackend.verifyNoOutstandingExpectation();
 		});
 
-		it('expect getUpcomingBills() to assign bills to $scope.upcomingBills', function() {
+		it('expect upcomingVotesController to call getUpcomingBills() on init and assign parsed response to $scope.upcomingBills', function() {
 			var responseObj = {results: ['fake', 'results', 'array']};
-			$httpBackend.expectGET(api.sunlight + 'upcoming_bills' + api.key + '&order=scheduled_at')
-			.respond(200, 'responseObj');
-			$httpBackend.expectGET(api.sunlight + 'legislators/locate' + api.key + '&zip=01085' )
-			.respond(200, 'responseObj');
 			
-			var controller = createController();	
+			//"WhenGET" is a router and responds to any routes accordingly. "expectGET" routes, but also freaks out if it doesn't get a request.
+			$httpBackend.whenGET(api.sunlight + 'upcoming_bills' + api.key + '&order=scheduled_at')
+			.respond(200, responseObj);
 
-			// Bills.getUpcomingBills();
-			expect($rootScope.upcomingBills).toBe('HI MIKE');
+			//This Get request starts a chain reaction of additional get requests, so I send it a 404 to stop it, because I'm just testing getUpcomingBills()
+			$httpBackend.whenGET(api.sunlight + 'legislators/locate' + api.key + '&zip=01085').
+			respond(404);
+
+			//Init controller, which autoruns getUpcomingBills()
+			var controller = createController();
+
+			//httpBackend.Flush tells the Server to processes pending HTTP Requests.  
 			$httpBackend.flush();
-			expect($rootScope.upcomingBills).toBe(responseObj.results);
+			expect($scope.upcomingBills.toString()).toBe(responseObj.results.toString());
 			
 		});
 	});

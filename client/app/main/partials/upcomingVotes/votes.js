@@ -41,6 +41,7 @@ angular.module('myCongressApp')
       //Order by Senators first
       for(var i=0; i<representatives.length; i++){
         var rep = representatives[i];
+
         if(rep.title === 'Sen'){
           senators.push(rep);
         } else {
