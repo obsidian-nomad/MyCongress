@@ -205,8 +205,16 @@
   height: auto;
 }
 
+.subtitle{
+  font-size: 18px;
+}
+
+.justify{
+  text-align: left;
+}
+
 .repInfo{
-  width:60%;
+  width:100%;
   margin-left:auto;
   margin-right:auto;
   text-align: left;

@@ -13,14 +13,15 @@
     </ul>
     <h2 class="padHorizontal">Your (Political) Servants</h2>
       <div class="padVertical padHorizontal repInfo" ng-repeat="rep in reps">
+        <div style="margin-left:auto; margin-right:auto; width:50%; margin-top:20px; text-align:center"><!--THIS ONE-->
         <div class='photoContainer inlineBlock marginHorizontal'>
           <img  ng-src="assets/images/{{rep.bioguide_id}}.jpg" fallback-src="assets/images/noImage.jpg"/>
         </div>
     <!-- <div id='profHeader' class="inlineBlock" ng-class="{ democrat: rep.party  === 'Democrat', republican: rep.party  === 'Republican' }"> -->
       <div class="inlineBlock top">
-        <h3>{{ rep.title }} {{ rep.first_name }} {{ rep.last_name }} ({{ rep.party }}, {{ rep.state }})</h3>
+        <h3><a ng-href="rep.bioguide_id">{{ rep.title }} {{ rep.first_name }} {{ rep.last_name }} ({{ rep.party }}, {{ rep.state }})</a></h3>
         
-        <div>  
+        <div style="text-align:left">  
           <div class="social__item contact">
             <a target="_blank" href="{{ rep.contact_form }}" class="social__icon"><i class="fa fa-envelope-o profIcon"></i></a>
           </div>      
@@ -35,24 +36,27 @@
           </div>
         </div>
       </div>
-      <div class="inlineBlock">
-        <h2>Top Donors</h2>
+    </div><!-- THIS ONE-->
+      <div style="text-align:center">
+      <div class="inlineBlock justify padHorizontal">
+        <h2 class="subtitle">Top Donors</h2>
         <div ng-repeat="donor in topDonorsByRep[rep.bioguide_id]">
           {{donor.name}} - {{donor.total_amount | currency : symbol : fractionSize}}
         </div>
       </div>
-      <div class="inlineBlock">
-        <h2>Top Donors by Industry</h2>
+      <div class="inlineBlock justify padHorizontal">
+        <h2 class="subtitle">Top Donors by Industry</h2>
         <div ng-repeat="donor in topIndustriesByRep[rep.bioguide_id]">
           {{donor.name}} - {{donor.amount | currency : symbol : fractionSize}}
         </div>
       </div>
-      <div class="inlineBlock">
-        <h2>Top Donors by Sector</h2>
+      <div class="inlineBlock justify padHorizontal">
+        <h2 class="subtitle">Top Donors by Sector</h2>
         <div ng-repeat="donor in topSectorsByRep[rep.bioguide_id]">
           {{donor.sector | sectorNameConversion}} - {{donor.amount | currency : symbol : fractionSize}}
         </div>
       </div>
+    </div>
     </div>
   </div>
 </div>
