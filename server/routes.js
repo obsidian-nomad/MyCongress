@@ -8,7 +8,6 @@ var errors = require('./components/errors');
 
 module.exports = function(app) {
   // Insert routes below
-  app.use(express.static(__dirname + 'assets'));
   app.route('/welcome')
     .get(function(req,res){
       res.sendfile(app.get('appPath') + '/index.html');

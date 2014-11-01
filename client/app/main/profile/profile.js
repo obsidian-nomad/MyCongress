@@ -1,141 +1,168 @@
 angular.module('myCongressApp')
 
-  // this controller is used solely on the test page to test data we can pull
-  .directive('hcPie', function () {
-  return {
-    restrict: 'C',
-    replace: true,
-    scope: {
-      items: '='
-    },
-    controller: function ($scope, $element, $attrs) {
-      console.log(2);
+  .controller('profileController', function($scope, Profile, Politicians, Donors, Charts, $stateParams, sectorCodes){
+    var id = $stateParams.id;
+    $scope.sectorCodes = sectorCodes;
+    $scope.gg = Charts.pieChart();
+    Politicians.getRep(id).then(function (data) {
+      var current = data.data.results[0];
+      var parties = {'D': 'Democrat', 'R': 'Republican', 'I': 'Independent'};
+      var name = current.first_name + ' ' + current.last_name;
+      $scope.rep = current;
+      $scope.website = current['website'];
+      $scope.contactForm = current['contact_form'];
+      $scope.fbId = current['facebook_id'];
+      $scope.twitterId = current['twitter_id'];
+      $scope.youtubeId = current['youtube_id'];
+      $scope.rep.party = parties[current['party']];
+      return name;
+    }).then(function (name) {
 
-    },
-    template: '<div id="container" style="margin: 0 auto">not working</div>',
-    link: function (scope, element, attrs) {
-      console.log(3);
-      var chart = new Highcharts.Chart({
-        chart: {
-          renderTo: 'container',
-          plotBackgroundColor: null,
-          plotBorderWidth: null,
-          plotShadow: false
-        },
-        title: {
-          text: 'Browser market shares at a specific website, 2010'
-        },
-        tooltip: {
-          pointFormat: '{series.name}: <b>{point.percentage}%</b>',
-          percentageDecimals: 1
-        },
-        plotOptions: {
-          pie: {
-            allowPointSelect: true,
-            cursor: 'pointer',
-            dataLabels: {
-              enabled: true,
-              color: '#000000',
-              connectorColor: '#000000',
-              formatter: function () {
-                return '<b>' + this.point.name + '</b>: ' + this.percentage + ' %';
+      Donors.getPolitician(name).then(function(data){
+
+        if (!data.data[0]) { 
+          $scope.errormessage = 'No financing available';
+          return;
+        }
+        $scope.totalFinancing = data.data[0].total_received;
+        var transparencyId = data.data[0].id;
+        $scope.corpToggle = false;
+        $scope.corpData = [];
+        Donors.getTopContributorsofPolitician(transparencyId).then(function(data){
+          $scope.topDonors = data.data;
+          for (var i = 0; i < $scope.topDonors.length - 5; i++) {
+            var name = data.data[i].name;
+            var amount = parseInt(data.data[i].total_amount);
+            $scope.corpData.push([name, amount]);
+          }
+          $scope.corpToggle = true;
+          $scope.CorpChartConfig = {
+            chart: {
+              plotBackgroundColor: null,
+              plotBorderWidth: null,
+              plotShadow: false,
+              backgroundColor:'rgba(0, 0, 0, 0)',
+              style: {
+                color: '#3E576F'
+              }
+            },
+            title: {
+              text: 'Top Corporate Donors (employees)'
+            },
+            series: [{
+              type: 'pie',
+              name: 'Total Contribution',
+              data: $scope.corpData
+            }],
+            tooltip: {
+              valuePrefix: '$',
+              valueSuffix: ''
+            },
+            plotOptions: {
+              pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                  enabled: false
+                },
+                showInLegend: true
               }
             }
           }
+        });
+
+$scope.sectorToggle = false;
+$scope.sectorData = [];
+Donors.getTopSectorsofPolitician(transparencyId).then(function(data){
+  $scope.topSectors = data.data;
+  for (var i = 0; i < $scope.topSectors.length - 5; i++) {
+    var sector = $scope.sectorCodes[data.data[i].sector];
+    var amount = parseInt(data.data[i].amount);
+    $scope.sectorData.push([sector, amount]);
+  }
+  $scope.sectorToggle = true;
+  $scope.SectorChartConfig = {
+    chart: {
+      plotBackgroundColor: null,
+      plotBorderWidth: null,
+      plotShadow: false,
+      backgroundColor:'rgba(0, 0, 0, 0)',
+      style: {
+        color: '#3E576F'
+      }
+    },
+    title: {
+      text: 'Top Donors by Sector'
+    },
+    series: [{
+      type: 'pie',
+      name: 'Total Contribution',
+      data: $scope.sectorData
+    }],
+    tooltip: {
+      valuePrefix: '$',
+      valueSuffix: ''
+    },
+    plotOptions: {
+      pie: {
+        allowPointSelect: true,
+        cursor: 'pointer',
+        dataLabels: {
+          enabled: false
         },
-        series: [{
-          type: 'pie',
-          name: 'Browser share',
-          data: scope.items
-        }]
-      });
-      scope.$watch("items", function (newValue) {
-        chart.series[0].setData(newValue, true);
-      }, true);
-      
+        showInLegend: true
+      }
     }
   }
+});
+
+$scope.industryToggle = false;
+$scope.industriesData = [];
+Donors.getTopIndustriesofPolitician(transparencyId).then(function(data){
+  $scope.topIndustries = data.data;
+  for (var i = 0; i < $scope.topIndustries.length - 5; i++) {
+    var industry = data.data[i].name[0] + data.data[i].name.toLowerCase().substr(1, data.data[i].name.length - 2);
+    var amount = parseInt(data.data[i].amount);
+    $scope.industriesData.push([industry, amount]);
+  }
+  $scope.industryToggle = true;
+  $scope.IndustryChartConfig = {
+    chart: {
+      plotBackgroundColor: null,
+      plotBorderWidth: null,
+      plotShadow: false,
+      backgroundColor:'rgba(0, 0, 0, 0)',
+      style: {
+        color: '#3E576F'
+      }
+    },
+    title: {
+      text: 'Top Donors by Industry'
+    },
+    series: [{
+      type: 'pie',
+      name: 'Total Contribution',
+      data: $scope.industriesData
+    }],
+    tooltip: {
+      valuePrefix: '$',
+      valueSuffix: ''
+    },
+    plotOptions: {
+      pie: {
+        allowPointSelect: true,
+        cursor: 'pointer',
+        dataLabels: {
+          enabled: false
+        },
+        showInLegend: true
+      }
+    }
+  }
+});
 })
-  .controller('profileController', function($scope, Profile, Politicians, Donors, Charts, $stateParams){
-    // we can change this function later to reflect different reps
-    var id = $stateParams.id;
-    $scope.repVotes = {};
-    $scope.sunriseIdToTransparencyId = {};
-    $scope.transparencyIdToSunriseId = {};
-    $scope.topDonorsByRep = {};
-    $scope.topIndustriesByRep = {};
-    $scope.topSectorsByRep = {};
-    $scope.zip = $stateParams.zip;
-
-    $scope.gg = Charts.pieChart();
-      Politicians.getRep(id).then(function (data) {
-          var current = data.data.results[0];
-          var parties = {'D': 'Democrat', 'R': 'Republican', 'I': 'Independent'};
-          var name = current.first_name + ' ' + current.last_name;
-          $scope.rep = current;
-          $scope.website = current['website'];
-          $scope.contactForm = current['contact_form'];
-          $scope.fbId = current['facebook_id'];
-          $scope.twitterId = current['twitter_id'];
-          $scope.youtubeId = current['youtube_id'];
-          $scope.rep.party = parties[current['party']];
-          return name;
-      }).then(function (name) {
-        Donors.getPolitician(name).then(function(data){
-
-          if (!data.data[0]) { 
-            $scope.errormessage = 'No financing available';
-            return;
-          }
-          $scope.totalFinancing = data.data[0].total_received;
-          var transparencyId = data.data[0].id;
-          // $scope.sunriseIdToTransparencyId[rep.bioguide_id] = transparencyId;
-          // $scope.transparencyIdToSunriseId[transparencyId] = rep.bioguide_id;
-          Donors.getTopContributorsofPolitician(transparencyId).then(function(data){
-            console.log('top contrib', data.data);
-            $scope.topDonors = data.data;
-            
-
-          }.bind(this));
-
-          Donors.getTopSectorsofPolitician(transparencyId).then(function(data){
-            console.log('top sector ', data.data);
-            $scope.topSectors = data.data;
-
-          });
-
-          $scope.industryToggle = false;
-          $scope.industriesData = [];
-          Donors.getTopIndustriesofPolitician(transparencyId).then(function(data){
-            console.log('top industry ', data.data);
-            $scope.topIndustries = data.data;
-            for (var i = 0; i < $scope.topIndustries.length; i++) {
-              $scope.industriesData.push(data.data[i].amount);
-            }
-          $scope.industryToggle = true;
-          
-
-          // $scope.industries = [['A', 1], 'B',2];
-        });
-      });
-    })
-console.log($scope.topIndustries);
-    // var twitterFetch = function(){
-    //   Profile.getTwitterFeed($scope.twitterId).then(function(data){
-
-    //     // $scope.twitterBio = $scope.rep.user.description;
-
-    //     // Handles differing file extensions for the images (i.e. JPG, and JPEG)
-    //     var imageURL = $scope.rep.user.profile_image_url;
-    //     if ( imageURL[imageURL.length - 4] === "." ){
-    //       $scope.twitterPhotoURL = $scope.rep.user.profile_image_url.slice(0,-10) + "400x400.jpg";
-    //     } else if ( imageURL[imageURL.length - 5] === "." ){
-    //       $scope.twitterPhotoURL = $scope.rep.user.profile_image_url.slice(0,-11) + "400x400.jpeg";
-    //     }
-    //   });
-    // }
-
     $scope.toggleLoading = function () {
-        this.chartConfig.loading = !this.chartConfig.loading
+      this.chartConfig.loading = !this.chartConfig.loading
     };
   });
+});

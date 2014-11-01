@@ -42,6 +42,7 @@
   <!-- <p>
     Total financing - {{totalFinancing | currency: "$"}}
   </p>
+<<<<<<< HEAD
   <!-- <div class='col-md-6'>
   <div class="hc-pie" items="industries" ng-if="industryToggle"></highchart>
   </div> -->
@@ -51,6 +52,19 @@
 <!--</div>
     {{industriesData}};
   </div> -->
+=======
+  <div class='col-md-4'>
+  <highchart id="chart1" config="IndustryChartConfig" class="span10" ng-if="industryToggle"></highchart>
+  </div>
+  <div class='col-md-4'>
+    <highchart id="chart2" config="CorpChartConfig" class="span10" ng-if="corpToggle"></highchart>
+  </div>
+  <div class='col-md-4'>
+    <highchart id="chart3" config="SectorChartConfig" class="span10" ng-if="sectorToggle"></highchart>
+  </div>
+</div>
+  </div>
+>>>>>>> Highcharts pie charts injected on profile
 
 <!-- 2 ugly 2 show -->
 <!-- 

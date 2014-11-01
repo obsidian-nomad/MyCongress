@@ -86,7 +86,6 @@ angular.module('myCongress.services')
     getPolitician:_getPolitician,
     getTopIndustriesofPolitician:_getTopIndustriesofPolitician,
     getTopSectorsofPolitician:_getTopSectorsofPolitician,
-    getTopContributorsofPolitician:_getTopContributorsofPolitician
-
+    getTopContributorsofPolitician:_getTopContributorsofPolitician, 
   }
 });
