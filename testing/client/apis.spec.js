@@ -68,7 +68,7 @@ describe('myCongress.services, ', function() {
 			.respond(200, responseObj);
 
 			//This Get request starts a chain reaction of additional get requests, so I send it a 404 to stop it, because I'm just testing getUpcomingBills()
-			$httpBackend.whenGET(api.sunlight + 'legislators/locate' + api.key + '&zip=01085').
+			$httpBackend.whenGET(api.sunlight + 'legislators/locate' + api.key + '&zip=undefined').
 			respond(404);
 
 			//Init controller, which autoruns getUpcomingBills()
