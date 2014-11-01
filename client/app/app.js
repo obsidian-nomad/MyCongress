@@ -3,11 +3,12 @@ angular.module('myCongressApp', [
   'myCongress.services',
   'myCongress.tiles',
   'myCongress.home',
+  'highcharts-ng',
   'ngCookies',
   'ngResource',
   'ngSanitize',
   'ui.router',
-  'ui.bootstrap',
+  'ui.bootstrap'
 ])
 
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {

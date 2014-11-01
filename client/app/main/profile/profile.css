@@ -5,3 +5,7 @@
     background-size: cover;
     -o-background-size: cover;
 }
+
+#profile-view #finance-data {
+  margin-top:40px;
+}
