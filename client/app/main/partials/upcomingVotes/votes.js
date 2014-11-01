@@ -27,6 +27,7 @@ angular.module('myCongressApp')
     $scope.topSectorsByRep = {};
     $scope.zip = $stateParams.zip;
 
+
     Bills.getUpcomingBills().then(function(data){
       var bills = data.data.results;
       $scope.upcomingBills = bills;
@@ -40,6 +41,7 @@ angular.module('myCongressApp')
       //Order by Senators first
       for(var i=0; i<representatives.length; i++){
         var rep = representatives[i];
+
         if(rep.title === 'Sen'){
           senators.push(rep);
         } else {
