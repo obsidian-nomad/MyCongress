@@ -129,6 +129,10 @@ body{
   margin: 20px 0 10px 0;
 }
 
+#votesContainer h3 a{
+  color:white;
+}
+
 #backing .tileView {
   /*margin-left: 24%;*/
   /*position: fixed;*/
