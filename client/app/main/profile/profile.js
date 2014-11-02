@@ -41,31 +41,44 @@ angular.module('myCongressApp')
               plotBackgroundColor: null,
               plotBorderWidth: null,
               plotShadow: false,
-              backgroundColor:'rgba(0, 0, 0, 0)',
-              style: {
-                color: '#3E576F'
-              }
+              backgroundColor:'rgba(0, 0, 0, 0)'
             },
             title: {
-              text: 'Top Corporate Donors (employees)'
+              text: 'Top Corporate Donors',
+              style: {
+                color: '#f5f5f5'
+              }
             },
+            subtitle: {
+              text: 'From company employees',
+              style: {
+                color: '#a5a5a5'
+              }
+            },
+
             series: [{
               type: 'pie',
               name: 'Total Contribution',
-              data: $scope.corpData
+              data: $scope.corpData,
             }],
             tooltip: {
               valuePrefix: '$',
-              valueSuffix: ''
+              valueSuffix: '',
+              style: {
+                color: '#e5e5e5'
+              }
             },
             plotOptions: {
               pie: {
                 allowPointSelect: true,
                 cursor: 'pointer',
                 dataLabels: {
-                  enabled: false
-                },
-                showInLegend: true
+                  enabled: true,
+                  format: '<b>{point.name}</b> ',
+                  style: {
+                    color: 'blue'
+                  }
+                }
               }
             }
           }
@@ -87,12 +100,12 @@ Donors.getTopSectorsofPolitician(transparencyId).then(function(data){
       plotBorderWidth: null,
       plotShadow: false,
       backgroundColor:'rgba(0, 0, 0, 0)',
-      style: {
-        color: '#3E576F'
-      }
     },
     title: {
-      text: 'Top Donors by Sector'
+      text: 'Top Donors by Sector',
+      style: {
+        color: '#f5f5f5'
+      }
     },
     series: [{
       type: 'pie',
@@ -121,7 +134,7 @@ $scope.industriesData = [];
 Donors.getTopIndustriesofPolitician(transparencyId).then(function(data){
   $scope.topIndustries = data.data;
   for (var i = 0; i < $scope.topIndustries.length - 5; i++) {
-    var industry = data.data[i].name[0] + data.data[i].name.toLowerCase().substr(1, data.data[i].name.length - 2);
+    var industry = data.data[i].name[0] + data.data[i].name.toLowerCase().substr(1, data.data[i].name.length - 1);
     var amount = parseInt(data.data[i].amount);
     $scope.industriesData.push([industry, amount]);
   }
@@ -137,7 +150,10 @@ Donors.getTopIndustriesofPolitician(transparencyId).then(function(data){
       }
     },
     title: {
-      text: 'Top Donors by Industry'
+      text: 'Top Donors by Industry',
+      style: {
+        color: '#f5f5f5'
+      }
     },
     series: [{
       type: 'pie',

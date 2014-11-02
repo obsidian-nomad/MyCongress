@@ -9,3 +9,15 @@
 #profile-view #finance-data {
   margin-top:40px;
 }
+
+#profile-view #corp-chart {
+
+}
+
+#seperator {
+  clear: both;
+  height: 2px;
+  width: 20%;
+  margin: 20px auto;
+  background-color: #e7e7e7;
+}
