@@ -2,8 +2,9 @@
   <!-- <div id='photoContainer' style="background-image: url(assets/images/{{rep.bioguide_id}}.jpg) ">
 </div> -->
 <img id='photoContainer' ng-src="assets/images/{{rep.bioguide_id}}.jpg" fallback-src="assets/images/noImage.jpg"/>
-{{ggg}}
-  <h1>{{ rep.title }} {{ rep.first_name }} {{ rep.last_name }} ({{ rep.party[0] }} - {{ rep.state }})</h1>
+
+<h1>{{ rep.title }} {{ rep.first_name }} {{ rep.last_name }} ({{ rep.party[0] }} - {{ rep.state }})</h1>
+<div id="social-icons" class="col-md-12">
   <div class="social__item contact">
     <a target="_blank" href="{{rep.website}}" class="social__icon"><i class="fa fa-envelope profIcon"></i></a>
   </div>
@@ -16,8 +17,10 @@
   <div class="social__item youtube">
     <a href="http://www.youtube.com/{{ rep.youtube_id }}" class="social__icon"><i class="fa fa-youtube profIcon"></i></a>
   </div>
-  <div style="text-align:center">
-      <div class="inlineBlock justify padHorizontal">
+</div>
+<div id="seperator"></div>
+
+      <!-- <div class="inlineBlock justify padHorizontal">
         <h2 class="subtitle">Top Donors</h2>
         <div ng-repeat="donor in topDonors">
           {{donor.name}} - {{donor.total_amount | currency : symbol : fractionSize}}
@@ -34,49 +37,21 @@
         <div ng-repeat="donor in topSectors">
           {{donor.sector | sectorNameConversion}} - {{donor.amount | currency : symbol : fractionSize}}
         </div>
+      </div> -->
+
+      <div class="row">        
+        <div class='col-md-6 col-md-offset-3'>
+          <highchart id="corp-chart" config="CorpChartConfig" class="" ng-if="corpToggle"></highchart>
+        </div>
       </div>
-  <!-- <div class='row' id='finance-data'> -->
+      <div class="row">
+        
+        <div class='col-md-5 col-md-offset-1'>
+          <highchart id="chart1" config="IndustryChartConfig" class="" ng-if="industryToggle"></highchart>
+        </div>
+        <div class='col-md-5 col-md-offset-1'>
+          <highchart id="chart3" config="SectorChartConfig" class="" ng-if="sectorToggle"></highchart>
+        </div>
+      </div>
 
-  <!-- <p ng-show="errormessage">{{errormessage}}</p>
-  <div ng-hide="errormessage"> -->
-  <!-- <p>
-    Total financing - {{totalFinancing | currency: "$"}}
-  </p>
-  <!-- <div class='col-md-6'>
-  <div class="hc-pie" items="industries" ng-if="industryToggle"></highchart>
-  </div> -->
-  <!-- <div class='col-md-6'>
-    <highchart id="chart2" config="pieChartConfig" class="span10" ng-if="industryToggle"></highchart>
-  </div> -->
-<!--</div>
-    {{industriesData}};
-  </div> -->
-
-<!-- 2 ugly 2 show -->
-<!-- 
-<div class='twitterTimeline'>
-  <a class="twitter-timeline"
-  width="600"
-  height="400"
-  href="https://twitter.com/twitterdev"
-  data-widget-id="524787957656346624"
-  data-screen-name={{twitterId}}
-  data-show-replies="false"
-  >
-  <!-- data-tweet-limit="3" 
-</a>
-<script type="text/javascript">
-  window.twttr = (function (d, s, id) {
-    var t, js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id; js.src= "https://platform.twitter.com/widgets.js";
-    fjs.parentNode.insertBefore(js, fjs);
-    return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
-  }(document, "script", "twitter-wjs"));
-</script>
-
-</div>
--->
-
-
-</div>
+    </div>
