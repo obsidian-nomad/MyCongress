@@ -45,6 +45,7 @@ angular.module('myCongressApp')
         } else {
           congressmen.push(rep);
         }
+        console.log(rep.first_name);
         Donors.getPolitician(rep.first_name + '+' + rep.last_name).then(function(data){
           console.log('getPolitician data: ', data);
           var transparencyId = data.data[0].id;
