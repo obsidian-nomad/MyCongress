@@ -26,12 +26,11 @@ angular.module('myCongressApp')
     $scope.topIndustriesByRep = {};
     $scope.topSectorsByRep = {};
     $scope.zip = $stateParams.zip;
-
-
-    Bills.getUpcomingBills().then(function(data){
-      var bills = data.data.results;
-      $scope.upcomingBills = bills;
-    });
+    
+    // Bills.getUpcomingBills().then(function(data){
+    //   var bills = data.data.results;
+    //   $scope.upcomingBills = bills;
+    // });
 
     Politicians.getRepsByZip($scope.zip).then(function(data){
       var representatives = data.data.results;
