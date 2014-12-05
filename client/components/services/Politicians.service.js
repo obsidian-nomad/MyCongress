@@ -37,7 +37,7 @@ angular.module('myCongress.services')
     })
     .success(function(data/*, status, headers, config*/) {
       console.log('POLITICIAN DATA: ', data.results[0]);
-      // return data.results[0];
+      return data;
     })
     .error(function(/*data, status, headers, config*/) {
       console.log('Error occured while getting Vote Data.');
@@ -54,7 +54,7 @@ angular.module('myCongress.services')
     })
     .success(function(data/*, status, headers, config*/) {
       console.log('POLITICIAN DATA BY ZIP: ', data);
-      // return data.results[0];
+      return data;
     })
     .error(function(/*data, status, headers, config*/) {
       console.log('Error occured while getting POLITICIAN DATA BY ZIP.');
@@ -70,7 +70,7 @@ angular.module('myCongress.services')
     })
     .success(function(data/*, status, headers, config*/) {
       console.log('POLITICIAN DATA BY GEO: ', data.results[0]);
-      // return data.results[0];
+      return data;
     })
     .error(function(/*data, status, headers, config*/) {
       console.log('Error occured while getting POLITICIAN DATA BY GEO.');

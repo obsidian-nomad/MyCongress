@@ -25,7 +25,6 @@ angular.module('myCongress.services')
     name = name.toString();
     name = name.replace(/ /g, "+");
     name = name.toString();
-    console.log(name);
     return $http({
       method:'GET',
       url: api.transparency + 'api/1.0/entities.json' + api.key + '&type=politician&search=' + name

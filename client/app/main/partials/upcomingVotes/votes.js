@@ -11,7 +11,6 @@ angular.module('myCongressApp')
   })
 
   .filter('sectorNameConversion', function(sectorCodes) {
-    console.log('filter!')
     return function(input) {
       return sectorCodes[input];
     };
@@ -47,7 +46,7 @@ angular.module('myCongressApp')
           congressmen.push(rep);
         }
         Donors.getPolitician(rep.first_name + '+' + rep.last_name).then(function(data){
-          // console.log('getPolitician data: ', data);
+          console.log('getPolitician data: ', data);
           var transparencyId = data.data[0].id;
           $scope.sunriseIdToTransparencyId[rep.bioguide_id] = transparencyId;
           $scope.transparencyIdToSunriseId[transparencyId] = rep.bioguide_id;
