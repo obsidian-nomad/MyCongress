@@ -4,7 +4,7 @@ angular.module('myCongress.services')
 .constant('api', {
   key: '?apikey=d5ac2a8391d94345b8e93d5c69dd8739',
   sunlight: 'http://congress.api.sunlightfoundation.com/',
-  transparency: 'http://transparencydata.com/'
+  transparency: 'http://transparencydata.org/'
 })
 
 .factory( 'Politicians', function( $http, api ){
@@ -43,8 +43,6 @@ angular.module('myCongress.services')
   };
 
   var _getRepsByZip = function(zip){
-    console.log(zip);
-    console.log(api.sunlight + 'legislators/locate' + api.key + '&zip=' + zip);
     return $http({
       method: 'GET',
       url: api.sunlight + 'legislators/locate' + api.key + '&zip=' + zip,

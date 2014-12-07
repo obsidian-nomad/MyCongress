@@ -12,10 +12,10 @@ angular.module('myCongressApp', [
 ])
 
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+
     $urlRouterProvider
       .otherwise('/welcome');
     // $httpProvider.interceptors.push('authInterceptor');
-      // See angular parameter documentation here: https://github.com/angular-ui/ui-router/wiki/URL-Routing
     $locationProvider.html5Mode(true);
     $stateProvider
       .state('profiles', {
