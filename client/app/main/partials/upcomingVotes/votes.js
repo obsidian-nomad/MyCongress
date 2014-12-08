@@ -17,7 +17,7 @@ angular.module('myCongressApp')
   })
 
   //uistateref to add multiple or duplicate partials to a page
-  .controller('upcomingVotesController', function($scope, $stateParams, Bills, Politicians, Profile, Donors) {
+  .controller('upcomingVotesController', function($scope, $stateParams, Bills, Politicians, Profile, Donors, Sunlight) {
     $scope.repVotes = {};
     $scope.sunriseIdToTransparencyId = {};
     $scope.transparencyIdToSunriseId = {};
@@ -25,7 +25,7 @@ angular.module('myCongressApp')
     $scope.topIndustriesByRep = {};
     $scope.topSectorsByRep = {};
     $scope.zip = $stateParams.zip;
-    
+    console.log(Sunlight.getRepsByZip({id: '94115'}));
     // Bills.getUpcomingBills().then(function(data){
     //   var bills = data.data.results;
     //   $scope.upcomingBills = bills;

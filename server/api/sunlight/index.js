@@ -5,6 +5,6 @@ var controller = require('./sunlight.controller');
 
 var router = express.Router();
 
-router.get('/:id', controller.show);
+router.get('/:id', controller.getRepsByZip);
 
 module.exports = router;
