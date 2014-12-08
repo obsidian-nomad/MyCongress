@@ -7,14 +7,31 @@ var api = {
   transparency: 'transparencydata.org'
 };
 
-module.exports.getReps = function(zip, cb){
+var sectorCodes = {
+  A:'Agribusiness',
+  B:'Communications/Electronics',
+  C:'Construction',
+  D:'Defense',
+  E:'Energy/Natural Resources',
+  F:'Finance/Insurance/Real Estate',
+  H:'Health',
+  K:'Lawyers and Lobbyists',
+  M:'Transportation',
+  N:'Misc. Business',
+  Q:'Ideology/Single Issue',
+  P:'Labor',
+  W:'Other',
+  Y:'Unknown',
+  Z:'Administrative Use'
+};
 
+module.exports.getReps = function(zip, cb){
     var options = {
       hostname: api.sunlight,
       path: '/legislators/locate' + api.key + '&zip=' + zip
     };
 
-    http.get(options, function (result) {
+    var request = http.get(options, function (result) {
       var buffer = '';
       result.setEncoding('utf8');
       result.on('data', function (data) {
@@ -22,23 +39,18 @@ module.exports.getReps = function(zip, cb){
       });
       result.on('end', function () {
         var reps = JSON.parse(buffer);
-        console.log('REPS', reps)
-        cb(reps);
+        if (cb) {
+          cb(reps);
+        }
       });
     });
 
+    request.on('error', function(e) {
+      console.log('it broke at getReps with', e);
+    })
+
 }
 
-  //   return $http({
-  //     method: 'GET',
-  //     url: api.sunlight + 'legislators/locate' + api.key + '&zip=' + zip,
-  //     // url: '/api/lawmakers/' + id,
-  //   })
-  //   .success(function(data/*, status, headers, config*/) {
-  //     console.log('POLITICIAN DATA BY ZIP: ', data);
-  //     return data;
-  //   })
-  //   .error(function(/*data, status, headers, config*/) {
-  //     console.log('Error occured while getting POLITICIAN DATA BY ZIP.');
-  //   });
-  // };
+module.exports.getDonors = function (id, cb) {
+  
+}
