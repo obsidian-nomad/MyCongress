@@ -33,21 +33,28 @@ angular.module('myCongressApp')
     Sunlight.getRepsByZip({id: $scope.zip})
     .$promise
     .then(function (data) {
-      var representatives = data.results;
-      console.log('DATASTREAMFROMBACKEND', representatives);
+      var reps = data.results;
+      console.log('DATASTREAMFROMBACKEND', reps);
       var senators = [];
       var congressmen = [];
 
-            //Order by Senators first
-      // for(var i=0; i<representatives.length; i++){
-      //   var rep = representatives[i];
+      // Order by Senators first
+        angular.forEach(reps, function (rep) {
+          if(rep.title === 'Sen'){
+            senators.push(rep);
+          } else {
+            congressmen.push(rep);
+          }
+          var name = rep.first_name + '+' + rep.last_name;
+          
+          Sunlight.getDonorId({id: name})
+          .$promise
+          .then(function (id) {
+            console.log('THEID', id);
+          });
+        });
+      
 
-      //   if(rep.title === 'Sen'){
-      //     senators.push(rep);
-      //   } else {
-      //     congressmen.push(rep);
-      //   }
-      //   console.log(rep.first_name + '+' + rep.last_name);
       //   Donors.getPolitician(rep.first_name + '+' + rep.last_name).then(function(data){
       //     console.log('getPolitician data: ', data);
       //     var transparencyId = data.data[0].id;

@@ -8,14 +8,12 @@ angular.module('myCongress.services')
   {
     getRepsByZip: {
       method: 'GET'
+    },
+    getDonorId: {
+      method: 'GET',
+      params: {
+        controller: 'donorId'
+      }
     }
   });
 });
-
-
-      // get: {
-      //   method: 'GET',
-      //   params: {
-      //     id:'me'
-      //   }
-      // }
