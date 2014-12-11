@@ -15,10 +15,7 @@ module.exports = function(app) {
 
   app.use('/api/lawmakers', require('./api/lawmaker'));
   app.use('/api/twitter', require('./api/twitter'));
-  
-  //Not using user routes yet
-  //app.use('/api/users', require('./api/user'));
-
+  app.use('/api/sunlight', require('./api/sunlight'));
   app.use('/auth', require('./auth'));
   
   // All undefined asset or api routes should return a 404

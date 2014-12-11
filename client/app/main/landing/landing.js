@@ -8,5 +8,4 @@ angular.module('myCongress.home', ['myCongress.services'])
   	$location.path('/upcomingVotes/' + $scope.zip);
   	// $scope.$emit('updateZip', $scope.zip);
   };
-  console.log('Init?');
 });

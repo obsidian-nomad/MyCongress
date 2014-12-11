@@ -20,22 +20,21 @@ angular.module('myCongress.services')
   Z:'Administrative Use'
 })
 .factory('Donors', function( $http, api ) {
+  $http.defaults.useXDomain = true;
   var _getPolitician = function(name){
     //replace spaces with + so it won't break api call
     name = name.toString();
     name = name.replace(/ /g, "+");
     name = name.toString();
-    console.log(name);
     return $http({
-      method:'GET',
+      method: 'GET',
       url: api.transparency + 'api/1.0/entities.json' + api.key + '&type=politician&search=' + name
     })
     .success(function(data/*, status, headers, config*/) {
-      console.log('success');
       console.log('GET POLITICIAN DATA:', data);
       return data;
     })
-    .error(function(/*data, status, headers, config*/) {
+    .error(function(data, status, headers, config) {
       console.log('Error occured while getting POLITICIAN Data.');
     });
   };

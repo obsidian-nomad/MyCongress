@@ -4,7 +4,7 @@ angular.module('myCongressApp')
   .factory('Auth', function Auth($location, $rootScope, $http, User, $cookieStore, $q) {
     var currentUser = {};
     if($cookieStore.get('token')) {
-      currentUser = User.get();
+      // currentUser = User.get();
     }
 
     return {
@@ -26,7 +26,7 @@ angular.module('myCongressApp')
         }).
         success(function(data) {
           $cookieStore.put('token', data.token);
-          currentUser = User.get();
+          // currentUser = User.get();
           deferred.resolve(data);
           return cb();
         }).
