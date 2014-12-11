@@ -72,7 +72,6 @@ module.exports.requestDonorId = function(name, cb) {
   request.on('error', function(e) {
     console.log('it broke at getDonorId with', e);
   });
-  // request.end();
 }
 
 // var _getPolitician = function(name){
