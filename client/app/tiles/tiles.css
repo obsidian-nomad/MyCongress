@@ -134,13 +134,10 @@ body{
 }
 
 #backing .tileView {
-  /*margin-left: 24%;*/
-  /*position: fixed;*/
-  /*top: 120px;*/
   height: 100%;
   padding: 20px;
   text-align: center;
-  width: 50%;
+  width: 56%;
   margin-left:auto;
   margin-right:auto;
 
