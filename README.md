@@ -1,6 +1,6 @@
-My Congress
+MyCongress
 ============
-## my-congress.herokuapp.com/
+## [MyCongress](https://my-congress.herokuapp.com/ "MyCongress")
 ### Introduction
 My Congress is an interactive tool to connect, understand, and interpret data surrounding your local congressman. Thanks to the Sunlight Foundation, we are able to pull data about Congressional Representatives.  The app also integrates with a variety of other APIs to deliver constant access to congressional data.
 
