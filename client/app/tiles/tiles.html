@@ -9,7 +9,7 @@
 	  <div id='rep-list' class='tile' ng-repeat='bio in bios | filter:search'>
 	    <img class='repPicture' ng-src="assets/images/{{bio.bioguide_id}}.jpg" fallback-src="assets/images/noImage.jpg"/>
 	     <h3>  
-	     <a ng-href='/profiles/{{bio.bioguide_id}}'>
+	     <a ui-sref="profiles({id: bio.bioguide_id})">
 	      {{bio.title}} {{bio.first_name}} {{bio.last_name}} ({{bio.party[0]}}, {{bio.state}})
 	    </a>
 	     </h3>

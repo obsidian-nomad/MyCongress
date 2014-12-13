@@ -4,29 +4,132 @@
  */
 
 'use strict';
-var requestReps = require('./sunlight').requestReps;
-var requestDonorId = require('./sunlight').requestDonorId;
+var _ = require('lodash');
+var requestData = require('./sunlight').requestData;
+
+var api = {
+  key: '?apikey=d5ac2a8391d94345b8e93d5c69dd8739',
+  sunlight: 'congress.api.sunlightfoundation.com',
+  transparency: 'transparencydata.com'
+};
+
+var sectorCodes = {
+  A:'Agribusiness',
+  B:'Communications/Electronics',
+  C:'Construction',
+  D:'Defense',
+  E:'Energy/Natural Resources',
+  F:'Finance/Insurance/Real Estate',
+  H:'Health',
+  K:'Lawyers and Lobbyists',
+  M:'Transportation',
+  N:'Misc. Business',
+  Q:'Ideology/Single Issue',
+  P:'Labor',
+  W:'Other',
+  Y:'Unknown',
+  Z:'Administrative Use'
+};
+
+// Get lawmaker profile by bioguide_id
+exports.getProfile = function(req, res) {
+  var id = req.params.id;
+  var options = {
+    hostname: api.sunlight,
+    path: '/legislators' + api.key + '&all_legislators=true&bioguide_id=' + id
+  };
+
+  requestData(options, function(profile){
+    if (!profile) {
+      handleError(res, 'Cannot getProfile');
+    }
+    res.json(200, profile); 
+  });
+};
 
 // Get lawmakers by zipcode
-exports.getRepsByZip = function(req, res) {
-  var forZip = req.params.id;
-  requestReps(forZip, function(reps){
+exports.getReps = function(req, res) {
+  var zipCode = req.params.id;
+  var options = {
+    hostname: api.sunlight,
+    path: '/legislators/locate' + api.key + '&zip=' + zipCode
+  };
+
+  requestData(options, function(reps){
     if (!reps) {
-      handleError(res, 'Cannot getRepsByZip');
+      handleError(res, 'Cannot getReps');
     }
     res.json(200, reps); 
   });
 };
 
-// Get transparencydata donor ID
+// Get transparencydata donor ID with rep name (first+last)
 exports.getDonorId = function (req, res) {
-  var forName = req.params.id;
-  requestDonorId(forName, function(id){
-    // console.log('controllerID', id);
+  var name = req.params.id;
+  var options = {
+    hostname: api.transparency,
+    path: '/api/1.0/entities.json' + api.key + '&type=politician&search=' + name
+  };
+
+  requestData(options, function(rep){
+    var id;
+      _.each(rep, function (rep) {
+        if (_.contains(rep.seat, 'federal:house') || _.contains(rep.seat, 'federal:senate')) {
+          id = rep.id;
+        }
+      });
     if (!id) {
       handleError(res, 'Cannot getDonorId');
     }
-    res.status(200).send(id); 
+  console.log('hello?')
+    res.status(200).send({id: id}); 
+  });
+};
+
+exports.getTopDonors = function (req, res) {
+  var transparencyId = req.params.id;
+  var options = {
+    hostname: api.transparency,
+    path: '/api/1.0/aggregates/pol/'+ transparencyId + '/contributors.json' + api.key
+  };
+
+  requestData(options, function (donors) {
+    if (!donors) {
+      handleError(res, 'Cannot getTopDonors');
+    }
+    res.status(200).send({donors: donors}); 
+  });
+};
+
+exports.getTopSectors = function (req, res) {
+  var transparencyId = req.params.id;
+  var options = {
+    hostname: api.transparency,
+    path: '/api/1.0/aggregates/pol/'+transparencyId+'/contributors/sectors.json' + api.key
+  };
+
+  requestData(options, function (sectors) {
+    if (!sectors) {
+      handleError(res, 'Cannot getTopSectors');
+    }
+    console.log('sectors', sectors)
+    res.status(200).send({sectors: sectors}); 
+  });
+};
+
+exports.getTopIndustries = function (req, res) {
+  var transparencyId = req.params.id;
+  var options = {
+    hostname: api.transparency,
+    path: '/api/1.0/aggregates/pol/'+transparencyId+'/contributors/industries.json' + api.key 
+  };
+
+  requestData(options, function (industries) {
+    if (!industries) {
+      handleError(res, 'Cannot getTopIndustries');
+    }
+    console.log('INDUSTRIES', industries)
+    res.status(200).send({industries: industries}); 
   });
 };
 

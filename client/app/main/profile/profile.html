@@ -1,4 +1,4 @@
-<div class="container" id="profile-view">
+<div id="profile-view">
   <!-- <div id='photoContainer' style="background-image: url(assets/images/{{rep.bioguide_id}}.jpg) ">
 </div> -->
 <img id='photoContainer' ng-src="assets/images/{{rep.bioguide_id}}.jpg" fallback-src="assets/images/noImage.jpg"/>
@@ -18,39 +18,38 @@
     <a href="http://www.youtube.com/{{ rep.youtube_id }}" class="social__icon"><i class="fa fa-youtube profIcon"></i></a>
   </div>
 </div>
-<div id="seperator"></div>
 
-      <!-- <div class="inlineBlock justify padHorizontal">
+      <div class="inlineBlock justify padHorizontal" style="margin-top:40px;">
         <h2 class="subtitle">Top Donors</h2>
-        <div ng-repeat="donor in topDonors">
-          {{donor.name}} - {{donor.total_amount | currency : symbol : fractionSize}}
+        <div ng-repeat="donor in topData">
+          {{donor[0]}} - {{donor[1] | currency : symbol : fractionSize}}
         </div>
       </div>
       <div class="inlineBlock justify padHorizontal">
         <h2 class="subtitle">Top Donors by Industry</h2>
-        <div ng-repeat="donor in topIndustries">
-          {{donor.name}} - {{donor.amount | currency : symbol : fractionSize}}
+        <div ng-repeat="donor in industriesData">
+          {{donor[0]}} - {{donor[1] | currency : symbol : fractionSize}}
         </div>
       </div>
       <div class="inlineBlock justify padHorizontal">
         <h2 class="subtitle">Top Donors by Sector</h2>
-        <div ng-repeat="donor in topSectors">
-          {{donor.sector | sectorNameConversion}} - {{donor.amount | currency : symbol : fractionSize}}
+        <div ng-repeat="donor in sectorData">
+          {{donor[0]}} - {{donor[1] | currency : symbol : fractionSize}}
         </div>
-      </div> -->
+      </div>
 
-      <div class="row">        
+      <div class="row" style="margin-top:20px;">        
         <div class='col-md-6 col-md-offset-3'>
-          <highchart id="corp-chart" config="CorpChartConfig" class="" ng-if="corpToggle"></highchart>
+          <highchart id="corp-chart" config="TopChartConfig"></highchart>
         </div>
       </div>
       <div class="row">
         
         <div class='col-md-5 col-md-offset-1'>
-          <highchart id="chart1" config="IndustryChartConfig" class="" ng-if="industryToggle"></highchart>
+          <highchart id="chart1" config="IndustryChartConfig"></highchart>
         </div>
         <div class='col-md-5 col-md-offset-1'>
-          <highchart id="chart3" config="SectorChartConfig" class="" ng-if="sectorToggle"></highchart>
+          <highchart id="chart3" config="SectorChartConfig"></highchart>
         </div>
       </div>
 

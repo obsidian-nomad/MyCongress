@@ -13,13 +13,13 @@
     </ul> -->
     <h2 class="padHorizontal">Your (Political) Servants</h2>
       <div class="padVertical padHorizontal repInfo" ng-repeat="rep in reps">
-        <div style="margin-left:auto; margin-right:auto; width:50%; margin-top:20px; text-align:center"><!--THIS ONE-->
+        <div style="margin-left:auto; margin-right:auto;margin-bottom:20px;">
         <div class='photoContainer inlineBlock marginHorizontal'>
           <img  ng-src="assets/images/{{rep.bioguide_id}}.jpg" fallback-src="assets/images/noImage.jpg"/>
         </div>
     <!-- <div id='profHeader' class="inlineBlock" ng-class="{ democrat: rep.party  === 'Democrat', republican: rep.party  === 'Republican' }"> -->
       <div class="inlineBlock top">
-        <h3><a ng-href="profiles/{{rep.bioguide_id}}">{{ rep.title }} {{ rep.first_name }} {{ rep.last_name }} ({{ rep.party }}, {{ rep.state }})</a></h3>
+        <h3><a ui-sref="profiles({id: bio.bioguide_id})">{{ rep.title }} {{ rep.first_name }} {{ rep.last_name }} ({{ rep.party }}, {{ rep.state }})</a></h3>
         
         <div style="text-align:left">  
           <div class="social__item contact">
@@ -37,7 +37,7 @@
         </div>
       </div>
     </div><!-- THIS ONE-->
-      <div style="text-align:center">
+      <div style="margin-left:120px;">
       <div class="inlineBlock justify padHorizontal">
         <h2 class="subtitle">Top Donors</h2>
         <div ng-repeat="donor in topDonorsByRep[rep.bioguide_id]">

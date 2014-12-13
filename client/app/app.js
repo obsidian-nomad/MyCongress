@@ -12,17 +12,11 @@ angular.module('myCongressApp', [
 ])
 
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
-
     $urlRouterProvider
       .otherwise('/welcome');
     // $httpProvider.interceptors.push('authInterceptor');
     $locationProvider.html5Mode(true);
     $stateProvider
-      .state('profiles', {
-        url: '/profiles/:id',
-        templateUrl: 'app/main/profile/profile.html',
-        controller: 'profileController'
-      })
      .state('browse', {
         url: '/browse',
         templateUrl: 'app/tiles/tiles.html',
