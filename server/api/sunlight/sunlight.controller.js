@@ -47,14 +47,23 @@ exports.getProfile = function(req, res) {
   });
 };
 
-// Get lawmakers by zipcode
+// Get lawmakers 
 exports.getReps = function(req, res) {
-  var zipCode = req.params.id;
-  var options = {
-    hostname: api.sunlight,
-    path: '/legislators/locate' + api.key + '&zip=' + zipCode
-  };
 
+  // get reps by zipcode
+  if (!_.isNaN(parseInt(req.params.id))) {
+    var zipCode = req.params.id;
+    var options = {
+      hostname: api.sunlight,
+      path: '/legislators/locate' + api.key + '&zip=' + zipCode
+    };
+  // get all reps
+  } else if ( req.params.id === 'all') {
+    var options = {
+      hostname: api.sunlight,
+      path: '/legislators' + api.key + '&per_page=all',
+    };
+  }
   requestData(options, function(reps){
     if (!reps) {
       handleError(res, 'Cannot getReps');
@@ -81,7 +90,6 @@ exports.getDonorId = function (req, res) {
     if (!id) {
       handleError(res, 'Cannot getDonorId');
     }
-  console.log('hello?')
     res.status(200).send({id: id}); 
   });
 };
@@ -112,7 +120,6 @@ exports.getTopSectors = function (req, res) {
     if (!sectors) {
       handleError(res, 'Cannot getTopSectors');
     }
-    console.log('sectors', sectors)
     res.status(200).send({sectors: sectors}); 
   });
 };
@@ -128,7 +135,6 @@ exports.getTopIndustries = function (req, res) {
     if (!industries) {
       handleError(res, 'Cannot getTopIndustries');
     }
-    console.log('INDUSTRIES', industries)
     res.status(200).send({industries: industries}); 
   });
 };
